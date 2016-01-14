@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ds:datasource xmlns:ds="http://www.elixirtech.com/DataSource" name="comDimTime_Builder" type="Composite" path="/ElixirSamples/ETL/Load/Dim_Time/datasources/comDimTime_Builder.ds" description="" version="2">
+  <ds:schema case-sensitive="Yes" />
+  <ds:security name="" />
+  <ds:composite />
+  <graph version="1.0">
+    <node id="0" class="com.elixirtech.ensemble.canvas.CompositeDiagram">
+      <property name="name" xml:space="preserve">Ensemble</property>
+      <property name="policy" xml:space="preserve">com.elixirtech.ensemble.canvas.EnsemblePolicy</property>
+    </node>
+    <node id="1" class="com.elixirtech.ensemble.canvas.ResultGO">
+      <property name="text" xml:space="preserve">Result</property>
+      <property name="fill" xml:space="preserve">Wheat</property>
+      <property name="rect" xml:space="preserve">(385,200,465,240)</property>
+      <property name="minheight" xml:space="preserve">40</property>
+      <property name="minwidth" xml:space="preserve">60</property>
+    </node>
+    <node id="2" class="com.elixirtech.ensemble.canvas.DataStoreGO">
+      <property name="text" xml:space="preserve">DataStore</property>
+      <property name="fill" xml:space="preserve">Wheat</property>
+      <property name="rect" xml:space="preserve">(390,125,470,165)</property>
+      <property name="minheight" xml:space="preserve">40</property>
+      <property name="minwidth" xml:space="preserve">60</property>
+      <user-property name="DataStore_Type" xml:space="preserve">Connection Pool</user-property>
+      <user-property name="XML_XSLT" xml:space="preserve"></user-property>
+      <user-property name="CSV_Qualifier" xml:space="preserve">None</user-property>
+      <user-property name="CSV_URL" xml:space="preserve"></user-property>
+      <user-property name="JDBC_Password" xml:space="preserve"></user-property>
+      <user-property name="JDBC_AutoCommit" xml:space="preserve">No</user-property>
+      <user-property name="DataStore_Discard" xml:space="preserve"></user-property>
+      <user-property name="JDBC_ErrorStoreURL" xml:space="preserve">repository:/ElixirSamples/ETL/Load/Error/DimeTime-${=java.lang.System.currentTimeMillis()}.ds</user-property>
+      <user-property name="JDBC_TableName" xml:space="preserve">time_by_day</user-property>
+      <user-property name="JDBC_Append" xml:space="preserve">No</user-property>
+      <user-property name="Excel_SheetGroupLevel" xml:space="preserve">0</user-property>
+      <user-property name="JDBC_Dialect" xml:space="preserve">MySQL</user-property>
+      <user-property name="JDBC_FileURL" xml:space="preserve">/ElixirSamples/ETL/Connection Pool/Foodmart.pool</user-property>
+      <user-property name="CSV_Separator" xml:space="preserve">Comma</user-property>
+      <user-property name="JDBC_UpdateInsert" xml:space="preserve">No</user-property>
+      <user-property name="JDBC_Exists" xml:space="preserve">Yes</user-property>
+      <user-property name="Excel_URL" xml:space="preserve"></user-property>
+      <user-property name="CSV_Append" xml:space="preserve">No</user-property>
+      <user-property name="JDBC_User" xml:space="preserve"></user-property>
+      <user-property name="JDBC_URL" xml:space="preserve"></user-property>
+      <user-property name="XML_URL" xml:space="preserve"></user-property>
+      <user-property name="Excel_FirstRowHeader" xml:space="preserve">Yes</user-property>
+    </node>
+    <node id="3" class="com.elixirtech.ensemble.canvas.DataSourceGO">
+      <property name="text" xml:space="preserve">xlsTime</property>
+      <property name="fill" xml:space="preserve">Wheat</property>
+      <property name="rect" xml:space="preserve">(39,38,119,78)</property>
+      <property name="minheight" xml:space="preserve">40</property>
+      <property name="minwidth" xml:space="preserve">60</property>
+      <user-property name="DataSource" xml:space="preserve">/ElixirSamples/ETL/Load/Dim_Time/datasources/xlsTime.ds</user-property>
+    </node>
+    <node id="4" class="com.elixirtech.ensemble.canvas.DerivativeGO">
+      <property name="text" xml:space="preserve">Derivative</property>
+      <property name="fill" xml:space="preserve">Wheat</property>
+      <property name="rect" xml:space="preserve">(210,90,290,130)</property>
+      <property name="minheight" xml:space="preserve">40</property>
+      <property name="minwidth" xml:space="preserve">60</property>
+      <user-property name="Derivative_JavaScript" xml:space="preserve">importClass(java.text.SimpleDateFormat); 
+
+var dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+function parseDate(d)
+{
+  if (d==null) return null;
+  return dateFormat.parse(d);
+}</user-property>
+      <user-property name="Derivative_Discard" xml:space="preserve"></user-property>
+    </node>
+    <node id="5" class="com.elixirtech.ensemble.canvas.DerivedNode">
+      <property name="Name" xml:space="preserve">the_date</property>
+      <property name="Value" xml:space="preserve">parseDate(the_date)</property>
+      <property name="DataType" xml:space="preserve">Date</property>
+    </node>
+    <node id="6" class="com.elixirtech.ensemble.canvas.DerivedNode">
+      <property name="Name" xml:space="preserve">the_year</property>
+      <property name="Value" xml:space="preserve">java.lang.Integer.valueOf(the_year) </property>
+      <property name="DataType" xml:space="preserve">Integer</property>
+    </node>
+    <node id="7" class="com.elixirtech.ensemble.canvas.DerivedNode">
+      <property name="Name" xml:space="preserve">month_of_year</property>
+      <property name="Value" xml:space="preserve">java.lang.Integer.valueOf(month_of_year) </property>
+      <property name="DataType" xml:space="preserve">Integer</property>
+    </node>
+    <node id="8" class="com.elixirtech.ensemble.canvas.DerivedNode">
+      <property name="Name" xml:space="preserve">week_of_year</property>
+      <property name="Value" xml:space="preserve">java.lang.Integer.valueOf(week_of_year) </property>
+      <property name="DataType" xml:space="preserve">Integer</property>
+    </node>
+    <node id="9" class="com.elixirtech.ensemble.canvas.DerivedNode">
+      <property name="Name" xml:space="preserve">day_of_month</property>
+      <property name="Value" xml:space="preserve">java.lang.Integer.valueOf(day_of_month) </property>
+      <property name="DataType" xml:space="preserve">Integer</property>
+    </node>
+    <node id="10" class="com.elixirtech.ensemble.canvas.DataFlowGO">
+      <property name="points" xml:space="preserve">(148,58)(182,110)</property>
+    </node>
+    <node id="11" class="com.elixirtech.ensemble.canvas.DataFlowGO">
+      <property name="points" xml:space="preserve">(319,110)(361,145)</property>
+    </node>
+    <node id="12" class="com.elixirtech.ensemble.canvas.NoteGO">
+      <property name="text" xml:space="preserve">A derivative processor that converts all strings to the appropriate type before  storing to the database</property>
+      <property name="fill" xml:space="preserve">Wheat</property>
+      <property name="rect" xml:space="preserve">(215,15,510,70)</property>
+      <property name="minheight" xml:space="preserve">40</property>
+      <property name="minwidth" xml:space="preserve">60</property>
+    </node>
+    <relationship type="Owns" from="0" to="1" />
+    <relationship type="Owns" from="0" to="2" />
+    <relationship type="Owns" from="0" to="3" />
+    <relationship type="Owns" from="0" to="4" />
+    <relationship type="Owns" from="0" to="10" />
+    <relationship type="Owns" from="0" to="11" />
+    <relationship type="Owns" from="0" to="12" />
+    <relationship type="Repaints" from="2" to="11">
+      <user-property name="stop" xml:space="preserve">true</user-property>
+    </relationship>
+    <relationship type="Repaints" from="3" to="10">
+      <user-property name="start" xml:space="preserve">true</user-property>
+    </relationship>
+    <relationship type="Repaints" from="4" to="10">
+      <user-property name="stop" xml:space="preserve">true</user-property>
+    </relationship>
+    <relationship type="Repaints" from="4" to="11">
+      <user-property name="start" xml:space="preserve">true</user-property>
+    </relationship>
+    <relationship type="Owns" from="4" to="5" />
+    <relationship type="Owns" from="4" to="6" />
+    <relationship type="Owns" from="4" to="7" />
+    <relationship type="Owns" from="4" to="8" />
+    <relationship type="Owns" from="4" to="9" />
+  </graph>
+</ds:datasource>
+

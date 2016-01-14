@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ds:datasource xmlns:ds="http://www.elixirtech.com/DataSource" name="txtCustomers" type="Text" path="/ElixirSamples/ETL/Extraction/datasources/txtCustomers.ds" description="">
+  <ds:schema case-sensitive="Yes">
+    <ds:column name="account_num" type="String" />
+    <ds:column name="lname" type="String" />
+    <ds:column name="fname" type="String" />
+    <ds:column name="mi" type="String" />
+    <ds:column name="address1" type="String" />
+    <ds:column name="address2" type="String" />
+    <ds:column name="address3" type="String" />
+    <ds:column name="address4" type="String" />
+    <ds:column name="city" type="String" />
+    <ds:column name="state_province" type="String" />
+    <ds:column name="postal_code" type="String" />
+    <ds:column name="country" type="String" />
+    <ds:column name="customer_region_id" type="String" />
+    <ds:column name="phone1" type="String" />
+    <ds:column name="phone2" type="String" />
+    <ds:column name="birthdate" type="String" />
+    <ds:column name="marital_status" type="String" />
+    <ds:column name="yearly_income" type="String" />
+    <ds:column name="gender" type="String" />
+    <ds:column name="total_children" type="String" />
+    <ds:column name="num_children_at_home" type="String" />
+    <ds:column name="education" type="String" />
+    <ds:column name="date_accnt_opened" type="String" />
+    <ds:column name="member_card" type="String" />
+    <ds:column name="occupation" type="String" />
+    <ds:column name="houseowner" type="String" />
+    <ds:column name="num_cars_owned" type="String" />
+    <ds:column name="fullname" type="String" />
+  </ds:schema>
+  <ds:security name="" />
+  <ds:text encoding="UTF-8" skip-first-row="Yes" url="repository:/ElixirSamples/ETL/Extraction/data/Customers-org.csv">
+    <ds:delimited delimiter="," qualifier="&quot;" />
+  </ds:text>
+</ds:datasource>
+

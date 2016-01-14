@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<cube timeout="-1" mod="44" home-dir="P:/elx_temp" version="1">
+    <connection pool="/ElixirSamples/ETL/Connection Pool/Foodmart.pool" schema=""></connection>
+    <dim key="customer_id" name="customer" ></dim><dim key="store_id" name="store" ></dim><dim key="time_id" name="time_by_day" ></dim>
+    
+    <table name="sales_fact_1997" sql="SELECT * FROM sales_fact_1997">
+      <index groupOn="Each Value"  groupField="education" id="Customer's Education">
+      <join dim="customer" foreignKey="customer_id"></join>
+    </index><index groupOn="Original Order"  groupField="the_month" id="Month">
+      <join dim="time_by_day" foreignKey="time_id"></join>
+    </index><index groupOn="Each Value"  groupField="store_name" id="Store Name">
+      <join dim="store" foreignKey="store_id"></join>
+    </index><index groupOn="Each Value"  groupField="the_year" id="Year">
+      <join dim="time_by_day" foreignKey="time_id"></join>
+    </index>
+      
+    </table>
+    <measure field="store_sales" id="Store_Sales" fn="Sum"></measure>
+    <measure-exp expression="[Store_Sales]" id="Store Sales" format="{&quot;type&quot;: &quot;CustomNumber&quot;, &quot;numType&quot;: &quot;Currency&quot;, &quot;pattern&quot;: &quot;#,##0.00&quot;}"></measure-exp>
+    <predef theme="Relax Blue" layout="tree" id="test">
+      <column id="Month"></column><measure id="Store Sales"></measure><chart measure="0" data="R1C1" height="300" width="600" type="Column" location="CubeHeader"></chart><row-axis totalsAfterDetails="true" showTotals="true" hideEmpty="true"></row-axis><column-axis totalsAfterDetails="true" showTotals="true" hideEmpty="true"></column-axis>
+    </predef><predef theme="Corp Blue" layout="tree" id="Analysis Bar Chart">
+      <filter id="Year" choice="1997"></filter><column id="Customer's Education"></column><row id="Year"></row><row id="Month"></row><measure id="Store Sales"><condition when="Less Than" fg="#000000" bg="#F08080" cells="true" htotals="false" vtotals="false" enabled="true">5000</condition><condition when="Less Than" fg="#000000" bg="#FFFFE0" cells="true" htotals="false" vtotals="false" enabled="true">8000</condition><condition when="More Than" fg="#000000" bg="#ADFF2F" cells="true" htotals="false" vtotals="false" enabled="true">10000</condition><condition when="Not Equals" fg="#000000" bg="#7B68EE" cells="false" htotals="true" vtotals="true" enabled="true">0</condition></measure><chart location="CubeHeader" type="Bar" width="600" height="300" data="R1C1" measure="0"></chart><row-axis hideEmpty="true" showTotals="true" totalsAfterDetails="true"></row-axis><column-axis hideEmpty="true" showTotals="true" totalsAfterDetails="true"></column-axis>
+    </predef><predef theme="Corp Blue" layout="tree" id="Analysis Column Chart">
+      <filter id="Year" choice="1997"></filter><column id="Year"></column><column id="Month"></column><row id="Customer's Education"></row><measure id="Store Sales"><condition when="Less Than" fg="#000000" bg="#F08080" cells="true" htotals="false" vtotals="false" enabled="true">5000</condition><condition when="Less Than" fg="#000000" bg="#FFFFE0" cells="true" htotals="false" vtotals="false" enabled="true">8000</condition><condition when="More Than" fg="#000000" bg="#ADFF2F" cells="true" htotals="false" vtotals="false" enabled="true">10000</condition><condition when="Not Equals" fg="#000000" bg="#7B68EE" cells="false" htotals="true" vtotals="true" enabled="true">0</condition></measure><chart location="CubeHeader" type="Column" width="600" height="300" data="R1C1" measure="0"></chart><row-axis hideEmpty="true" showTotals="true" totalsAfterDetails="true"></row-axis><column-axis hideEmpty="true" showTotals="true" totalsAfterDetails="true"></column-axis>
+    </predef>
+    <interaction type="report" enabled="true" report="/ElixirSamples/ETL/AdHoc/Sales_Fact_1997-onclick.report" predef="onclick"></interaction>
+    </cube>

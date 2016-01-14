@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ds:datasource xmlns:ds="http://www.elixirtech.com/DataSource" name="txtSales" type="Text" path="/ElixirSamples/ETL/Extraction/datasources/txtSales.ds" description="">
+  <ds:schema case-sensitive="Yes">
+    <ds:column name="store_cost" type="String" />
+    <ds:column name="unit_sales" type="String" />
+    <ds:column name="store_sales" type="String" />
+    <ds:column name="account_num" type="String" />
+    <ds:column name="the_date" type="String" />
+    <ds:column name="SKU" type="String" />
+    <ds:column name="store_name" type="String" />
+    <ds:column name="promotion_name" type="String" />
+  </ds:schema>
+  <ds:security name="" />
+  <ds:text encoding="UTF-8" skip-first-row="Yes" url="repository:/ElixirSamples/ETL/Extraction/data/Sales.csv">
+    <ds:delimited delimiter="," qualifier="&quot;" />
+  </ds:text>
+</ds:datasource>
+

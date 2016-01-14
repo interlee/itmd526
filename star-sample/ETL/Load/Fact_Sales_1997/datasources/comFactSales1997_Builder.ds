@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ds:datasource xmlns:ds="http://www.elixirtech.com/DataSource" name="comFactSales1997_Builder" type="Composite" path="/ElixirSamples/ETL/Load/Fact_Sales_1997/datasources/comFactSales1997_Builder.ds" description="" version="2">
+  <ds:schema case-sensitive="Yes" />
+  <ds:security name="" />
+  <ds:composite />
+  <graph version="1.0">
+    <node id="0" class="com.elixirtech.ensemble.canvas.CompositeDiagram">
+      <property name="name" xml:space="preserve">Ensemble</property>
+      <property name="policy" xml:space="preserve">com.elixirtech.ensemble.canvas.EnsemblePolicy</property>
+    </node>
+    <node id="1" class="com.elixirtech.ensemble.canvas.ResultGO">
+      <property name="text" xml:space="preserve">Result</property>
+      <property name="fill" xml:space="preserve">Wheat</property>
+      <property name="rect" xml:space="preserve">(750,200,830,240)</property>
+      <property name="minheight" xml:space="preserve">40</property>
+      <property name="minwidth" xml:space="preserve">60</property>
+    </node>
+    <node id="2" class="com.elixirtech.ensemble.canvas.DataSourceGO">
+      <property name="text" xml:space="preserve">txtSales</property>
+      <property name="fill" xml:space="preserve">Wheat</property>
+      <property name="rect" xml:space="preserve">(19,266,99,306)</property>
+      <property name="minheight" xml:space="preserve">40</property>
+      <property name="minwidth" xml:space="preserve">60</property>
+      <user-property name="DataSource" xml:space="preserve">/ElixirSamples/ETL/Load/Fact_Sales_1997/datasources/txtSales.ds</user-property>
+    </node>
+    <node id="3" class="com.elixirtech.ensemble.canvas.DataSourceGO">
+      <property name="text" xml:space="preserve">jdbcDim_Customer</property>
+      <property name="fill" xml:space="preserve">Wheat</property>
+      <property name="rect" xml:space="preserve">(20,152,100,192)</property>
+      <property name="minheight" xml:space="preserve">40</property>
+      <property name="minwidth" xml:space="preserve">60</property>
+      <user-property name="DataSource" xml:space="preserve">/ElixirSamples/ETL/Load/Fact_Sales_1997/datasources/jdbcDim_Customer.ds</user-property>
+      <user-property name="DataSource_Discard" xml:space="preserve"></user-property>
+    </node>
+    <node id="4" class="com.elixirtech.ensemble.canvas.JoinGO">
+      <property name="text" xml:space="preserve">Join</property>
+      <property name="fill" xml:space="preserve">Wheat</property>
+      <property name="rect" xml:space="preserve">(220,220,300,260)</property>
+      <property name="minheight" xml:space="preserve">40</property>
+      <property name="minwidth" xml:space="preserve">60</property>
+      <user-property name="Join_PrimaryDiscard" xml:space="preserve">account_num</user-property>
+      <user-property name="Join_PrimaryPrefix" xml:space="preserve"></user-property>
+      <user-property name="Join_SecondaryDiscard" xml:space="preserve">account_num</user-property>
+      <user-property name="Join_ZeroSecondary" xml:space="preserve">Discard</user-property>
+      <user-property name="Join_MultipleSecondary" xml:space="preserve">Repeat</user-property>
+      <user-property name="Join_SecondaryPrefix" xml:space="preserve"></user-property>
+      <user-property name="Join_Crossed" xml:space="preserve">No</user-property>
+    </node>
+    <node id="5" class="com.elixirtech.ensemble.canvas.JoinNode">
+      <property name="Primary" xml:space="preserve"></property>
+      <property name="Secondary" xml:space="preserve">store_cost</property>
+    </node>
+    <node id="6" class="com.elixirtech.ensemble.canvas.JoinNode">
+      <property name="Primary" xml:space="preserve"></property>
+      <property name="Secondary" xml:space="preserve">unit_sales</property>
+    </node>
+    <node id="7" class="com.elixirtech.ensemble.canvas.JoinNode">
+      <property name="Primary" xml:space="preserve"></property>
+      <property name="Secondary" xml:space="preserve">store_sales</property>
+    </node>
+    <node id="8" class="com.elixirtech.ensemble.canvas.JoinNode">
+      <property name="Primary" xml:space="preserve">account_num</property>
+      <property name="Secondary" xml:space="preserve">account_num</property>
+    </node>
+    <node id="9" class="com.elixirtech.ensemble.canvas.JoinNode">
+      <property name="Primary" xml:space="preserve"></property>
+      <property name="Secondary" xml:space="preserve">the_date</property>
+    </node>
+    <node id="10" class="com.elixirtech.ensemble.canvas.JoinNode">
+      <property name="Primary" xml:space="preserve"></property>
+      <property name="Secondary" xml:space="preserve">SKU</property>
+    </node>
+    <node id="11" class="com.elixirtech.ensemble.canvas.JoinNode">
+      <property name="Primary" xml:space="preserve"></property>
+      <property name="Secondary" xml:space="preserve">store_name</property>
+    </node>
+    <node id="12" class="com.elixirtech.ensemble.canvas.JoinNode">
+      <property name="Primary" xml:space="preserve"></property>
+      <property name="Secondary" xml:space="preserve">promotion_name</property>
+    </node>
+    <node id="13" class="com.elixirtech.ensemble.canvas.DataFlowGO">
+      <property name="points" xml:space="preserve">(128,286)(168,252)</property>
+    </node>
+    <node id="14" class="com.elixirtech.ensemble.canvas.DataFlowGO">
+      <property name="points" xml:space="preserve">(129,172)(168,228)</property>
+    </node>
+    <node id="15" class="com.elixirtech.ensemble.canvas.DataSourceGO">
+      <property name="text" xml:space="preserve">jdbcDim_TimeByDay</property>
+      <property name="fill" xml:space="preserve">Wheat</property>
+      <property name="rect" xml:space="preserve">(216,120,296,160)</property>
+      <property name="minheight" xml:space="preserve">40</property>
+      <property name="minwidth" xml:space="preserve">60</property>
+      <user-property name="DataSource" xml:space="preserve">/ElixirSamples/ETL/Load/Fact_Sales_1997/datasources/jdbcDim_TimeByDay.ds</user-property>
+      <user-property name="DataSource_Discard" xml:space="preserve"></user-property>
+    </node>
+    <node id="16" class="com.elixirtech.ensemble.canvas.JoinGO">
+      <property name="text" xml:space="preserve">Join</property>
+      <property name="fill" xml:space="preserve">Wheat</property>
+      <property name="rect" xml:space="preserve">(390,160,470,200)</property>
+      <property name="minheight" xml:space="preserve">40</property>
+      <property name="minwidth" xml:space="preserve">60</property>
+      <user-property name="Join_PrimaryDiscard" xml:space="preserve">the_date</user-property>
+      <user-property name="Join_PrimaryPrefix" xml:space="preserve"></user-property>
+      <user-property name="Join_SecondaryDiscard" xml:space="preserve">the_date</user-property>
+      <user-property name="Join_ZeroSecondary" xml:space="preserve">Discard</user-property>
+      <user-property name="Join_MultipleSecondary" xml:space="preserve">Repeat</user-property>
+      <user-property name="Join_SecondaryPrefix" xml:space="preserve"></user-property>
+      <user-property name="Join_Crossed" xml:space="preserve">No</user-property>
+    </node>
+    <node id="17" class="com.elixirtech.ensemble.canvas.JoinNode">
+      <property name="Primary" xml:space="preserve"></property>
+      <property name="Secondary" xml:space="preserve">customer_id</property>
+    </node>
+    <node id="18" class="com.elixirtech.ensemble.canvas.JoinNode">
+      <property name="Primary" xml:space="preserve"></property>
+      <property name="Secondary" xml:space="preserve">store_cost</property>
+    </node>
+    <node id="19" class="com.elixirtech.ensemble.canvas.JoinNode">
+      <property name="Primary" xml:space="preserve"></property>
+      <property name="Secondary" xml:space="preserve">unit_sales</property>
+    </node>
+    <node id="20" class="com.elixirtech.ensemble.canvas.JoinNode">
+      <property name="Primary" xml:space="preserve"></property>
+      <property name="Secondary" xml:space="preserve">store_sales</property>
+    </node>
+    <node id="21" class="com.elixirtech.ensemble.canvas.JoinNode">
+      <property name="Primary" xml:space="preserve">the_date</property>
+      <property name="Secondary" xml:space="preserve">the_date</property>
+    </node>
+    <node id="22" class="com.elixirtech.ensemble.canvas.JoinNode">
+      <property name="Primary" xml:space="preserve"></property>
+      <property name="Secondary" xml:space="preserve">SKU</property>
+    </node>
+    <node id="23" class="com.elixirtech.ensemble.canvas.JoinNode">
+      <property name="Primary" xml:space="preserve"></property>
+      <property name="Secondary" xml:space="preserve">store_name</property>
+    </node>
+    <node id="24" class="com.elixirtech.ensemble.canvas.JoinNode">
+      <property name="Primary" xml:space="preserve"></property>
+      <property name="Secondary" xml:space="preserve">promotion_name</property>
+    </node>
+    <node id="25" class="com.elixirtech.ensemble.canvas.DataFlowGO">
+      <property name="points" xml:space="preserve">(329,240)(338,192)</property>
+    </node>
+    <node id="26" class="com.elixirtech.ensemble.canvas.DataFlowGO">
+      <property name="points" xml:space="preserve">(325,140)(338,168)</property>
+    </node>
+    <node id="27" class="com.elixirtech.ensemble.canvas.JoinGO">
+      <property name="text" xml:space="preserve">Join</property>
+      <property name="fill" xml:space="preserve">Wheat</property>
+      <property name="rect" xml:space="preserve">(570,90,650,130)</property>
+      <property name="minheight" xml:space="preserve">40</property>
+      <property name="minwidth" xml:space="preserve">60</property>
+      <user-property name="Join_PrimaryDiscard" xml:space="preserve">store_name</user-property>
+      <user-property name="Join_PrimaryPrefix" xml:space="preserve"></user-property>
+      <user-property name="Join_SecondaryDiscard" xml:space="preserve">promotion_name,store_name</user-property>
+      <user-property name="Join_ZeroSecondary" xml:space="preserve">Discard</user-property>
+      <user-property name="Join_MultipleSecondary" xml:space="preserve">Repeat</user-property>
+      <user-property name="Join_SecondaryPrefix" xml:space="preserve"></user-property>
+      <user-property name="Join_Crossed" xml:space="preserve">No</user-property>
+    </node>
+    <node id="28" class="com.elixirtech.ensemble.canvas.JoinNode">
+      <property name="Primary" xml:space="preserve"></property>
+      <property name="Secondary" xml:space="preserve">time_id</property>
+    </node>
+    <node id="29" class="com.elixirtech.ensemble.canvas.JoinNode">
+      <property name="Primary" xml:space="preserve"></property>
+      <property name="Secondary" xml:space="preserve">customer_id</property>
+    </node>
+    <node id="30" class="com.elixirtech.ensemble.canvas.JoinNode">
+      <property name="Primary" xml:space="preserve"></property>
+      <property name="Secondary" xml:space="preserve">store_cost</property>
+    </node>
+    <node id="31" class="com.elixirtech.ensemble.canvas.JoinNode">
+      <property name="Primary" xml:space="preserve"></property>
+      <property name="Secondary" xml:space="preserve">unit_sales</property>
+    </node>
+    <node id="32" class="com.elixirtech.ensemble.canvas.JoinNode">
+      <property name="Primary" xml:space="preserve"></property>
+      <property name="Secondary" xml:space="preserve">store_sales</property>
+    </node>
+    <node id="33" class="com.elixirtech.ensemble.canvas.JoinNode">
+      <property name="Primary" xml:space="preserve"></property>
+      <property name="Secondary" xml:space="preserve">SKU</property>
+    </node>
+    <node id="34" class="com.elixirtech.ensemble.canvas.JoinNode">
+      <property name="Primary" xml:space="preserve">store_name</property>
+      <property name="Secondary" xml:space="preserve">store_name</property>
+    </node>
+    <node id="35" class="com.elixirtech.ensemble.canvas.JoinNode">
+      <property name="Primary" xml:space="preserve"></property>
+      <property name="Secondary" xml:space="preserve">promotion_name</property>
+    </node>
+    <node id="36" class="com.elixirtech.ensemble.canvas.DataFlowGO">
+      <property name="points" xml:space="preserve">(499,180)(518,122)</property>
+    </node>
+    <node id="37" class="com.elixirtech.ensemble.canvas.DataSourceGO">
+      <property name="text" xml:space="preserve">jdbcDim_Store</property>
+      <property name="fill" xml:space="preserve">Wheat</property>
+      <property name="rect" xml:space="preserve">(381,56,461,96)</property>
+      <property name="minheight" xml:space="preserve">40</property>
+      <property name="minwidth" xml:space="preserve">60</property>
+      <user-property name="DataSource" xml:space="preserve">/ElixirSamples/ETL/Load/Fact_Sales_1997/datasources/jdbcDim_Store.ds</user-property>
+    </node>
+    <node id="38" class="com.elixirtech.ensemble.canvas.DataFlowGO">
+      <property name="points" xml:space="preserve">(490,76)(518,98)</property>
+    </node>
+    <node id="39" class="com.elixirtech.ensemble.canvas.DataStoreGO">
+      <property name="text" xml:space="preserve">DataStore - Sales Fact 1997</property>
+      <property name="fill" xml:space="preserve">Wheat</property>
+      <property name="rect" xml:space="preserve">(730,90,810,130)</property>
+      <property name="minheight" xml:space="preserve">40</property>
+      <property name="minwidth" xml:space="preserve">60</property>
+      <user-property name="DataStore_Type" xml:space="preserve">Connection Pool</user-property>
+      <user-property name="XML_XSLT" xml:space="preserve"></user-property>
+      <user-property name="CSV_Qualifier" xml:space="preserve">None</user-property>
+      <user-property name="CSV_URL" xml:space="preserve"></user-property>
+      <user-property name="JDBC_Password" xml:space="preserve"></user-property>
+      <user-property name="JDBC_AutoCommit" xml:space="preserve">No</user-property>
+      <user-property name="DataStore_Discard" xml:space="preserve">SKU</user-property>
+      <user-property name="JDBC_ErrorStoreURL" xml:space="preserve">repository:/ElixirSamples/ETL/Load/DimStore-${=java.lang.System.currentTimeMillis()}.ds</user-property>
+      <user-property name="JDBC_TableName" xml:space="preserve">sales_fact_1997</user-property>
+      <user-property name="JDBC_Append" xml:space="preserve">No</user-property>
+      <user-property name="Excel_SheetGroupLevel" xml:space="preserve">0</user-property>
+      <user-property name="JDBC_Dialect" xml:space="preserve">MySQL</user-property>
+      <user-property name="JDBC_FileURL" xml:space="preserve">/ElixirSamples/ETL/Connection Pool/Foodmart.pool</user-property>
+      <user-property name="CSV_Separator" xml:space="preserve">Comma</user-property>
+      <user-property name="JDBC_UpdateInsert" xml:space="preserve">No</user-property>
+      <user-property name="JDBC_Exists" xml:space="preserve">Yes</user-property>
+      <user-property name="Excel_URL" xml:space="preserve"></user-property>
+      <user-property name="CSV_Append" xml:space="preserve">No</user-property>
+      <user-property name="JDBC_User" xml:space="preserve"></user-property>
+      <user-property name="JDBC_URL" xml:space="preserve"></user-property>
+      <user-property name="XML_URL" xml:space="preserve"></user-property>
+      <user-property name="Excel_FirstRowHeader" xml:space="preserve">Yes</user-property>
+    </node>
+    <node id="40" class="com.elixirtech.ensemble.canvas.DataFlowGO">
+      <property name="points" xml:space="preserve">(679,110)(701,110)</property>
+    </node>
+    <relationship type="Owns" from="0" to="1" />
+    <relationship type="Owns" from="0" to="2" />
+    <relationship type="Owns" from="0" to="3" />
+    <relationship type="Owns" from="0" to="4" />
+    <relationship type="Owns" from="0" to="13" />
+    <relationship type="Owns" from="0" to="14" />
+    <relationship type="Owns" from="0" to="15" />
+    <relationship type="Owns" from="0" to="16" />
+    <relationship type="Owns" from="0" to="25" />
+    <relationship type="Owns" from="0" to="26" />
+    <relationship type="Owns" from="0" to="27" />
+    <relationship type="Owns" from="0" to="36" />
+    <relationship type="Owns" from="0" to="37" />
+    <relationship type="Owns" from="0" to="38" />
+    <relationship type="Owns" from="0" to="39" />
+    <relationship type="Owns" from="0" to="40" />
+    <relationship type="Repaints" from="2" to="13">
+      <user-property name="start" xml:space="preserve">true</user-property>
+    </relationship>
+    <relationship type="Repaints" from="3" to="14">
+      <user-property name="start" xml:space="preserve">true</user-property>
+    </relationship>
+    <relationship type="Repaints" from="4" to="13">
+      <user-property name="stop" xml:space="preserve">true</user-property>
+    </relationship>
+    <relationship type="Repaints" from="4" to="14">
+      <user-property name="stop" xml:space="preserve">true</user-property>
+    </relationship>
+    <relationship type="Repaints" from="4" to="25">
+      <user-property name="start" xml:space="preserve">true</user-property>
+    </relationship>
+    <relationship type="Owns" from="4" to="5" />
+    <relationship type="Owns" from="4" to="6" />
+    <relationship type="Owns" from="4" to="7" />
+    <relationship type="Owns" from="4" to="8" />
+    <relationship type="Owns" from="4" to="9" />
+    <relationship type="Owns" from="4" to="10" />
+    <relationship type="Owns" from="4" to="11" />
+    <relationship type="Owns" from="4" to="12" />
+    <relationship type="Repaints" from="15" to="26">
+      <user-property name="start" xml:space="preserve">true</user-property>
+    </relationship>
+    <relationship type="Repaints" from="16" to="25">
+      <user-property name="stop" xml:space="preserve">true</user-property>
+    </relationship>
+    <relationship type="Repaints" from="16" to="26">
+      <user-property name="stop" xml:space="preserve">true</user-property>
+    </relationship>
+    <relationship type="Repaints" from="16" to="36">
+      <user-property name="start" xml:space="preserve">true</user-property>
+    </relationship>
+    <relationship type="Owns" from="16" to="17" />
+    <relationship type="Owns" from="16" to="18" />
+    <relationship type="Owns" from="16" to="19" />
+    <relationship type="Owns" from="16" to="20" />
+    <relationship type="Owns" from="16" to="21" />
+    <relationship type="Owns" from="16" to="22" />
+    <relationship type="Owns" from="16" to="23" />
+    <relationship type="Owns" from="16" to="24" />
+    <relationship type="Repaints" from="27" to="36">
+      <user-property name="stop" xml:space="preserve">true</user-property>
+    </relationship>
+    <relationship type="Repaints" from="27" to="38">
+      <user-property name="stop" xml:space="preserve">true</user-property>
+    </relationship>
+    <relationship type="Owns" from="27" to="28" />
+    <relationship type="Owns" from="27" to="29" />
+    <relationship type="Owns" from="27" to="30" />
+    <relationship type="Owns" from="27" to="31" />
+    <relationship type="Owns" from="27" to="32" />
+    <relationship type="Owns" from="27" to="33" />
+    <relationship type="Owns" from="27" to="34" />
+    <relationship type="Owns" from="27" to="35" />
+    <relationship type="Repaints" from="27" to="40">
+      <user-property name="start" xml:space="preserve">true</user-property>
+    </relationship>
+    <relationship type="Repaints" from="37" to="38">
+      <user-property name="start" xml:space="preserve">true</user-property>
+    </relationship>
+    <relationship type="Repaints" from="39" to="40">
+      <user-property name="stop" xml:space="preserve">true</user-property>
+    </relationship>
+  </graph>
+</ds:datasource>
+

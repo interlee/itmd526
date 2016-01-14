@@ -1,0 +1,14 @@
+DROP TABLE IF EXISTS `foodmart-dev`.`sales_fact_1997`;
+CREATE TABLE  `foodmart-dev`.`sales_fact_1997` (
+  `time_id` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL,
+  `store_id` int(11) NOT NULL,
+  `store_sales` decimal(10,4) NOT NULL,
+  `store_cost` decimal(10,4) NOT NULL,
+  `unit_sales` decimal(10,4) NOT NULL,
+   KEY `i_sls_97_store_id` (`store_id`),
+  KEY `i_sls_97_time_id` (`time_id`),
+  CONSTRAINT `FK_sales_fact_1997_2` FOREIGN KEY (`time_id`) REFERENCES `time_by_day` (`time_id`),
+  CONSTRAINT `FK_sales_fact_1997_3` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`),
+  CONSTRAINT `FK_sales_fact_1997_5` FOREIGN KEY (`store_id`) REFERENCES `store` (`store_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;

@@ -1,0 +1,19 @@
+DROP TABLE IF EXISTS `foodmart-dev`.`time_by_day`;
+CREATE TABLE  `foodmart-dev`.`time_by_day` (
+  `time_id` int(11) NOT NULL AUTO_INCREMENT,
+  `the_date` datetime DEFAULT NULL,
+  `the_day` varchar(30) DEFAULT NULL,
+  `the_month` varchar(30) DEFAULT NULL,
+  `the_year` smallint(6) DEFAULT NULL,
+  `day_of_month` smallint(6) DEFAULT NULL,
+  `week_of_year` int(11) DEFAULT NULL,
+  `month_of_year` smallint(6) DEFAULT NULL,
+  `quarter` varchar(30) DEFAULT NULL,
+  `fiscal_period` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`time_id`),
+  UNIQUE KEY `i_time_id` (`time_id`),
+  UNIQUE KEY `i_time_day` (`the_date`),
+  KEY `i_time_year` (`the_year`),
+  KEY `i_time_quarter` (`quarter`),
+  KEY `i_time_month` (`month_of_year`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;

@@ -1,0 +1,4 @@
+UPDATE customer
+SET
+customer.date_accnt_opened  = "1991/09/10"
+where customer.account_num = 87462024688

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ds:datasource xmlns:ds="http://www.elixirtech.com/DataSource" name="xmlStore" type="XML" path="/ElixirSamples/ETL/Load/Dim_Store/datasources/xmlStore.ds" description="">
+  <ds:schema case-sensitive="Yes">
+    <ds:column name="store_type" type="String" />
+    <ds:column name="region_id" type="String" />
+    <ds:column name="store_name" type="String" />
+    <ds:column name="store_number" type="String" />
+    <ds:column name="store_street_address" type="String" />
+    <ds:column name="store_city" type="String" />
+    <ds:column name="store_state" type="String" />
+    <ds:column name="store_postal_code" type="String" />
+    <ds:column name="store_country" type="String" />
+    <ds:column name="store_manager" type="String" />
+    <ds:column name="store_phone" type="String" />
+    <ds:column name="store_fax" type="String" />
+    <ds:column name="first_opened_date" type="String" />
+    <ds:column name="last_remodel_date" type="String" />
+    <ds:column name="store_sqft" type="String" />
+    <ds:column name="grocery_sqft" type="String" />
+    <ds:column name="frozen_sqft" type="String" />
+    <ds:column name="meat_sqft" type="String" />
+    <ds:column name="coffee_bar" type="String" />
+    <ds:column name="video_store" type="String" />
+    <ds:column name="salad_bar" type="String" />
+    <ds:column name="prepared_food" type="String" />
+    <ds:column name="florist" type="String" />
+  </ds:schema>
+  <ds:security name="" />
+  <ds:xml root-xpath="/ds:datasource/ds:data/ds:record" url="repository:/ElixirSamples/ETL/Extraction/data/Store.xml">
+    <ds:column xpath="ds:field[1]" merge="Space" />
+    <ds:column xpath="ds:field[2]" merge="Space" />
+    <ds:column xpath="ds:field[3]" merge="Space" />
+    <ds:column xpath="ds:field[4]" merge="Space" />
+    <ds:column xpath="ds:field[5]" merge="Space" />
+    <ds:column xpath="ds:field[6]" merge="Space" />
+    <ds:column xpath="ds:field[7]" merge="Space" />
+    <ds:column xpath="ds:field[8]" merge="Space" />
+    <ds:column xpath="ds:field[9]" merge="Space" />
+    <ds:column xpath="ds:field[10]" merge="Space" />
+    <ds:column xpath="ds:field[11]" merge="Space" />
+    <ds:column xpath="ds:field[12]" merge="Space" />
+    <ds:column xpath="ds:field[13]" merge="Space" />
+    <ds:column xpath="ds:field[14]" merge="Space" />
+    <ds:column xpath="ds:field[15]" merge="Space" />
+    <ds:column xpath="ds:field[16]" merge="Space" />
+    <ds:column xpath="ds:field[17]" merge="Space" />
+    <ds:column xpath="ds:field[18]" merge="Space" />
+    <ds:column xpath="ds:field[19]" merge="Space" />
+    <ds:column xpath="ds:field[20]" merge="Space" />
+    <ds:column xpath="ds:field[21]" merge="Space" />
+    <ds:column xpath="ds:field[22]" merge="Space" />
+    <ds:column xpath="ds:field[23]" merge="Space" />
+  </ds:xml>
+</ds:datasource>
+

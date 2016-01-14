@@ -1,0 +1,4 @@
+<?xml version="1.0" standalone="yes"?>
+
+<ds:datasource name="Error Records" type="Data" xmlns:ds="http://www.elixirtech.com/DataSource"><ds:schema case-sensitive="Yes" date-format="yyyy-MM-dd" time-format="HH:mm:ss" timestamp-format="yyyy-MM-dd HH:mm:ss"><ds:column name="the_date" type="Date"></ds:column><ds:column name="the_day" type="String"></ds:column><ds:column name="the_month" type="String"></ds:column><ds:column name="the_year" type="Integer"></ds:column><ds:column name="day_of_month" type="Integer"></ds:column><ds:column name="week_of_year" type="Integer"></ds:column><ds:column name="month_of_year" type="Integer"></ds:column><ds:column name="quarter" type="String"></ds:column><ds:column name="fiscal_period" type="String"></ds:column><ds:column name="jdbc_operation" type="String"></ds:column><ds:column name="jdbc_error" type="String"></ds:column></ds:schema><ds:data></ds:data></ds:datasource>
+

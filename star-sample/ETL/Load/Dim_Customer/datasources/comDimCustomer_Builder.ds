@@ -1,0 +1,1102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ds:datasource xmlns:ds="http://www.elixirtech.com/DataSource" name="comDimCustomer_Builder" type="Composite" path="/ElixirSamples/ETL/Load/Dim_Customer/datasources/comDimCustomer_Builder.ds" description="" version="2">
+  <ds:schema case-sensitive="Yes" />
+  <ds:security name="" />
+  <ds:composite />
+  <graph version="1.0">
+    <node id="0" class="com.elixirtech.ensemble.canvas.CompositeDiagram">
+      <property name="name" xml:space="preserve">Ensemble</property>
+      <property name="policy" xml:space="preserve">com.elixirtech.ensemble.canvas.EnsemblePolicy</property>
+    </node>
+    <node id="1" class="com.elixirtech.ensemble.canvas.ResultGO">
+      <property name="text" xml:space="preserve">Result</property>
+      <property name="fill" xml:space="preserve">Wheat</property>
+      <property name="rect" xml:space="preserve">(820,595,900,635)</property>
+      <property name="minheight" xml:space="preserve">40</property>
+      <property name="minwidth" xml:space="preserve">60</property>
+    </node>
+    <node id="2" class="com.elixirtech.ensemble.canvas.DataSourceGO">
+      <property name="text" xml:space="preserve">txtCustomers</property>
+      <property name="fill" xml:space="preserve">Wheat</property>
+      <property name="rect" xml:space="preserve">(6,117,86,157)</property>
+      <property name="minheight" xml:space="preserve">40</property>
+      <property name="minwidth" xml:space="preserve">60</property>
+      <user-property name="DataSource" xml:space="preserve">/ElixirSamples/ETL/Load/Dim_Customer/datasources/txtCustomers.ds</user-property>
+      <user-property name="DataSource_Discard" xml:space="preserve"></user-property>
+    </node>
+    <node id="3" class="com.elixirtech.ensemble.canvas.ParameterNode">
+      <property name="Name" xml:space="preserve">URL</property>
+      <property name="Value" xml:space="preserve">${URL}</property>
+    </node>
+    <node id="4" class="com.elixirtech.ensemble.canvas.DataStoreGO">
+      <property name="text" xml:space="preserve">Perform Insertion for new records</property>
+      <property name="fill" xml:space="preserve">Wheat</property>
+      <property name="rect" xml:space="preserve">(805,240,885,285)</property>
+      <property name="minheight" xml:space="preserve">40</property>
+      <property name="minwidth" xml:space="preserve">60</property>
+      <user-property name="DataStore_Type" xml:space="preserve">Connection Pool</user-property>
+      <user-property name="XML_XSLT" xml:space="preserve"></user-property>
+      <user-property name="CSV_Qualifier" xml:space="preserve">None</user-property>
+      <user-property name="CSV_URL" xml:space="preserve"></user-property>
+      <user-property name="JDBC_Password" xml:space="preserve"></user-property>
+      <user-property name="JDBC_AutoCommit" xml:space="preserve">No</user-property>
+      <user-property name="JDBC_ErrorStoreURL" xml:space="preserve">repository:/ElixirSamples/ETL/Load/Error/DimCustomer-${=java.lang.System.currentTimeMillis()}.ds</user-property>
+      <user-property name="DataStore_Discard" xml:space="preserve">sec_gender,sec_num_cars_owned,sec_fullname,sec_state_province,sec_fname,sec_marital_status,sec_yearly_income,sec_member_card,sec_total_children,sec_birthdate,sec_occupation,sec_education,sec_mi,sec_account_num,sec_date_accnt_opened,sec_city,sec_address2,sec_address3,sec_address4,sec_houseowner,sec_address1,sec_num_children_at_home,sec_customer_region_id,sec_country,sec_phone1,sec_postal_code,sec_lname,sec_phone2</user-property>
+      <user-property name="JDBC_TableName" xml:space="preserve">customer</user-property>
+      <user-property name="JDBC_Append" xml:space="preserve">No</user-property>
+      <user-property name="Excel_SheetGroupLevel" xml:space="preserve">0</user-property>
+      <user-property name="JDBC_Dialect" xml:space="preserve">MySQL</user-property>
+      <user-property name="JDBC_FileURL" xml:space="preserve">/ElixirSamples/ETL/Connection Pool/Foodmart.pool</user-property>
+      <user-property name="CSV_Separator" xml:space="preserve">Comma</user-property>
+      <user-property name="JDBC_UpdateInsert" xml:space="preserve">No</user-property>
+      <user-property name="JDBC_Exists" xml:space="preserve">Yes</user-property>
+      <user-property name="Excel_URL" xml:space="preserve"></user-property>
+      <user-property name="CSV_Append" xml:space="preserve">No</user-property>
+      <user-property name="JDBC_User" xml:space="preserve"></user-property>
+      <user-property name="JDBC_URL" xml:space="preserve"></user-property>
+      <user-property name="XML_URL" xml:space="preserve"></user-property>
+      <user-property name="Excel_FirstRowHeader" xml:space="preserve">Yes</user-property>
+    </node>
+    <node id="5" class="com.elixirtech.ensemble.canvas.DataSourceGO">
+      <property name="text" xml:space="preserve">jdbcDim_Customer</property>
+      <property name="fill" xml:space="preserve">Wheat</property>
+      <property name="rect" xml:space="preserve">(125,296,205,336)</property>
+      <property name="minheight" xml:space="preserve">40</property>
+      <property name="minwidth" xml:space="preserve">60</property>
+      <user-property name="DataSource" xml:space="preserve">/ElixirSamples/ETL/Load/Dim_Customer/datasources/jdbcDim_Customer.ds</user-property>
+      <user-property name="DataSource_Discard" xml:space="preserve"></user-property>
+    </node>
+    <node id="6" class="com.elixirtech.ensemble.canvas.JoinGO">
+      <property name="text" xml:space="preserve">Join</property>
+      <property name="fill" xml:space="preserve">Wheat</property>
+      <property name="rect" xml:space="preserve">(335,250,415,290)</property>
+      <property name="minheight" xml:space="preserve">40</property>
+      <property name="minwidth" xml:space="preserve">60</property>
+      <user-property name="Join_PrimaryDiscard" xml:space="preserve"></user-property>
+      <user-property name="Join_PrimaryPrefix" xml:space="preserve">pri_</user-property>
+      <user-property name="Join_SecondaryDiscard" xml:space="preserve">customer_id</user-property>
+      <user-property name="Join_ZeroSecondary" xml:space="preserve">Keep</user-property>
+      <user-property name="Join_MultipleSecondary" xml:space="preserve">Repeat</user-property>
+      <user-property name="Join_SecondaryPrefix" xml:space="preserve">sec_</user-property>
+      <user-property name="Join_Crossed" xml:space="preserve">No</user-property>
+    </node>
+    <node id="7" class="com.elixirtech.ensemble.canvas.JoinNode">
+      <property name="Primary" xml:space="preserve"></property>
+      <property name="Secondary" xml:space="preserve">customer_id</property>
+    </node>
+    <node id="8" class="com.elixirtech.ensemble.canvas.JoinNode">
+      <property name="Primary" xml:space="preserve">account_num</property>
+      <property name="Secondary" xml:space="preserve">account_num</property>
+    </node>
+    <node id="9" class="com.elixirtech.ensemble.canvas.JoinNode">
+      <property name="Primary" xml:space="preserve"></property>
+      <property name="Secondary" xml:space="preserve">lname</property>
+    </node>
+    <node id="10" class="com.elixirtech.ensemble.canvas.JoinNode">
+      <property name="Primary" xml:space="preserve"></property>
+      <property name="Secondary" xml:space="preserve">fname</property>
+    </node>
+    <node id="11" class="com.elixirtech.ensemble.canvas.DataFlowGO">
+      <property name="points" xml:space="preserve">(234,316)(283,282)</property>
+    </node>
+    <node id="12" class="com.elixirtech.ensemble.canvas.FilterGO">
+      <property name="text" xml:space="preserve">Filter</property>
+      <property name="fill" xml:space="preserve">Wheat</property>
+      <property name="rect" xml:space="preserve">(490,250,570,290)</property>
+      <property name="minheight" xml:space="preserve">40</property>
+      <property name="minwidth" xml:space="preserve">60</property>
+      <user-property name="Filter_JavaScript" xml:space="preserve"></user-property>
+    </node>
+    <node id="13" class="com.elixirtech.ensemble.canvas.FilterNode">
+      <property name="Name" xml:space="preserve">sec_account_num</property>
+      <property name="Value" xml:space="preserve"></property>
+      <property name="When" xml:space="preserve">Null</property>
+      <property name="SetId" xml:space="preserve">0</property>
+    </node>
+    <node id="14" class="com.elixirtech.ensemble.canvas.DataFlowGO">
+      <property name="points" xml:space="preserve">(444,270)(461,270)</property>
+    </node>
+    <node id="15" class="com.elixirtech.ensemble.canvas.NoteGO">
+      <property name="text" xml:space="preserve">A Join Processor is use to determine if an incoming records exists in the current database. The sec_account_num is used to determine the actual record</property>
+      <property name="fill" xml:space="preserve">Wheat</property>
+      <property name="rect" xml:space="preserve">(325,120,555,230)</property>
+      <property name="minheight" xml:space="preserve">40</property>
+      <property name="minwidth" xml:space="preserve">60</property>
+    </node>
+    <node id="16" class="com.elixirtech.ensemble.canvas.DerivativeGO">
+      <property name="text" xml:space="preserve">Derivative</property>
+      <property name="fill" xml:space="preserve">Wheat</property>
+      <property name="rect" xml:space="preserve">(150,180,230,220)</property>
+      <property name="minheight" xml:space="preserve">40</property>
+      <property name="minwidth" xml:space="preserve">60</property>
+      <user-property name="Derivative_JavaScript" xml:space="preserve">importClass(java.text.SimpleDateFormat); 
+
+var dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+function parseDate(d)
+{
+  if (d==null) return null;
+  return dateFormat.parse(d);
+}</user-property>
+      <user-property name="Derivative_Discard" xml:space="preserve"></user-property>
+    </node>
+    <node id="17" class="com.elixirtech.ensemble.canvas.DerivedNode">
+      <property name="Name" xml:space="preserve">account_num</property>
+      <property name="Value" xml:space="preserve">java.lang.Long.valueOf(account_num)</property>
+      <property name="DataType" xml:space="preserve">Long</property>
+    </node>
+    <node id="18" class="com.elixirtech.ensemble.canvas.DerivedNode">
+      <property name="Name" xml:space="preserve">date_accnt_opened</property>
+      <property name="Value" xml:space="preserve">parseDate(date_accnt_opened); </property>
+      <property name="DataType" xml:space="preserve">Date</property>
+    </node>
+    <node id="19" class="com.elixirtech.ensemble.canvas.DataFlowGO">
+      <property name="points" xml:space="preserve">(115,137)(122,200)</property>
+    </node>
+    <node id="20" class="com.elixirtech.ensemble.canvas.DataFlowGO">
+      <property name="points" xml:space="preserve">(259,200)(283,258)</property>
+    </node>
+    <node id="21" class="com.elixirtech.ensemble.canvas.NoteGO">
+      <property name="text" xml:space="preserve">We need derive processor to convert the fields to the correct type for join comparsion</property>
+      <property name="fill" xml:space="preserve">Wheat</property>
+      <property name="rect" xml:space="preserve">(160,70,295,165)</property>
+      <property name="minheight" xml:space="preserve">40</property>
+      <property name="minwidth" xml:space="preserve">60</property>
+    </node>
+    <node id="22" class="com.elixirtech.ensemble.canvas.ProcessorGO">
+      <property name="text" xml:space="preserve">Processor</property>
+      <property name="fill" xml:space="preserve">Wheat</property>
+      <property name="rect" xml:space="preserve">(650,250,730,290)</property>
+      <property name="minheight" xml:space="preserve">40</property>
+      <property name="minwidth" xml:space="preserve">60</property>
+    </node>
+    <node id="23" class="com.elixirtech.data2.datasource.processor.map.MapFieldNode">
+      <user-property name="map-fields" xml:space="preserve">pri_city=city,pri_address4=address4,pri_lname=lname,pri_marital_status=marital_status,pri_mi=mi,pri_occupation=occupation,pri_fname=fname,pri_address1=address1,pri_member_card=member_card,pri_address3=address3,pri_address2=address2,pri_yearly_income=yearly_income,pri_birthdate=birthdate,pri_gender=gender,pri_num_cars_owned=num_cars_owned,pri_state_province=state_province,pri_num_children_at_home=num_children_at_home,pri_education=education,pri_date_accnt_opened=date_accnt_opened,pri_total_children=total_children,pri_country=country,pri_phone1=phone1,pri_houseowner=houseowner,pri_phone2=phone2,pri_fullname=fullname,pri_customer_region_id=customer_region_id,pri_account_num=account_num,pri_postal_code=postal_code</user-property>
+      <user-property name="ref-ds" xml:space="preserve">/ElixirSamples/ETL/Load/Dim_Customer/datasources/jdbcDim_Customer.ds</user-property>
+    </node>
+    <node id="24" class="com.elixirtech.ensemble.canvas.SchemaNode">
+      <property name="TimestampFormat" xml:space="preserve">yyyy-MM-dd HH:mm:ss</property>
+      <property name="CaseSensitive" xml:space="preserve">Yes</property>
+      <property name="DateFormat" xml:space="preserve">yyyy-MM-dd</property>
+      <property name="TimeFormat" xml:space="preserve">HH:mm:ss</property>
+    </node>
+    <node id="25" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">account_num</property>
+      <property name="Type" xml:space="preserve">Long</property>
+    </node>
+    <node id="26" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">lname</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="27" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">fname</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="28" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">mi</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="29" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">address1</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="30" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">address2</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="31" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">address3</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="32" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">address4</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="33" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">city</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="34" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">state_province</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="35" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">postal_code</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="36" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">country</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="37" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">customer_region_id</property>
+      <property name="Type" xml:space="preserve">Integer</property>
+    </node>
+    <node id="38" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">phone1</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="39" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">phone2</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="40" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">birthdate</property>
+      <property name="Type" xml:space="preserve">Date</property>
+    </node>
+    <node id="41" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">marital_status</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="42" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">yearly_income</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="43" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">gender</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="44" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">total_children</property>
+      <property name="Type" xml:space="preserve">Short</property>
+    </node>
+    <node id="45" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">num_children_at_home</property>
+      <property name="Type" xml:space="preserve">Short</property>
+    </node>
+    <node id="46" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">education</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="47" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">date_accnt_opened</property>
+      <property name="Type" xml:space="preserve">Date</property>
+    </node>
+    <node id="48" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">member_card</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="49" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">occupation</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="50" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">houseowner</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="51" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">num_cars_owned</property>
+      <property name="Type" xml:space="preserve">Integer</property>
+    </node>
+    <node id="52" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">fullname</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="53" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_account_num</property>
+      <property name="Type" xml:space="preserve">Long</property>
+    </node>
+    <node id="54" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_lname</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="55" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_fname</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="56" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_mi</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="57" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_address1</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="58" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_address2</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="59" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_address3</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="60" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_address4</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="61" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_city</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="62" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_state_province</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="63" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_postal_code</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="64" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_country</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="65" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_customer_region_id</property>
+      <property name="Type" xml:space="preserve">Integer</property>
+    </node>
+    <node id="66" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_phone1</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="67" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_phone2</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="68" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_birthdate</property>
+      <property name="Type" xml:space="preserve">Date</property>
+    </node>
+    <node id="69" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_marital_status</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="70" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_yearly_income</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="71" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_gender</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="72" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_total_children</property>
+      <property name="Type" xml:space="preserve">Short</property>
+    </node>
+    <node id="73" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_num_children_at_home</property>
+      <property name="Type" xml:space="preserve">Short</property>
+    </node>
+    <node id="74" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_education</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="75" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_date_accnt_opened</property>
+      <property name="Type" xml:space="preserve">Date</property>
+    </node>
+    <node id="76" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_member_card</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="77" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_occupation</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="78" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_houseowner</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="79" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_num_cars_owned</property>
+      <property name="Type" xml:space="preserve">Integer</property>
+    </node>
+    <node id="80" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_fullname</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="81" class="com.elixirtech.ensemble.canvas.DataFlowGO">
+      <property name="points" xml:space="preserve">(599,270)(621,270)</property>
+    </node>
+    <node id="82" class="com.elixirtech.ensemble.canvas.DataFlowGO">
+      <property name="points" xml:space="preserve">(759,270)(776,262)</property>
+    </node>
+    <node id="83" class="com.elixirtech.ensemble.canvas.NoteGO">
+      <property name="text" xml:space="preserve">CSV need to read in all fields as string as the basis</property>
+      <property name="fill" xml:space="preserve">Wheat</property>
+      <property name="rect" xml:space="preserve">(10,35,120,95)</property>
+      <property name="minheight" xml:space="preserve">40</property>
+      <property name="minwidth" xml:space="preserve">60</property>
+    </node>
+    <node id="84" class="com.elixirtech.ensemble.canvas.NoteGO">
+      <property name="text" xml:space="preserve">A Map Processor is required to mapped the pri_ fields to the targetted database field name</property>
+      <property name="fill" xml:space="preserve">Wheat</property>
+      <property name="rect" xml:space="preserve">(615,140,760,240)</property>
+      <property name="minheight" xml:space="preserve">40</property>
+      <property name="minwidth" xml:space="preserve">60</property>
+    </node>
+    <node id="85" class="com.elixirtech.ensemble.canvas.FilterGO">
+      <property name="text" xml:space="preserve">Filter</property>
+      <property name="fill" xml:space="preserve">Wheat</property>
+      <property name="rect" xml:space="preserve">(495,480,575,520)</property>
+      <property name="minheight" xml:space="preserve">40</property>
+      <property name="minwidth" xml:space="preserve">60</property>
+      <user-property name="Filter_JavaScript" xml:space="preserve"></user-property>
+    </node>
+    <node id="86" class="com.elixirtech.ensemble.canvas.FilterNode">
+      <property name="Name" xml:space="preserve">sec_account_num</property>
+      <property name="Value" xml:space="preserve"></property>
+      <property name="When" xml:space="preserve">Not Null</property>
+      <property name="SetId" xml:space="preserve">0</property>
+    </node>
+    <node id="87" class="com.elixirtech.ensemble.canvas.DataFlowGO">
+      <property name="points" xml:space="preserve">(444,270)(444,500)(466,500)</property>
+    </node>
+    <node id="88" class="com.elixirtech.ensemble.canvas.DerivativeGO">
+      <property name="text" xml:space="preserve">Derivative</property>
+      <property name="fill" xml:space="preserve">Wheat</property>
+      <property name="rect" xml:space="preserve">(650,480,730,520)</property>
+      <property name="minheight" xml:space="preserve">40</property>
+      <property name="minwidth" xml:space="preserve">60</property>
+      <user-property name="Derivative_JavaScript" xml:space="preserve"></user-property>
+      <user-property name="Derivative_Discard" xml:space="preserve"></user-property>
+    </node>
+    <node id="89" class="com.elixirtech.ensemble.canvas.DerivedNode">
+      <property name="Name" xml:space="preserve">compareDateStatus</property>
+      <property name="Value" xml:space="preserve">pri_date_accnt_opened.compareTo(sec_date_accnt_opened)</property>
+      <property name="DataType" xml:space="preserve">String</property>
+    </node>
+    <node id="90" class="com.elixirtech.ensemble.canvas.DataFlowGO">
+      <property name="points" xml:space="preserve">(604,500)(622,500)</property>
+    </node>
+    <node id="91" class="com.elixirtech.ensemble.canvas.FilterGO">
+      <property name="text" xml:space="preserve">Filter</property>
+      <property name="fill" xml:space="preserve">Wheat</property>
+      <property name="rect" xml:space="preserve">(795,480,875,520)</property>
+      <property name="minheight" xml:space="preserve">40</property>
+      <property name="minwidth" xml:space="preserve">60</property>
+      <user-property name="Filter_JavaScript" xml:space="preserve"></user-property>
+    </node>
+    <node id="92" class="com.elixirtech.ensemble.canvas.FilterNode">
+      <property name="Name" xml:space="preserve">compareDateStatus</property>
+      <property name="Value" xml:space="preserve">1</property>
+      <property name="When" xml:space="preserve">Equals</property>
+      <property name="SetId" xml:space="preserve">0</property>
+    </node>
+    <node id="93" class="com.elixirtech.ensemble.canvas.DataFlowGO">
+      <property name="points" xml:space="preserve">(759,500)(766,500)</property>
+    </node>
+    <node id="94" class="com.elixirtech.ensemble.canvas.ProcessorGO">
+      <property name="text" xml:space="preserve">Processor</property>
+      <property name="fill" xml:space="preserve">Wheat</property>
+      <property name="rect" xml:space="preserve">(95,585,175,625)</property>
+      <property name="minheight" xml:space="preserve">40</property>
+      <property name="minwidth" xml:space="preserve">60</property>
+    </node>
+    <node id="95" class="com.elixirtech.data2.datasource.processor.map.MapFieldNode">
+      <user-property name="map-fields" xml:space="preserve">pri_city=city,pri_address4=address4,pri_lname=lname,pri_marital_status=marital_status,pri_mi=mi,pri_occupation=occupation,pri_fname=fname,pri_address1=address1,pri_member_card=member_card,pri_address3=address3,pri_address2=address2,pri_yearly_income=yearly_income,pri_birthdate=birthdate,pri_gender=gender,pri_num_cars_owned=num_cars_owned,pri_state_province=state_province,pri_num_children_at_home=num_children_at_home,pri_education=education,pri_date_accnt_opened=date_accnt_opened,pri_total_children=total_children,pri_country=country,pri_phone1=phone1,pri_houseowner=houseowner,pri_phone2=phone2,pri_fullname=fullname,pri_customer_region_id=customer_region_id,pri_account_num=account_num,pri_postal_code=postal_code</user-property>
+      <user-property name="ref-ds" xml:space="preserve">/ElixirSamples/ETL/Load/Dim_Customer/datasources/jdbcDim_Customer.ds</user-property>
+    </node>
+    <node id="96" class="com.elixirtech.ensemble.canvas.SchemaNode">
+      <property name="TimestampFormat" xml:space="preserve">yyyy-MM-dd HH:mm:ss</property>
+      <property name="CaseSensitive" xml:space="preserve">Yes</property>
+      <property name="DateFormat" xml:space="preserve">yyyy-MM-dd</property>
+      <property name="TimeFormat" xml:space="preserve">HH:mm:ss</property>
+    </node>
+    <node id="97" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">account_num</property>
+      <property name="Type" xml:space="preserve">Long</property>
+    </node>
+    <node id="98" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">lname</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="99" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">fname</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="100" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">mi</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="101" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">address1</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="102" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">address2</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="103" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">address3</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="104" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">address4</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="105" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">city</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="106" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">state_province</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="107" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">postal_code</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="108" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">country</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="109" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">customer_region_id</property>
+      <property name="Type" xml:space="preserve">Integer</property>
+    </node>
+    <node id="110" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">phone1</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="111" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">phone2</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="112" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">birthdate</property>
+      <property name="Type" xml:space="preserve">Date</property>
+    </node>
+    <node id="113" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">marital_status</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="114" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">yearly_income</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="115" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">gender</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="116" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">total_children</property>
+      <property name="Type" xml:space="preserve">Short</property>
+    </node>
+    <node id="117" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">num_children_at_home</property>
+      <property name="Type" xml:space="preserve">Short</property>
+    </node>
+    <node id="118" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">education</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="119" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">date_accnt_opened</property>
+      <property name="Type" xml:space="preserve">Date</property>
+    </node>
+    <node id="120" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">member_card</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="121" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">occupation</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="122" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">houseowner</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="123" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">num_cars_owned</property>
+      <property name="Type" xml:space="preserve">Integer</property>
+    </node>
+    <node id="124" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">fullname</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="125" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_account_num</property>
+      <property name="Type" xml:space="preserve">Long</property>
+    </node>
+    <node id="126" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_lname</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="127" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_fname</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="128" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_mi</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="129" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_address1</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="130" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_address2</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="131" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_address3</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="132" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_address4</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="133" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_city</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="134" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_state_province</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="135" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_postal_code</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="136" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_country</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="137" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_customer_region_id</property>
+      <property name="Type" xml:space="preserve">Integer</property>
+    </node>
+    <node id="138" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_phone1</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="139" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_phone2</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="140" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_birthdate</property>
+      <property name="Type" xml:space="preserve">Date</property>
+    </node>
+    <node id="141" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_marital_status</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="142" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_yearly_income</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="143" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_gender</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="144" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_total_children</property>
+      <property name="Type" xml:space="preserve">Short</property>
+    </node>
+    <node id="145" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_num_children_at_home</property>
+      <property name="Type" xml:space="preserve">Short</property>
+    </node>
+    <node id="146" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_education</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="147" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_date_accnt_opened</property>
+      <property name="Type" xml:space="preserve">Date</property>
+    </node>
+    <node id="148" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_member_card</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="149" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_occupation</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="150" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_houseowner</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="151" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_num_cars_owned</property>
+      <property name="Type" xml:space="preserve">Integer</property>
+    </node>
+    <node id="152" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">sec_fullname</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="153" class="com.elixirtech.ensemble.canvas.SchemaNode$ItemNode">
+      <property name="Name" xml:space="preserve">compareDateStatus</property>
+      <property name="Type" xml:space="preserve">String</property>
+    </node>
+    <node id="154" class="com.elixirtech.ensemble.canvas.DataFlowGO">
+      <property name="points" xml:space="preserve">(904,500)(904,550)(66,550)(66,605)</property>
+    </node>
+    <node id="155" class="com.elixirtech.ensemble.canvas.DataStoreGO">
+      <property name="text" xml:space="preserve">Perform Update for Existing Records</property>
+      <property name="fill" xml:space="preserve">Wheat</property>
+      <property name="rect" xml:space="preserve">(568,600,663,645)</property>
+      <property name="minheight" xml:space="preserve">40</property>
+      <property name="minwidth" xml:space="preserve">60</property>
+      <user-property name="DataStore_Type" xml:space="preserve">None</user-property>
+      <user-property name="XML_XSLT" xml:space="preserve"></user-property>
+      <user-property name="CSV_Qualifier" xml:space="preserve">None</user-property>
+      <user-property name="CSV_URL" xml:space="preserve"></user-property>
+      <user-property name="JDBC_Password" xml:space="preserve"></user-property>
+      <user-property name="JDBC_AutoCommit" xml:space="preserve">No</user-property>
+      <user-property name="DataStore_Discard" xml:space="preserve">sec_gender,sec_num_cars_owned,sec_fullname,sec_state_province,sec_fname,sec_marital_status,sec_yearly_income,sec_member_card,sec_total_children,sec_birthdate,sec_occupation,sec_education,sec_mi,sec_account_num,sec_date_accnt_opened,sec_city,sec_address2,sec_address3,sec_address4,sec_houseowner,sec_address1,sec_num_children_at_home,sec_customer_region_id,sec_country,sec_phone1,sec_postal_code,sec_lname,sec_phone2</user-property>
+      <user-property name="JDBC_ErrorStoreURL" xml:space="preserve">repository:/ElixirSamples/ETL/Load/Error/DimCustomer-${=java.lang.System.currentTimeMillis()}.ds</user-property>
+      <user-property name="JDBC_TableName" xml:space="preserve">customer</user-property>
+      <user-property name="JDBC_Append" xml:space="preserve">No</user-property>
+      <user-property name="Excel_SheetGroupLevel" xml:space="preserve">0</user-property>
+      <user-property name="JDBC_Dialect" xml:space="preserve">MySQL</user-property>
+      <user-property name="JDBC_FileURL" xml:space="preserve">/ElixirSamples/ETL/Connection Pool/Foodmart.pool</user-property>
+      <user-property name="CSV_Separator" xml:space="preserve">Comma</user-property>
+      <user-property name="JDBC_UpdateInsert" xml:space="preserve">Yes</user-property>
+      <user-property name="JDBC_Exists" xml:space="preserve">Yes</user-property>
+      <user-property name="Excel_URL" xml:space="preserve"></user-property>
+      <user-property name="CSV_Append" xml:space="preserve">No</user-property>
+      <user-property name="JDBC_User" xml:space="preserve"></user-property>
+      <user-property name="JDBC_URL" xml:space="preserve"></user-property>
+      <user-property name="XML_URL" xml:space="preserve"></user-property>
+      <user-property name="Excel_FirstRowHeader" xml:space="preserve">Yes</user-property>
+    </node>
+    <node id="156" class="com.elixirtech.ensemble.canvas.NoteGO">
+      <property name="text" xml:space="preserve">Compare pri_date_accnt_opened vs sec_date_accnt_opened</property>
+      <property name="fill" xml:space="preserve">Wheat</property>
+      <property name="rect" xml:space="preserve">(645,385,730,470)</property>
+      <property name="minheight" xml:space="preserve">40</property>
+      <property name="minwidth" xml:space="preserve">60</property>
+    </node>
+    <node id="157" class="com.elixirtech.ensemble.canvas.NoteGO">
+      <property name="text" xml:space="preserve">Filter Records based on compareDate Results</property>
+      <property name="fill" xml:space="preserve">Wheat</property>
+      <property name="rect" xml:space="preserve">(790,395,885,465)</property>
+      <property name="minheight" xml:space="preserve">40</property>
+      <property name="minwidth" xml:space="preserve">60</property>
+    </node>
+    <node id="158" class="com.elixirtech.ensemble.canvas.ProcessorGO">
+      <property name="text" xml:space="preserve">Update Database</property>
+      <property name="fill" xml:space="preserve">Wheat</property>
+      <property name="rect" xml:space="preserve">(405,585,485,625)</property>
+      <property name="minheight" xml:space="preserve">40</property>
+      <property name="minwidth" xml:space="preserve">60</property>
+    </node>
+    <node id="159" class="com.elixirtech.data2.datasource.processor.sql.SQLNode">
+      <user-property name="processRecord" xml:space="preserve">UPDATE customer&#xD;
+    SET&#xD;
+customer.account_num  = ${=account_num} ,&#xD;
+customer.address1  = "${=address1}",&#xD;
+customer.address2  = "${=address2}",&#xD;
+customer.address3  = "${=address3}",&#xD;
+customer.address4  = "${=address4}",&#xD;
+customer.birthdate  = "${=birthdate}",&#xD;
+customer.city  = "${=city}",&#xD;
+customer.country  = "${=country}",&#xD;
+customer.customer_region_id  = ${=customer_region_id} ,&#xD;
+customer.date_accnt_opened  = "${=date_accnt_opened}",&#xD;
+customer.education  = "${=education}",&#xD;
+customer.fname  = "${=fname}",&#xD;
+customer.fullname  = "${=fullname}",&#xD;
+customer.gender  = "${=gender}",&#xD;
+customer.houseowner  = "${=houseowner}",&#xD;
+customer.lname  = "${=lname}",&#xD;
+customer.marital_status  = "${=marital_status}",&#xD;
+customer.member_card  = "${=member_card}",&#xD;
+customer.mi  = "${=mi}",&#xD;
+customer.num_cars_owned  = ${=num_cars_owned} ,&#xD;
+customer.num_children_at_home  = ${=num_children_at_home} ,&#xD;
+customer.occupation  = "${=occupation}",&#xD;
+customer.phone1  = "${=phone1}",&#xD;
+customer.phone2  = "${=phone2}",&#xD;
+customer.postal_code  = "${=postal_code}",&#xD;
+customer.state_province  = "${=state_province}",&#xD;
+customer.total_children = ${=total_children},&#xD;
+customer.yearly_income = "${=yearly_income}"&#xD;
+where customer.account_num = ${=account_num}&#xD;
+</user-property>
+      <user-property name="startGroup" xml:space="preserve"></user-property>
+      <user-property name="endGroup" xml:space="preserve"></user-property>
+      <user-property name="endData" xml:space="preserve"></user-property>
+      <user-property name="startData" xml:space="preserve"></user-property>
+    </node>
+    <node id="160" class="com.elixirtech.data2.datasource.processor.sql.SQLPoolNode">
+      <user-property name="pool" xml:space="preserve">/ElixirSamples/ETL/Connection Pool/Foodmart.pool</user-property>
+      <user-property name="timeout" xml:space="preserve">0</user-property>
+    </node>
+    <node id="161" class="com.elixirtech.ensemble.canvas.DerivativeGO">
+      <property name="text" xml:space="preserve">Convert Date Type to String Type for SQL Update Statement</property>
+      <property name="fill" xml:space="preserve">Wheat</property>
+      <property name="rect" xml:space="preserve">(245,585,325,625)</property>
+      <property name="minheight" xml:space="preserve">40</property>
+      <property name="minwidth" xml:space="preserve">60</property>
+      <user-property name="Derivative_JavaScript" xml:space="preserve">importClass(java.text.SimpleDateFormat); 
+var dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+</user-property>
+      <user-property name="Derivative_Discard" xml:space="preserve"></user-property>
+    </node>
+    <node id="162" class="com.elixirtech.ensemble.canvas.DerivedNode">
+      <property name="Name" xml:space="preserve">date_accnt_opened</property>
+      <property name="Value" xml:space="preserve">dateFormat.format(date_accnt_opened);</property>
+      <property name="DataType" xml:space="preserve">String</property>
+    </node>
+    <node id="163" class="com.elixirtech.ensemble.canvas.DerivedNode">
+      <property name="Name" xml:space="preserve">birthdate</property>
+      <property name="Value" xml:space="preserve">dateFormat.format(birthdate);</property>
+      <property name="DataType" xml:space="preserve">String</property>
+    </node>
+    <node id="164" class="com.elixirtech.ensemble.canvas.DataFlowGO">
+      <property name="points" xml:space="preserve">(204,605)(217,605)</property>
+    </node>
+    <node id="165" class="com.elixirtech.ensemble.canvas.DataFlowGO">
+      <property name="points" xml:space="preserve">(354,605)(376,605)</property>
+    </node>
+    <node id="166" class="com.elixirtech.ensemble.canvas.DataFlowGO">
+      <property name="points" xml:space="preserve">(514,605)(539,622)</property>
+    </node>
+    <node id="167" class="com.elixirtech.ensemble.canvas.NoteGO">
+      <property name="text" xml:space="preserve">The Filters are used to determine which set of records need to be updated and which needs to be inserted</property>
+      <property name="fill" xml:space="preserve">Wheat</property>
+      <property name="rect" xml:space="preserve">(465,320,605,455)</property>
+      <property name="minheight" xml:space="preserve">40</property>
+      <property name="minwidth" xml:space="preserve">60</property>
+    </node>
+    <relationship type="Owns" from="0" to="1" />
+    <relationship type="Owns" from="0" to="2" />
+    <relationship type="Owns" from="0" to="4" />
+    <relationship type="Owns" from="0" to="5" />
+    <relationship type="Owns" from="0" to="6" />
+    <relationship type="Owns" from="0" to="11" />
+    <relationship type="Owns" from="0" to="12" />
+    <relationship type="Owns" from="0" to="14" />
+    <relationship type="Owns" from="0" to="15" />
+    <relationship type="Owns" from="0" to="16" />
+    <relationship type="Owns" from="0" to="19" />
+    <relationship type="Owns" from="0" to="20" />
+    <relationship type="Owns" from="0" to="21" />
+    <relationship type="Owns" from="0" to="22" />
+    <relationship type="Owns" from="0" to="81" />
+    <relationship type="Owns" from="0" to="82" />
+    <relationship type="Owns" from="0" to="83" />
+    <relationship type="Owns" from="0" to="84" />
+    <relationship type="Owns" from="0" to="85" />
+    <relationship type="Owns" from="0" to="87" />
+    <relationship type="Owns" from="0" to="88" />
+    <relationship type="Owns" from="0" to="90" />
+    <relationship type="Owns" from="0" to="91" />
+    <relationship type="Owns" from="0" to="93" />
+    <relationship type="Owns" from="0" to="94" />
+    <relationship type="Owns" from="0" to="154" />
+    <relationship type="Owns" from="0" to="155" />
+    <relationship type="Owns" from="0" to="156" />
+    <relationship type="Owns" from="0" to="157" />
+    <relationship type="Owns" from="0" to="158" />
+    <relationship type="Owns" from="0" to="161" />
+    <relationship type="Owns" from="0" to="164" />
+    <relationship type="Owns" from="0" to="165" />
+    <relationship type="Owns" from="0" to="166" />
+    <relationship type="Owns" from="0" to="167" />
+    <relationship type="Repaints" from="2" to="19">
+      <user-property name="start" xml:space="preserve">true</user-property>
+    </relationship>
+    <relationship type="Owns" from="2" to="3" />
+    <relationship type="Repaints" from="4" to="82">
+      <user-property name="stop" xml:space="preserve">true</user-property>
+    </relationship>
+    <relationship type="Repaints" from="5" to="11">
+      <user-property name="start" xml:space="preserve">true</user-property>
+    </relationship>
+    <relationship type="Repaints" from="6" to="11">
+      <user-property name="stop" xml:space="preserve">true</user-property>
+    </relationship>
+    <relationship type="Owns" from="6" to="7" />
+    <relationship type="Owns" from="6" to="8" />
+    <relationship type="Owns" from="6" to="9" />
+    <relationship type="Owns" from="6" to="10" />
+    <relationship type="Repaints" from="6" to="14">
+      <user-property name="start" xml:space="preserve">true</user-property>
+    </relationship>
+    <relationship type="Repaints" from="6" to="20">
+      <user-property name="stop" xml:space="preserve">true</user-property>
+    </relationship>
+    <relationship type="Repaints" from="6" to="87">
+      <user-property name="start" xml:space="preserve">true</user-property>
+    </relationship>
+    <relationship type="Repaints" from="12" to="14">
+      <user-property name="stop" xml:space="preserve">true</user-property>
+    </relationship>
+    <relationship type="Owns" from="12" to="13" />
+    <relationship type="Repaints" from="12" to="81">
+      <user-property name="start" xml:space="preserve">true</user-property>
+    </relationship>
+    <relationship type="Repaints" from="16" to="19">
+      <user-property name="stop" xml:space="preserve">true</user-property>
+    </relationship>
+    <relationship type="Repaints" from="16" to="20">
+      <user-property name="start" xml:space="preserve">true</user-property>
+    </relationship>
+    <relationship type="Owns" from="16" to="17" />
+    <relationship type="Owns" from="16" to="18" />
+    <relationship type="Repaints" from="22" to="81">
+      <user-property name="stop" xml:space="preserve">true</user-property>
+    </relationship>
+    <relationship type="Repaints" from="22" to="82">
+      <user-property name="start" xml:space="preserve">true</user-property>
+    </relationship>
+    <relationship type="Owns" from="22" to="23" />
+    <relationship type="Owns" from="23" to="24" />
+    <relationship type="Owns" from="24" to="25" />
+    <relationship type="Owns" from="24" to="26" />
+    <relationship type="Owns" from="24" to="27" />
+    <relationship type="Owns" from="24" to="28" />
+    <relationship type="Owns" from="24" to="29" />
+    <relationship type="Owns" from="24" to="30" />
+    <relationship type="Owns" from="24" to="31" />
+    <relationship type="Owns" from="24" to="32" />
+    <relationship type="Owns" from="24" to="33" />
+    <relationship type="Owns" from="24" to="34" />
+    <relationship type="Owns" from="24" to="35" />
+    <relationship type="Owns" from="24" to="36" />
+    <relationship type="Owns" from="24" to="37" />
+    <relationship type="Owns" from="24" to="38" />
+    <relationship type="Owns" from="24" to="39" />
+    <relationship type="Owns" from="24" to="40" />
+    <relationship type="Owns" from="24" to="41" />
+    <relationship type="Owns" from="24" to="42" />
+    <relationship type="Owns" from="24" to="43" />
+    <relationship type="Owns" from="24" to="44" />
+    <relationship type="Owns" from="24" to="45" />
+    <relationship type="Owns" from="24" to="46" />
+    <relationship type="Owns" from="24" to="47" />
+    <relationship type="Owns" from="24" to="48" />
+    <relationship type="Owns" from="24" to="49" />
+    <relationship type="Owns" from="24" to="50" />
+    <relationship type="Owns" from="24" to="51" />
+    <relationship type="Owns" from="24" to="52" />
+    <relationship type="Owns" from="24" to="53" />
+    <relationship type="Owns" from="24" to="54" />
+    <relationship type="Owns" from="24" to="55" />
+    <relationship type="Owns" from="24" to="56" />
+    <relationship type="Owns" from="24" to="57" />
+    <relationship type="Owns" from="24" to="58" />
+    <relationship type="Owns" from="24" to="59" />
+    <relationship type="Owns" from="24" to="60" />
+    <relationship type="Owns" from="24" to="61" />
+    <relationship type="Owns" from="24" to="62" />
+    <relationship type="Owns" from="24" to="63" />
+    <relationship type="Owns" from="24" to="64" />
+    <relationship type="Owns" from="24" to="65" />
+    <relationship type="Owns" from="24" to="66" />
+    <relationship type="Owns" from="24" to="67" />
+    <relationship type="Owns" from="24" to="68" />
+    <relationship type="Owns" from="24" to="69" />
+    <relationship type="Owns" from="24" to="70" />
+    <relationship type="Owns" from="24" to="71" />
+    <relationship type="Owns" from="24" to="72" />
+    <relationship type="Owns" from="24" to="73" />
+    <relationship type="Owns" from="24" to="74" />
+    <relationship type="Owns" from="24" to="75" />
+    <relationship type="Owns" from="24" to="76" />
+    <relationship type="Owns" from="24" to="77" />
+    <relationship type="Owns" from="24" to="78" />
+    <relationship type="Owns" from="24" to="79" />
+    <relationship type="Owns" from="24" to="80" />
+    <relationship type="Repaints" from="85" to="87">
+      <user-property name="stop" xml:space="preserve">true</user-property>
+    </relationship>
+    <relationship type="Owns" from="85" to="86" />
+    <relationship type="Repaints" from="85" to="90">
+      <user-property name="start" xml:space="preserve">true</user-property>
+    </relationship>
+    <relationship type="Repaints" from="88" to="90">
+      <user-property name="stop" xml:space="preserve">true</user-property>
+    </relationship>
+    <relationship type="Owns" from="88" to="89" />
+    <relationship type="Repaints" from="88" to="93">
+      <user-property name="start" xml:space="preserve">true</user-property>
+    </relationship>
+    <relationship type="Repaints" from="91" to="93">
+      <user-property name="stop" xml:space="preserve">true</user-property>
+    </relationship>
+    <relationship type="Owns" from="91" to="92" />
+    <relationship type="Repaints" from="91" to="154">
+      <user-property name="start" xml:space="preserve">true</user-property>
+    </relationship>
+    <relationship type="Repaints" from="94" to="154">
+      <user-property name="stop" xml:space="preserve">true</user-property>
+    </relationship>
+    <relationship type="Owns" from="94" to="95" />
+    <relationship type="Repaints" from="94" to="164">
+      <user-property name="start" xml:space="preserve">true</user-property>
+    </relationship>
+    <relationship type="Owns" from="95" to="96" />
+    <relationship type="Owns" from="96" to="97" />
+    <relationship type="Owns" from="96" to="98" />
+    <relationship type="Owns" from="96" to="99" />
+    <relationship type="Owns" from="96" to="100" />
+    <relationship type="Owns" from="96" to="101" />
+    <relationship type="Owns" from="96" to="102" />
+    <relationship type="Owns" from="96" to="103" />
+    <relationship type="Owns" from="96" to="104" />
+    <relationship type="Owns" from="96" to="105" />
+    <relationship type="Owns" from="96" to="106" />
+    <relationship type="Owns" from="96" to="107" />
+    <relationship type="Owns" from="96" to="108" />
+    <relationship type="Owns" from="96" to="109" />
+    <relationship type="Owns" from="96" to="110" />
+    <relationship type="Owns" from="96" to="111" />
+    <relationship type="Owns" from="96" to="112" />
+    <relationship type="Owns" from="96" to="113" />
+    <relationship type="Owns" from="96" to="114" />
+    <relationship type="Owns" from="96" to="115" />
+    <relationship type="Owns" from="96" to="116" />
+    <relationship type="Owns" from="96" to="117" />
+    <relationship type="Owns" from="96" to="118" />
+    <relationship type="Owns" from="96" to="119" />
+    <relationship type="Owns" from="96" to="120" />
+    <relationship type="Owns" from="96" to="121" />
+    <relationship type="Owns" from="96" to="122" />
+    <relationship type="Owns" from="96" to="123" />
+    <relationship type="Owns" from="96" to="124" />
+    <relationship type="Owns" from="96" to="125" />
+    <relationship type="Owns" from="96" to="126" />
+    <relationship type="Owns" from="96" to="127" />
+    <relationship type="Owns" from="96" to="128" />
+    <relationship type="Owns" from="96" to="129" />
+    <relationship type="Owns" from="96" to="130" />
+    <relationship type="Owns" from="96" to="131" />
+    <relationship type="Owns" from="96" to="132" />
+    <relationship type="Owns" from="96" to="133" />
+    <relationship type="Owns" from="96" to="134" />
+    <relationship type="Owns" from="96" to="135" />
+    <relationship type="Owns" from="96" to="136" />
+    <relationship type="Owns" from="96" to="137" />
+    <relationship type="Owns" from="96" to="138" />
+    <relationship type="Owns" from="96" to="139" />
+    <relationship type="Owns" from="96" to="140" />
+    <relationship type="Owns" from="96" to="141" />
+    <relationship type="Owns" from="96" to="142" />
+    <relationship type="Owns" from="96" to="143" />
+    <relationship type="Owns" from="96" to="144" />
+    <relationship type="Owns" from="96" to="145" />
+    <relationship type="Owns" from="96" to="146" />
+    <relationship type="Owns" from="96" to="147" />
+    <relationship type="Owns" from="96" to="148" />
+    <relationship type="Owns" from="96" to="149" />
+    <relationship type="Owns" from="96" to="150" />
+    <relationship type="Owns" from="96" to="151" />
+    <relationship type="Owns" from="96" to="152" />
+    <relationship type="Owns" from="96" to="153" />
+    <relationship type="Repaints" from="155" to="166">
+      <user-property name="stop" xml:space="preserve">true</user-property>
+    </relationship>
+    <relationship type="Owns" from="158" to="159" />
+    <relationship type="Repaints" from="158" to="165">
+      <user-property name="stop" xml:space="preserve">true</user-property>
+    </relationship>
+    <relationship type="Repaints" from="158" to="166">
+      <user-property name="start" xml:space="preserve">true</user-property>
+    </relationship>
+    <relationship type="Owns" from="159" to="160" />
+    <relationship type="Repaints" from="161" to="164">
+      <user-property name="stop" xml:space="preserve">true</user-property>
+    </relationship>
+    <relationship type="Repaints" from="161" to="165">
+      <user-property name="start" xml:space="preserve">true</user-property>
+    </relationship>
+    <relationship type="Owns" from="161" to="162" />
+    <relationship type="Owns" from="161" to="163" />
+  </graph>
+</ds:datasource>
+

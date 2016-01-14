@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ds:datasource xmlns:ds="http://www.elixirtech.com/DataSource" name="xlsTime" type="Excel" path="/ElixirSamples/ETL/Extraction/datasources/xlsTime.ds" description="">
+  <ds:schema case-sensitive="Yes">
+    <ds:column name="the_date" type="String" />
+    <ds:column name="the_day" type="String" />
+    <ds:column name="the_month" type="String" />
+    <ds:column name="the_year" type="Double" />
+    <ds:column name="day_of_month" type="Double" />
+    <ds:column name="week_of_year" type="Double" />
+    <ds:column name="month_of_year" type="Double" />
+    <ds:column name="quarter" type="String" />
+    <ds:column name="fiscal_period" type="String" />
+  </ds:schema>
+  <ds:security name="" />
+  <ds:excel url="repository:/ElixirSamples/ETL/Extraction/data/Time.xls" range="=" header-row="1" xlsx="No" />
+</ds:datasource>
+

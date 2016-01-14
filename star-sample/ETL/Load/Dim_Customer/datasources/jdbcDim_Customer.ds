@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ds:datasource xmlns:ds="http://www.elixirtech.com/DataSource" name="jdbcDim_Customer" type="JDBC" path="/ElixirSamples/ETL/Load/Dim_Customer/datasources/jdbcDim_Customer.ds" description="">
+  <ds:schema case-sensitive="Yes">
+    <ds:column name="customer_id" type="Integer">
+      <ds:attribute name="Nullable" nullable="no" />
+    </ds:column>
+    <ds:column name="account_num" type="Long">
+      <ds:attribute name="Nullable" nullable="no" />
+    </ds:column>
+    <ds:column name="lname" type="String">
+      <ds:attribute name="Nullable" nullable="no" />
+    </ds:column>
+    <ds:column name="fname" type="String">
+      <ds:attribute name="Nullable" nullable="no" />
+    </ds:column>
+    <ds:column name="mi" type="String">
+      <ds:attribute name="Nullable" nullable="yes" />
+    </ds:column>
+    <ds:column name="address1" type="String">
+      <ds:attribute name="Nullable" nullable="yes" />
+    </ds:column>
+    <ds:column name="address2" type="String">
+      <ds:attribute name="Nullable" nullable="yes" />
+    </ds:column>
+    <ds:column name="address3" type="String">
+      <ds:attribute name="Nullable" nullable="yes" />
+    </ds:column>
+    <ds:column name="address4" type="String">
+      <ds:attribute name="Nullable" nullable="yes" />
+    </ds:column>
+    <ds:column name="city" type="String">
+      <ds:attribute name="Nullable" nullable="yes" />
+    </ds:column>
+    <ds:column name="state_province" type="String">
+      <ds:attribute name="Nullable" nullable="yes" />
+    </ds:column>
+    <ds:column name="postal_code" type="String">
+      <ds:attribute name="Nullable" nullable="no" />
+    </ds:column>
+    <ds:column name="country" type="String">
+      <ds:attribute name="Nullable" nullable="no" />
+    </ds:column>
+    <ds:column name="customer_region_id" type="Integer">
+      <ds:attribute name="Nullable" nullable="no" />
+    </ds:column>
+    <ds:column name="phone1" type="String">
+      <ds:attribute name="Nullable" nullable="no" />
+    </ds:column>
+    <ds:column name="phone2" type="String">
+      <ds:attribute name="Nullable" nullable="no" />
+    </ds:column>
+    <ds:column name="birthdate" type="Date">
+      <ds:attribute name="Nullable" nullable="no" />
+    </ds:column>
+    <ds:column name="marital_status" type="String">
+      <ds:attribute name="Nullable" nullable="no" />
+    </ds:column>
+    <ds:column name="yearly_income" type="String">
+      <ds:attribute name="Nullable" nullable="no" />
+    </ds:column>
+    <ds:column name="gender" type="String">
+      <ds:attribute name="Nullable" nullable="no" />
+    </ds:column>
+    <ds:column name="total_children" type="Short">
+      <ds:attribute name="Nullable" nullable="no" />
+    </ds:column>
+    <ds:column name="num_children_at_home" type="Short">
+      <ds:attribute name="Nullable" nullable="no" />
+    </ds:column>
+    <ds:column name="education" type="String">
+      <ds:attribute name="Nullable" nullable="no" />
+    </ds:column>
+    <ds:column name="date_accnt_opened" type="Date">
+      <ds:attribute name="Nullable" nullable="no" />
+    </ds:column>
+    <ds:column name="member_card" type="String">
+      <ds:attribute name="Nullable" nullable="yes" />
+    </ds:column>
+    <ds:column name="occupation" type="String">
+      <ds:attribute name="Nullable" nullable="yes" />
+    </ds:column>
+    <ds:column name="houseowner" type="String">
+      <ds:attribute name="Nullable" nullable="yes" />
+    </ds:column>
+    <ds:column name="num_cars_owned" type="Integer">
+      <ds:attribute name="Nullable" nullable="yes" />
+    </ds:column>
+    <ds:column name="fullname" type="String">
+      <ds:attribute name="Nullable" nullable="no" />
+    </ds:column>
+  </ds:schema>
+  <ds:security name="" />
+  <ds:jdbc connection-type="POOL" connection-pool="/ElixirSamples/ETL/Connection Pool/Foodmart.pool" connection-pool-timeout="0" callable-statement="No" connection-reuse="0" nulls-to-strings="No" read-only="Yes" auto-commit="Yes">
+    <ds:sql>SELECT
+*
+FROM customer</ds:sql>
+    <qb quoteString="`" selectDistinct="false">
+      <table isSelected="true" positionMemento="10,10,173,732">
+        <id type="TABLE" catalog="foodmart-dev" table="customer" />
+        <column name="account_num" type="-5" isSelected="true" sort="0">
+          <ds:attribute name="Nullable" nullable="no" />
+        </column>
+        <column name="address1" type="12" isSelected="true" sort="0">
+          <ds:attribute name="Nullable" nullable="yes" />
+        </column>
+        <column name="address2" type="12" isSelected="true" sort="0">
+          <ds:attribute name="Nullable" nullable="yes" />
+        </column>
+        <column name="address3" type="12" isSelected="true" sort="0">
+          <ds:attribute name="Nullable" nullable="yes" />
+        </column>
+        <column name="address4" type="12" isSelected="true" sort="0">
+          <ds:attribute name="Nullable" nullable="yes" />
+        </column>
+        <column name="birthdate" type="91" isSelected="true" sort="0">
+          <ds:attribute name="Nullable" nullable="no" />
+        </column>
+        <column name="city" type="12" isSelected="true" sort="0">
+          <ds:attribute name="Nullable" nullable="yes" />
+        </column>
+        <column name="country" type="12" isSelected="true" sort="0">
+          <ds:attribute name="Nullable" nullable="no" />
+        </column>
+        <column name="customer_id" type="4" isSelected="true" sort="0">
+          <ds:attribute name="Nullable" nullable="no" />
+          <ds:attribute name="PrimaryKey" sequence="1" constraint-name="PRIMARY" />
+        </column>
+        <column name="customer_region_id" type="4" isSelected="true" sort="0">
+          <ds:attribute name="Nullable" nullable="no" />
+        </column>
+        <column name="date_accnt_opened" type="91" isSelected="true" sort="0">
+          <ds:attribute name="Nullable" nullable="no" />
+        </column>
+        <column name="education" type="12" isSelected="true" sort="0">
+          <ds:attribute name="Nullable" nullable="no" />
+        </column>
+        <column name="fname" type="12" isSelected="true" sort="0">
+          <ds:attribute name="Nullable" nullable="no" />
+        </column>
+        <column name="fullname" type="12" isSelected="true" sort="0">
+          <ds:attribute name="Nullable" nullable="no" />
+        </column>
+        <column name="gender" type="12" isSelected="true" sort="0">
+          <ds:attribute name="Nullable" nullable="no" />
+        </column>
+        <column name="houseowner" type="12" isSelected="true" sort="0">
+          <ds:attribute name="Nullable" nullable="yes" />
+        </column>
+        <column name="lname" type="12" isSelected="true" sort="0">
+          <ds:attribute name="Nullable" nullable="no" />
+        </column>
+        <column name="marital_status" type="12" isSelected="true" sort="0">
+          <ds:attribute name="Nullable" nullable="no" />
+        </column>
+        <column name="member_card" type="12" isSelected="true" sort="0">
+          <ds:attribute name="Nullable" nullable="yes" />
+        </column>
+        <column name="mi" type="12" isSelected="true" sort="0">
+          <ds:attribute name="Nullable" nullable="yes" />
+        </column>
+        <column name="num_cars_owned" type="4" isSelected="true" sort="0">
+          <ds:attribute name="Nullable" nullable="yes" />
+        </column>
+        <column name="num_children_at_home" type="5" isSelected="true" sort="0">
+          <ds:attribute name="Nullable" nullable="no" />
+        </column>
+        <column name="occupation" type="12" isSelected="true" sort="0">
+          <ds:attribute name="Nullable" nullable="yes" />
+        </column>
+        <column name="phone1" type="12" isSelected="true" sort="0">
+          <ds:attribute name="Nullable" nullable="no" />
+        </column>
+        <column name="phone2" type="12" isSelected="true" sort="0">
+          <ds:attribute name="Nullable" nullable="no" />
+        </column>
+        <column name="postal_code" type="12" isSelected="true" sort="0">
+          <ds:attribute name="Nullable" nullable="no" />
+        </column>
+        <column name="state_province" type="12" isSelected="true" sort="0">
+          <ds:attribute name="Nullable" nullable="yes" />
+        </column>
+        <column name="total_children" type="5" isSelected="true" sort="0">
+          <ds:attribute name="Nullable" nullable="no" />
+        </column>
+        <column name="yearly_income" type="12" isSelected="true" sort="0">
+          <ds:attribute name="Nullable" nullable="no" />
+        </column>
+      </table>
+      <selectedschema />
+    </qb>
+  </ds:jdbc>
+</ds:datasource>
+
