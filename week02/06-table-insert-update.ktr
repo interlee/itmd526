@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>01-connecting-to-database</name>
+    <name>06-table-insert-update</name>
     <description/>
     <extended_description/>
     <trans_version/>
     <trans_type>Normal</trans_type>
-    <trans_status>0</trans_status>
     <directory>&#x2f;</directory>
     <parameters>
     </parameters>
@@ -67,13 +66,34 @@
     <clusterschemas>
     </clusterschemas>
   <created_user>-</created_user>
-  <created_date>2016&#x2f;01&#x2f;25 16&#x3a;18&#x3a;06.168</created_date>
+  <created_date>2016&#x2f;01&#x2f;26 00&#x3a;02&#x3a;24.306</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2016&#x2f;01&#x2f;25 16&#x3a;46&#x3a;19.809</modified_date>
-    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA&#x3d;</key_for_session_key>
+  <modified_date>2016&#x2f;01&#x2f;26 00&#x3a;02&#x3a;24.306</modified_date>
+    <key_for_session_key/>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
+    <notepad>
+      <note>SELECT &#x2a;&#xd;&#xa;  FROM source_db.employees&#xd;&#xa; WHERE employeenumber IN &#x28;1188,1619,1810,1811&#x29;&#x3b;&#xd;&#xa; &#xd;&#xa;-- Before ETL&#xd;&#xa;EMPLOYEENUMBER  LASTNAME  FIRSTNAME  EXTENSION  EMAIL                           OFFICECODE  REPORTSTO  JOBTITLE   &#xd;&#xa;--------------  --------  ---------  ---------  ------------------------------  ----------  ---------  -----------&#xd;&#xa;          1188  Firrelli  Julie      x2173      jfirrelli&#x40;classicmodelcars.com  2                1143  Sales Rep  &#xd;&#xa;          1619  King      Tom        x103       tking&#x40;classicmodelcars.com      6                1088  Sales Rep   &#xd;&#xa;          &#xd;&#xa;-- After ETL&#xd;&#xa;EMPLOYEENUMBER  LASTNAME  FIRSTNAME  EXTENSION  EMAIL                           OFFICECODE  REPORTSTO  JOBTITLE       &#xd;&#xa;--------------  --------  ---------  ---------  ------------------------------  ----------  ---------  ---------------&#xd;&#xa;          1188  Firrelli  Julie      x2174      jfirrelli&#x40;classicmodelcars.com  2                1143  Sales Manager  &#xd;&#xa;          1619  King      Tom        x103       tking&#x40;classicmodelcars.com      6                1088  Sales Rep      &#xd;&#xa;          1810  Lundberg  Anna       x910                                       2                1143  Sales Rep      &#xd;&#xa;          1811  Schulz    Chris      x951                                       2                1143  Sales Rep          </note>
+      <xloc>45</xloc>
+      <yloc>168</yloc>
+      <width>865</width>
+      <heigth>248</heigth>
+      <fontname>Courier New</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
   <connection>
     <name>Source DB</name>
@@ -130,10 +150,199 @@
     </attributes>
   </connection>
   <order>
+  <hop> <from>Text File Input - employees</from><to>Insert &#x2f; Update Employees</to><enabled>Y</enabled> </hop>
   </order>
   <step>
-    <name>Table input</name>
-    <type>TableInput</type>
+    <name>Text File Input - employees</name>
+    <type>TextFileInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <accept_filenames>N</accept_filenames>
+    <passing_through_fields>N</passing_through_fields>
+    <accept_field/>
+    <accept_stepname/>
+    <separator>,</separator>
+    <enclosure>&#x22;</enclosure>
+    <enclosure_breaks>N</enclosure_breaks>
+    <escapechar/>
+    <header>Y</header>
+    <nr_headerlines>1</nr_headerlines>
+    <footer>N</footer>
+    <nr_footerlines>1</nr_footerlines>
+    <line_wrapped>N</line_wrapped>
+    <nr_wraps>1</nr_wraps>
+    <layout_paged>N</layout_paged>
+    <nr_lines_per_page>80</nr_lines_per_page>
+    <nr_lines_doc_header>0</nr_lines_doc_header>
+    <noempty>Y</noempty>
+    <include>N</include>
+    <include_field/>
+    <rownum>N</rownum>
+    <rownumByFile>N</rownumByFile>
+    <rownum_field/>
+    <format>DOS</format>
+    <encoding/>
+    <add_to_result_filenames>Y</add_to_result_filenames>
+    <file>
+      <name>&#x24;&#x7b;Internal.Transformation.Filename.Directory&#x7d;&#x5c;employees.txt</name>
+      <filemask/>
+      <exclude_filemask/>
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+      <type>CSV</type>
+      <compression>None</compression>
+    </file>
+    <filters>
+    </filters>
+    <fields>
+      <field>
+        <name>EMPLOYEE_NUMBER</name>
+        <type>Integer</type>
+        <format>&#x23;</format>
+        <currency>&#x24;</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>LASTNAME</name>
+        <type>String</type>
+        <format/>
+        <currency>&#x24;</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>9</length>
+        <precision>-1</precision>
+        <trim_type>both</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>FIRSTNAME</name>
+        <type>String</type>
+        <format/>
+        <currency>&#x24;</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>9</length>
+        <precision>-1</precision>
+        <trim_type>both</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>EXT</name>
+        <type>String</type>
+        <format/>
+        <currency>&#x24;</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>5</length>
+        <precision>-1</precision>
+        <trim_type>both</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>OFFICE</name>
+        <type>String</type>
+        <format>&#x23;</format>
+        <currency>&#x24;</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>both</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>REPORTS</name>
+        <type>Integer</type>
+        <format>&#x23;</format>
+        <currency>&#x24;</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>TITLE</name>
+        <type>String</type>
+        <format/>
+        <currency>&#x24;</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>14</length>
+        <precision>-1</precision>
+        <trim_type>both</trim_type>
+        <repeat>N</repeat>
+      </field>
+    </fields>
+    <limit>0</limit>
+    <error_ignored>N</error_ignored>
+    <skip_bad_files>N</skip_bad_files>
+    <file_error_field/>
+    <file_error_message_field/>
+    <error_line_skipped>N</error_line_skipped>
+    <error_count_field/>
+    <error_fields_field/>
+    <error_text_field/>
+    <bad_line_files_destination_directory/>
+    <bad_line_files_extension>warning</bad_line_files_extension>
+    <error_line_files_destination_directory/>
+    <error_line_files_extension>error</error_line_files_extension>
+    <line_number_files_destination_directory/>
+    <line_number_files_extension>line</line_number_files_extension>
+    <date_format_lenient>Y</date_format_lenient>
+    <date_format_locale>en_US</date_format_locale>
+    <shortFileFieldName/>
+    <pathFieldName/>
+    <hiddenFieldName/>
+    <lastModificationTimeFieldName/>
+    <uriNameFieldName/>
+    <rootUriNameFieldName/>
+    <extensionFieldName/>
+    <sizeFieldName/>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>126</xloc>
+      <yloc>84</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Insert &#x2f; Update Employees</name>
+    <type>InsertUpdate</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -143,16 +352,57 @@
            <schema_name/>
            </partitioning>
     <connection>Source DB</connection>
-    <sql>SELECT&#xd;&#xa;  country_iso_code&#xd;&#xa;, country_name&#xd;&#xa;FROM countries&#xd;&#xa;</sql>
-    <limit>0</limit>
-    <lookup/>
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
+    <commit>100</commit>
+    <update_bypassed>N</update_bypassed>
+    <lookup>
+      <schema/>
+      <table>employees</table>
+      <key>
+        <name>EMPLOYEE_NUMBER</name>
+        <field>EMPLOYEENUMBER</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>EMPLOYEENUMBER</name>
+        <rename>EMPLOYEE_NUMBER</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>LASTNAME</name>
+        <rename>LASTNAME</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>FIRSTNAME</name>
+        <rename>FIRSTNAME</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>EXTENSION</name>
+        <rename>EXT</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>REPORTSTO</name>
+        <rename>REPORTS</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>JOBTITLE</name>
+        <rename>TITLE</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>OFFICECODE</name>
+        <rename>OFFICE</rename>
+        <update>Y</update>
+      </value>
+    </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>111</xloc>
-      <yloc>75</yloc>
+      <xloc>342</xloc>
+      <yloc>84</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
