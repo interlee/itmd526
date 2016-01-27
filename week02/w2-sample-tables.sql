@@ -274,3 +274,33 @@ insert  into `outdoor_products`(`id_product`,`desc_product`,`price`,`id_category
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+USE target_db;
+
+DROP TABLE IF EXISTS category;
+CREATE TABLE category (
+  category_key BIGINT(20) NOT NULL DEFAULT -1,
+  category VARCHAR(256) NOT NULL DEFAULT '-',
+  PRIMARY KEY (category_key),
+  UNIQUE KEY idx_category_pk (category_key)
+) ENGINE=MYISAM;
+
+DROP TABLE IF EXISTS product;
+CREATE TABLE product (
+  product_key BIGINT(20) NOT NULL DEFAULT -1,
+  product_desc VARCHAR(256) DEFAULT NULL,
+  unit_price DOUBLE DEFAULT NULL,
+  category_key BIGINT(20) DEFAULT NULL,
+  KEY idx_product_lookup (product_key)
+) ENGINE=MYISAM;
+
+DROP TABLE IF EXISTS product_v2;
+CREATE TABLE product_v2 (
+  product_key BIGINT(20) NOT NULL DEFAULT -1,
+  prod_code INT(11) DEFAULT NULL,
+  prod_desc VARCHAR(256) DEFAULT NULL,
+  price DOUBLE DEFAULT NULL,
+  category_key BIGINT(20) DEFAULT NULL,
+  PRIMARY KEY (product_key),
+  KEY idx_product_v2_lookup (prod_code)
+) ENGINE=MYISAM;
