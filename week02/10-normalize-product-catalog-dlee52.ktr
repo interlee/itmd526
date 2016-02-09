@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>10-normalize-product-catalog</name>
+    <name>10-normalize-product-catalog-dlee52</name>
     <description/>
     <extended_description/>
     <trans_version/>
     <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
     <directory>&#x2f;</directory>
     <parameters>
     </parameters>
@@ -66,122 +67,17 @@
     <clusterschemas>
     </clusterschemas>
   <created_user>-</created_user>
-  <created_date>2016&#x2f;01&#x2f;26 20&#x3a;39&#x3a;56.961</created_date>
+  <created_date>2016&#x2f;01&#x2f;26 23&#x3a;35&#x3a;38.778</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2016&#x2f;01&#x2f;26 20&#x3a;39&#x3a;56.961</modified_date>
+  <modified_date>2016&#x2f;01&#x2f;26 23&#x3a;35&#x3a;38.778</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA&#x3d;</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
     <notepad>
-      <note>Read Product Catalog</note>
-      <xloc>23</xloc>
-      <yloc>173</yloc>
-      <width>126</width>
-      <heigth>26</heigth>
-      <fontname>Segoe UI</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>Lookup the &#x5b;category&#x5d;  and add &#xd;&#xa;the &#x5b;category_key&#x5d; into the stream</note>
-      <xloc>180</xloc>
-      <yloc>47</yloc>
-      <width>190</width>
-      <heigth>42</heigth>
-      <fontname>Segoe UI</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>Remove the &#x5b;xls_category&#x5d; from the stream</note>
-      <xloc>341</xloc>
-      <yloc>171</yloc>
-      <width>236</width>
-      <heigth>26</heigth>
-      <fontname>Segoe UI</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>Generate a surrogate key &#x5b;product_key&#x5d;&#xd;&#xa;and insert a new row with the &#x5b;product_key&#x5d; &#xd;&#xa;and &#x5b;product_desc&#x5d; </note>
-      <xloc>540</xloc>
-      <yloc>32</yloc>
-      <width>245</width>
-      <heigth>58</heigth>
-      <fontname>Segoe UI</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>Update the rest of fields as necessary</note>
-      <xloc>805</xloc>
-      <yloc>170</yloc>
-      <width>203</width>
-      <heigth>26</heigth>
-      <fontname>Segoe UI</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
       <note>&#x21;&#x21;IMPORTANT&#x21;&#x21; &#xd;&#xa;&#xd;&#xa;Use MyISAM for the engine type of the MySQL table.&#xd;&#xa;Otherwise the Combination lookup&#x2f;update will not work properly</note>
-      <xloc>360</xloc>
-      <yloc>291</yloc>
+      <xloc>367</xloc>
+      <yloc>215</yloc>
       <width>356</width>
       <heigth>73</heigth>
       <fontname>Segoe UI</fontname>
@@ -299,7 +195,7 @@
            <schema_name/>
            </partitioning>
       <schema/>
-      <table>product</table>
+      <table>product_v2</table>
       <connection>Target DB</connection>
       <commit>100</commit>
       <cache_size>9999</cache_size>
@@ -309,8 +205,8 @@
       <crcfield>hashcode</crcfield>
       <fields>
         <key>
-          <name>xls_product</name>
-          <lookup>product_desc</lookup>
+          <name>prod_code</name>
+          <lookup>prod_code</lookup>
         </key>
         <return>
           <name>product_key</name>
@@ -322,8 +218,8 @@
       <last_update_field/>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>660</xloc>
-      <yloc>113</yloc>
+      <xloc>826</xloc>
+      <yloc>97</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -350,7 +246,7 @@
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
-        <name>xls_category</name>
+        <name>category</name>
         <field>category</field>
         <condition>&#x3d;</condition>
         <name2/>
@@ -364,8 +260,8 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>254</xloc>
-      <yloc>113</yloc>
+      <xloc>353</xloc>
+      <yloc>97</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -397,7 +293,7 @@
     <accept_field/>
     <accept_stepname/>
     <file>
-      <name>&#x24;&#x7b;Internal.Transformation.Filename.Directory&#x7d;&#x5c;outdoor_product_catalog_v1.xls</name>
+      <name>&#x24;&#x7b;Internal.Transformation.Filename.Directory&#x7d;&#x5c;outdoor_product_catalog_v2.xls</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
@@ -405,7 +301,19 @@
     </file>
     <fields>
       <field>
-        <name>xls_product</name>
+        <name>prod_code</name>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+      <field>
+        <name>prod_desc</name>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
@@ -417,7 +325,7 @@
         <group/>
       </field>
       <field>
-        <name>xls_price</name>
+        <name>price</name>
         <type>Number</type>
         <length>-1</length>
         <precision>-1</precision>
@@ -429,7 +337,7 @@
         <group/>
       </field>
       <field>
-        <name>xls_category</name>
+        <name>category</name>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
@@ -468,8 +376,8 @@
     <spreadsheet_type>JXL</spreadsheet_type>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>72</xloc>
-      <yloc>113</yloc>
+      <xloc>146</xloc>
+      <yloc>97</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -478,7 +386,7 @@
     <name>Select values</name>
     <type>SelectValues</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
          <partitioning>
@@ -486,11 +394,11 @@
            <schema_name/>
            </partitioning>
     <fields>        <select_unspecified>N</select_unspecified>
-      <remove>        <name>xls_category</name>
+      <remove>        <name>category</name>
       </remove>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>440</xloc>
-      <yloc>113</yloc>
+      <xloc>555</xloc>
+      <yloc>97</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -514,7 +422,7 @@
     <ignore_flag_field/>
     <lookup>
       <schema/>
-      <table>product</table>
+      <table>product_v2</table>
       <key>
         <name>product_key</name>
         <field>product_key</field>
@@ -522,8 +430,12 @@
         <name2/>
         </key>
       <value>
-        <name>unit_price</name>
-        <rename>xls_price</rename>
+        <name>prod_desc</name>
+        <rename>prod_desc</rename>
+        </value>
+      <value>
+        <name>price</name>
+        <rename>price</rename>
         </value>
       <value>
         <name>category_key</name>
@@ -532,8 +444,8 @@
       </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>890</xloc>
-      <yloc>112</yloc>
+      <xloc>1020</xloc>
+      <yloc>97</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
