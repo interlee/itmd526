@@ -82,8 +82,8 @@
     <access>Native</access>
     <database>datamart_kbb</database>
     <port>3306</port>
-    <username>etl_user</username>
-    <password>Encrypted 2be98afc86aa7f2e4bb18bd63c99dbdde</password>
+    <username>&#x24;&#x7b;ETL_USER_NAME&#x7d;</username>
+    <password>&#x24;&#x7b;ETL_USER_PASS&#x7d;</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -109,8 +109,8 @@
     <access>Native</access>
     <database>source_db</database>
     <port>3306</port>
-    <username>etl_user</username>
-    <password>Encrypted 2be98afc86aa7f2e4bb18bd63c99dbdde</password>
+    <username>&#x24;&#x7b;ETL_USER_NAME&#x7d;</username>
+    <password>&#x24;&#x7b;ETL_USER_PASS&#x7d;</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -136,8 +136,8 @@
     <access>Native</access>
     <database>target_db</database>
     <port>3306</port>
-    <username>etl_user</username>
-    <password>Encrypted 2be98afc86aa7f2e4bb18bd63c99dbdde</password>
+    <username>&#x24;&#x7b;ETL_USER_NAME&#x7d;</username>
+    <password>&#x24;&#x7b;ETL_USER_PASS&#x7d;</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -284,7 +284,7 @@
           <lookup>custom_id</lookup>
         </key>
         <date>
-          <name>last_updated</name>
+          <name/>
           <from>date_from</from>
           <to>date_to</to>
         </date>

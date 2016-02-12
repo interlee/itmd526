@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>tr-dim-prod-dbserver-heavy</name>
+    <name>tr-staging-product</name>
     <description/>
     <extended_description/>
     <trans_version/>
     <trans_type>Normal</trans_type>
-    <trans_status>0</trans_status>
     <directory>&#x2f;</directory>
     <parameters>
     </parameters>
@@ -67,9 +66,9 @@
     <clusterschemas>
     </clusterschemas>
   <created_user>-</created_user>
-  <created_date>2016&#x2f;02&#x2f;02 23&#x3a;44&#x3a;40.934</created_date>
+  <created_date>2016&#x2f;02&#x2f;03 09&#x3a;52&#x3a;05.982</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2016&#x2f;02&#x2f;02 23&#x3a;44&#x3a;40.934</modified_date>
+  <modified_date>2016&#x2f;02&#x2f;03 09&#x3a;52&#x3a;05.982</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA&#x3d;</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -184,12 +183,11 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Combination lookup&#x2f;update</from><to>Update - dim_product</to><enabled>Y</enabled> </hop>
-  <hop> <from>oltp-produc-category</from><to>Combination lookup&#x2f;update</to><enabled>Y</enabled> </hop>
+  <hop> <from>MS Excel input - product catalog</from><to>Table output - stg_prod_catalog</to><enabled>Y</enabled> </hop>
   </order>
   <step>
-    <name>Combination lookup&#x2f;update</name>
-    <type>CombinationLookup</type>
+    <name>MS Excel input - product catalog</name>
+    <type>ExcelInput</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -198,86 +196,119 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-      <schema/>
-      <table>dim_product</table>
-      <connection>Data mart KBB</connection>
-      <commit>100</commit>
-      <cache_size>9999</cache_size>
-      <replace>N</replace>
-      <preloadCache>N</preloadCache>
-      <crc>N</crc>
-      <crcfield>hashcode</crcfield>
-      <fields>
-        <key>
-          <name>prod_code</name>
-          <lookup>PROD_CODE</lookup>
-        </key>
-        <return>
-          <name>product_key</name>
-          <creation_method>tablemax</creation_method>
-          <use_autoinc>N</use_autoinc>
-        </return>
-      </fields>
-      <sequence/>
-      <last_update_field/>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>490</xloc>
-      <yloc>199</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Update - dim_product</name>
-    <type>Update</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>Data mart KBB</connection>
-    <skip_lookup>N</skip_lookup>
-    <commit>100</commit>
-    <use_batch>N</use_batch>
+    <header>Y</header>
+    <noempty>Y</noempty>
+    <stoponempty>N</stoponempty>
+    <filefield/>
+    <sheetfield/>
+    <sheetrownumfield/>
+    <rownumfield/>
+    <sheetfield/>
+    <filefield/>
+    <limit>0</limit>
+    <encoding/>
+    <add_to_result_filenames>Y</add_to_result_filenames>
+    <accept_filenames>N</accept_filenames>
+    <accept_field/>
+    <accept_stepname/>
+    <file>
+      <name/>
+      <filemask/>
+      <exclude_filemask/>
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+      <name>&#x24;&#x7b;Internal.Transformation.Filename.Directory&#x7d;&#x5c;outdoor_product_catalog_v2.xls</name>
+      <filemask/>
+      <exclude_filemask/>
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
+    <fields>
+      <field>
+        <name>prod_code</name>
+        <type>Number</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+      <field>
+        <name>prod_desc</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+      <field>
+        <name>price</name>
+        <type>Number</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+      <field>
+        <name>category</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+    </fields>
+    <sheets>
+      <sheet>
+        <name>Sheet1</name>
+        <startrow>0</startrow>
+        <startcol>0</startcol>
+        </sheet>
+    </sheets>
+    <strict_types>N</strict_types>
     <error_ignored>N</error_ignored>
-    <ignore_flag_field/>
-    <lookup>
-      <schema/>
-      <table>dim_product</table>
-      <key>
-        <name>product_key</name>
-        <field>PRODUCT_KEY</field>
-        <condition>&#x3d;</condition>
-        <name2/>
-        </key>
-      <value>
-        <name>PRODUCT_DESC</name>
-        <rename>prod_desc</rename>
-        </value>
-      <value>
-        <name>UNIT_PRICE</name>
-        <rename>price</rename>
-        </value>
-      <value>
-        <name>CATEGORY</name>
-        <rename>category</rename>
-        </value>
-      </lookup>
+    <error_line_skipped>N</error_line_skipped>
+    <bad_line_files_destination_directory/>
+    <bad_line_files_extension>warning</bad_line_files_extension>
+    <error_line_files_destination_directory/>
+    <error_line_files_extension>error</error_line_files_extension>
+    <line_number_files_destination_directory/>
+    <line_number_files_extension>line</line_number_files_extension>
+    <shortFileFieldName/>
+    <pathFieldName/>
+    <hiddenFieldName/>
+    <lastModificationTimeFieldName/>
+    <uriNameFieldName/>
+    <rootUriNameFieldName/>
+    <extensionFieldName/>
+    <sizeFieldName/>
+    <spreadsheet_type>JXL</spreadsheet_type>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>686</xloc>
-      <yloc>199</yloc>
+      <xloc>210</xloc>
+      <yloc>214</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>oltp-produc-category</name>
-    <type>TableInput</type>
+    <name>Table output - stg_prod_catalog</name>
+    <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -287,16 +318,44 @@
            <schema_name/>
            </partitioning>
     <connection>Target DB</connection>
-    <sql>SELECT p.prod_code, p.prod_desc, p.price, c.category&#xd;&#xa;  FROM product_v2 p, category c&#xd;&#xa; WHERE p.category_key &#x3d; c.category_key</sql>
-    <limit>0</limit>
-    <lookup/>
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
+    <schema/>
+    <table>stg_prod_catalog</table>
+    <commit>1000</commit>
+    <truncate>Y</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+        <field>
+          <column_name>prod_code</column_name>
+          <stream_name>prod_code</stream_name>
+        </field>
+        <field>
+          <column_name>prod_desc</column_name>
+          <stream_name>prod_desc</stream_name>
+        </field>
+        <field>
+          <column_name>price</column_name>
+          <stream_name>price</stream_name>
+        </field>
+        <field>
+          <column_name>category</column_name>
+          <stream_name>category</stream_name>
+        </field>
+    </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>191</xloc>
-      <yloc>199</yloc>
+      <xloc>441</xloc>
+      <yloc>214</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
