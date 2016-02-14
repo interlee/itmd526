@@ -158,8 +158,8 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>184</xloc>
-      <yloc>135</yloc>
+      <xloc>299</xloc>
+      <yloc>28</yloc>
       </entry>
     <entry>
       <name>tr-kimball-staging-customer-dlee52</name>
@@ -191,8 +191,8 @@
       </parameters>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>441</xloc>
-      <yloc>135</yloc>
+      <xloc>556</xloc>
+      <yloc>28</yloc>
       </entry>
     <entry>
       <name>tr-kimball-load-dim-customer-scd-dlee52</name>
@@ -224,8 +224,8 @@
       </parameters>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>734</xloc>
-      <yloc>136</yloc>
+      <xloc>849</xloc>
+      <yloc>29</yloc>
       </entry>
   </entries>
   <hops>

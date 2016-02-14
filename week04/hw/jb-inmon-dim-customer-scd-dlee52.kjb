@@ -158,8 +158,8 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>186</xloc>
-      <yloc>149</yloc>
+      <xloc>77</xloc>
+      <yloc>70</yloc>
       </entry>
     <entry>
       <name>tr-inmon-load-city-state-dlee52</name>
@@ -191,8 +191,8 @@
       </parameters>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>423</xloc>
-      <yloc>149</yloc>
+      <xloc>314</xloc>
+      <yloc>70</yloc>
       </entry>
     <entry>
       <name>tr-inmon-load-dim-customer-scd-dlee52</name>
@@ -224,8 +224,8 @@
       </parameters>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>876</xloc>
-      <yloc>148</yloc>
+      <xloc>767</xloc>
+      <yloc>69</yloc>
       </entry>
     <entry>
       <name>tr-inmon-load-customer-dlee52</name>
@@ -257,8 +257,8 @@
       </parameters>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>645</xloc>
-      <yloc>149</yloc>
+      <xloc>536</xloc>
+      <yloc>70</yloc>
       </entry>
   </entries>
   <hops>

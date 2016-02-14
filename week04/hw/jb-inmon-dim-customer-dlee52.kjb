@@ -159,11 +159,11 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>173</xloc>
-      <yloc>156</yloc>
+      <xloc>34</xloc>
+      <yloc>50</yloc>
       </entry>
     <entry>
-      <name>load-city-state</name>
+      <name>tr-inmon-load-city-state-dlee52</name>
       <description/>
       <type>TRANS</type>
       <specification_method>filename</specification_method>
@@ -192,11 +192,11 @@
       </parameters>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>403</xloc>
-      <yloc>156</yloc>
+      <xloc>193</xloc>
+      <yloc>50</yloc>
       </entry>
     <entry>
-      <name>load-customer</name>
+      <name>tr-inmon-load-customer-dlee52</name>
       <description/>
       <type>TRANS</type>
       <specification_method>filename</specification_method>
@@ -225,11 +225,11 @@
       </parameters>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>581</xloc>
-      <yloc>156</yloc>
+      <xloc>380</xloc>
+      <yloc>51</yloc>
       </entry>
     <entry>
-      <name>load-dim-customer</name>
+      <name>tr-inmon-load-dim-customer-dlee52</name>
       <description/>
       <type>TRANS</type>
       <specification_method>filename</specification_method>
@@ -258,14 +258,14 @@
       </parameters>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>821</xloc>
-      <yloc>155</yloc>
+      <xloc>604</xloc>
+      <yloc>52</yloc>
       </entry>
   </entries>
   <hops>
     <hop>
-      <from>load-city-state</from>
-      <to>load-customer</to>
+      <from>tr-inmon-load-city-state-dlee52</from>
+      <to>tr-inmon-load-customer-dlee52</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -274,7 +274,7 @@
     </hop>
     <hop>
       <from>START</from>
-      <to>load-city-state</to>
+      <to>tr-inmon-load-city-state-dlee52</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -282,8 +282,8 @@
       <unconditional>Y</unconditional>
     </hop>
     <hop>
-      <from>load-customer</from>
-      <to>load-dim-customer</to>
+      <from>tr-inmon-load-customer-dlee52</from>
+      <to>tr-inmon-load-dim-customer-dlee52</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>

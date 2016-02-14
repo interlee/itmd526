@@ -184,7 +184,7 @@
   </connection>
   <order>
   <hop> <from>Table input - customer, city_state</from><to>SCD Type 1 - dim_customer_scd1</to><enabled>Y</enabled> </hop>
-  <hop> <from>Table input - customer, city_state</from><to>SCD Type 2 - dim_customer</to><enabled>Y</enabled> </hop>
+  <hop> <from>Table input - customer, city_state</from><to>SCD Type 2 - dim_customer_scd2</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>SCD Type 1 - dim_customer_scd1</name>
@@ -255,14 +255,14 @@
       <start_date_field_name/>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>626</xloc>
-      <yloc>101</yloc>
+      <xloc>818</xloc>
+      <yloc>39</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>SCD Type 2 - dim_customer</name>
+    <name>SCD Type 2 - dim_customer_scd2</name>
     <type>DimensionLookup</type>
     <description/>
     <distribute>Y</distribute>
@@ -330,8 +330,8 @@
       <start_date_field_name/>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>628</xloc>
-      <yloc>243</yloc>
+      <xloc>820</xloc>
+      <yloc>181</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -356,8 +356,8 @@
     <lazy_conversion_active>N</lazy_conversion_active>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>260</xloc>
-      <yloc>153</yloc>
+      <xloc>452</xloc>
+      <yloc>91</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
