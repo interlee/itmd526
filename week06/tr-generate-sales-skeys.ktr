@@ -228,7 +228,7 @@
     <optimizationLevel>9</optimizationLevel>
     <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>&#xa;&#x2f;&#x2f; 1M customers&#xa;var customerId &#x3d; Math.round&#x28; Math.random&#x28;&#x29; &#x2a; getVariable&#x28;&#x22;MAX_CUST_KEY&#x22;,&#x22;&#x22;&#x29;&#x29; &#x2b; 1&#x3b;&#xa;&#xa;&#x2f;&#x2f; 1000 products&#xa;var productId &#x3d; Math.round&#x28; Math.random&#x28;&#x29; &#x2a; getVariable&#x28;&#x22;MAX_PROD_KEY&#x22;,&#x22;&#x22;&#x29;&#x29; &#x2b; 1&#x3b;&#xa;&#xa;&#x2f;&#x2f; Order date&#xa;var orderDate &#x3d; new Date&#x28;2000&#x2b;Math.round&#x28; Math.random&#x28;&#x29; &#x2a; 6&#x29;, Math.round&#x28; Math.random&#x28;&#x29; &#x2a; 12 &#x29;, Math.round&#x28; Math.random&#x28;&#x29; &#x2a; 31 &#x29;&#x29;&#x3b;&#xa;&#xa;&#x2f;&#x2f; Discount &#x25; &#x3a; between 0 and 20&#x25; in 5&#x25; blocks&#xa;var discountPct &#x3d; Math.round&#x28; Math.random&#x28;&#x29; &#x2a; 4 &#x29; &#x2a; 5&#x3b;&#xa;&#xa;&#x2f;&#x2f; Number of products &#x3a; between 1 and 5&#xa;var nrProducts &#x3d; 1 &#x2b; Math.round&#x28; Math.random&#x28;&#x29; &#x2a; 4 &#x29;&#x3b;&#xa;&#xa;&#xa;var orderSeq&#x3d;Math.round&#x28; Math.random&#x28;&#x29; &#x2a; 5 &#x29;&#x3b;</jsScript_script>
+        <jsScript_script>&#xa;&#x2f;&#x2f; &#xd;&#xa;var maxCustKey &#x3d; str2num&#x28;getVariable&#x28;&#x22;MAX_CUST_KEY&#x22;,&#x22;&#x22;&#x29;&#x29;&#x3b;&#xd;&#xa;var maxProdKey &#x3d; str2num&#x28;getVariable&#x28;&#x22;MAX_PROD_KEY&#x22;,&#x22;&#x22;&#x29;&#x29;&#x3b;&#xd;&#xa;var minCustKey &#x3d; str2num&#x28;getVariable&#x28;&#x22;MIN_CUST_KEY&#x22;,&#x22;&#x22;&#x29;&#x29;&#x3b;&#xd;&#xa;var minProdKey &#x3d; str2num&#x28;getVariable&#x28;&#x22;MIN_PROD_KEY&#x22;,&#x22;&#x22;&#x29;&#x29;&#x3b;&#xa;var customerId &#x3d; Math.round&#x28; Math.random&#x28;&#x29; &#x2a; maxCustKey&#x29; &#x2b; minCustKey&#x3b;&#xa;&#xa;&#x2f;&#x2f; &#xa;var productId &#x3d; Math.round&#x28; Math.random&#x28;&#x29; &#x2a; maxProdKey&#x29; &#x2b; minProdKey&#x3b;&#xa;&#xa;&#x2f;&#x2f; Order date&#xa;var orderDate &#x3d; new Date&#x28;2000&#x2b;Math.round&#x28; Math.random&#x28;&#x29; &#x2a; 6&#x29;, Math.round&#x28; Math.random&#x28;&#x29; &#x2a; 12 &#x29;, Math.round&#x28; Math.random&#x28;&#x29; &#x2a; 31 &#x29;&#x29;&#x3b;&#xa;&#xa;&#x2f;&#x2f; Discount &#x25; &#x3a; between 0 and 20&#x25; in 5&#x25; blocks&#xa;var discountPct &#x3d; Math.round&#x28; Math.random&#x28;&#x29; &#x2a; 4 &#x29; &#x2a; 5&#x3b;&#xa;&#xa;&#x2f;&#x2f; Number of products &#x3a; between 1 and 5&#xa;var nrProducts &#x3d; 1 &#x2b; Math.round&#x28; Math.random&#x28;&#x29; &#x2a; 4 &#x29;&#x3b;&#xa;&#xa;&#xa;var orderSeq&#x3d;Math.round&#x28; Math.random&#x28;&#x29; &#x2a; 5 &#x29;&#x3b;</jsScript_script>
       </jsScript>    </jsScripts>    <fields>      <field>        <name>customerId</name>
         <rename>customerId</rename>
         <type>Integer</type>
@@ -263,6 +263,30 @@
         <rename>orderSeq</rename>
         <type>Integer</type>
         <length>2</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>      <field>        <name>minCustKey</name>
+        <rename>minCustKey</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>      <field>        <name>minProdKey</name>
+        <rename>minProdKey</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>      <field>        <name>maxCustKey</name>
+        <rename>maxCustKey</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>      <field>        <name>maxProdKey</name>
+        <rename>maxProdKey</rename>
+        <type>Integer</type>
+        <length>-1</length>
         <precision>-1</precision>
         <replace>N</replace>
       </field>    </fields>     <cluster_schema/>
@@ -303,11 +327,11 @@
     <return_field/>
     <fields>
         <field>
-          <column_name>customerId</column_name>
+          <column_name>customer_key</column_name>
           <stream_name>customerId</stream_name>
         </field>
         <field>
-          <column_name>productId</column_name>
+          <column_name>product_key</column_name>
           <stream_name>productId</stream_name>
         </field>
         <field>

@@ -167,7 +167,7 @@
       <type>TRANS</type>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>C&#x3a;&#x5c;etl&#x5c;itmd526&#x5c;week06&#x5c;tr-get-skey-ranges.ktr</filename>
+      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x5c;tr-get-skey-ranges.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -200,7 +200,7 @@
       <type>TRANS</type>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>C&#x3a;&#x5c;etl&#x5c;itmd526&#x5c;week06&#x5c;tr-generate-sales-skeys.ktr</filename>
+      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x5c;tr-generate-sales-skeys.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -225,6 +225,12 @@
             <stream_name/>
             <value/>
             </parameter>            <parameter>            <name>MAX_PROD_KEY</name>
+            <stream_name/>
+            <value/>
+            </parameter>            <parameter>            <name>MIN_CUST_KEY</name>
+            <stream_name/>
+            <value/>
+            </parameter>            <parameter>            <name>MIN_PROD_KEY</name>
             <stream_name/>
             <value/>
             </parameter>      </parameters>      <parallel>N</parallel>
