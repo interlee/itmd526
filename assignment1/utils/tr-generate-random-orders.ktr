@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>tr-kimball-staging-customer-dlee52</name>
+    <name>tr-generate-random-orders</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -67,20 +67,20 @@
     <clusterschemas>
     </clusterschemas>
   <created_user>-</created_user>
-  <created_date>2016&#x2f;02&#x2f;12 01&#x3a;09&#x3a;38.765</created_date>
+  <created_date>2016&#x2f;02&#x2f;19 11&#x3a;26&#x3a;47.719</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2016&#x2f;02&#x2f;12 01&#x3a;09&#x3a;38.765</modified_date>
+  <modified_date>2016&#x2f;02&#x2f;19 11&#x3a;26&#x3a;47.719</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA&#x3d;</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
     <notepad>
-      <note>Set DIR_SOURCE_FILES as the excel source directory</note>
-      <xloc>179</xloc>
-      <yloc>51</yloc>
-      <width>279</width>
-      <heigth>26</heigth>
-      <fontname>Segoe UI</fontname>
+      <note>CREATE TABLE &#x60;order_random&#x60; &#x28;&#xd;&#xa;  &#x60;customer_key&#x60; int&#x28;11&#x29; DEFAULT NULL,&#xd;&#xa;  &#x60;product_key&#x60; int&#x28;11&#x29; DEFAULT NULL,&#xd;&#xa;  &#x60;discountPct&#x60; int&#x28;11&#x29; DEFAULT NULL,&#xd;&#xa;  &#x60;nrProducts&#x60; int&#x28;11&#x29; DEFAULT NULL,&#xd;&#xa;  &#x60;minCustKey&#x60; int&#x28;11&#x29; DEFAULT NULL,&#xd;&#xa;  &#x60;minProdKey&#x60; int&#x28;11&#x29; DEFAULT NULL,&#xd;&#xa;  &#x60;maxCustKey&#x60; int&#x28;11&#x29; DEFAULT NULL,&#xd;&#xa;  &#x60;maxProdKey&#x60; int&#x28;11&#x29; DEFAULT NULL,&#xd;&#xa;  &#x60;orderDate&#x60; datetime DEFAULT NULL,&#xd;&#xa;  &#x60;orderLineNr&#x60; bigint&#x28;20&#x29; DEFAULT NULL,&#xd;&#xa;  &#x60;orderNr&#x60; int&#x28;11&#x29; DEFAULT NULL&#xd;&#xa;&#x29; ENGINE&#x3d;MyISAM DEFAULT CHARSET&#x3d;utf8&#xd;&#xa;</note>
+      <xloc>850</xloc>
+      <yloc>106</yloc>
+      <width>291</width>
+      <heigth>207</heigth>
+      <fontname>Courier New</fontname>
       <fontsize>9</fontsize>
       <fontbold>N</fontbold>
       <fontitalic>N</fontitalic>
@@ -205,10 +205,305 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>customer_raw.xls</from><to>Table output - stg_customer</to><enabled>Y</enabled> </hop>
+  <hop> <from>Generate Rows</from><to>Generate random stuff</to><enabled>Y</enabled> </hop>
+  <hop> <from>Group by</from><to>Determine orderNr</to><enabled>Y</enabled> </hop>
+  <hop> <from>Sort rows</from><to>Sorted Merge</to><enabled>Y</enabled> </hop>
+  <hop> <from>Sorted Merge</from><to>Group by</to><enabled>Y</enabled> </hop>
+  <hop> <from>Generate random stuff</from><to>Sort rows</to><enabled>Y</enabled> </hop>
+  <hop> <from>Determine orderNr</from><to>Remove orderSeq</to><enabled>Y</enabled> </hop>
+  <hop> <from>Remove orderSeq</from><to>Table output - order_random</to><enabled>Y</enabled> </hop>
   </order>
   <step>
-    <name>Table output - stg_customer</name>
+    <name>Determine orderNr</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <compatible>Y</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>&#x2f;&#x2f; The ordernr is linked to the customerId and the orderSeq.&#xa;&#x2f;&#x2f; it starts at 5000000 and is then incremented each time&#xa;&#x2f;&#x2f; there is a new customerId&#x2f;orderSeq combination&#xa;&#xa;var prevId&#x3b;&#xa;var prevSeq&#x3b;&#xa;var orderNr&#xa;&#xa;if &#x28;prevId &#x3d;&#x3d; null&#x29;&#xa;&#x7b;&#xa;  orderNr &#x3d; 5000000&#x3b;&#xa;&#x7d;&#xa;else&#xa;&#x7b;&#xa;  if &#x28;prevId &#x21;&#x3d; customerId.getInteger&#x28;&#x29; &#x7c;&#x7c; prevSeq &#x21;&#x3d; orderSeq.getInteger&#x28;&#x29;&#x29;&#xa;  &#x7b;&#xa;    orderNr&#x2b;&#x2b;&#x3b;&#xa;  &#x7d;&#xa;&#x7d;&#xa;&#xa;prevId &#x3d; customerId.getInteger&#x28;&#x29;&#x3b;&#xa;prevSeq &#x3d; orderSeq.getInteger&#x28;&#x29;&#x3b;&#xa;&#xa;</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>      <field>        <name>orderNr</name>
+        <rename>orderNr</rename>
+        <type>Integer</type>
+        <length>7</length>
+        <precision>0</precision>
+        <replace>N</replace>
+      </field>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>574</xloc>
+      <yloc>340</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Generate Rows</name>
+    <type>RowGenerator</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+    </fields>
+    <limit>&#x24;&#x7b;NUM_ORDERS&#x7d;</limit>
+    <never_ending>N</never_ending>
+    <interval_in_ms/>
+    <row_time_field/>
+    <last_time_field/>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>106</xloc>
+      <yloc>91</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Generate random stuff</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <compatible>Y</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>&#xa;&#x2f;&#x2f; &#xd;&#xa;var maxCustKey &#x3d; str2num&#x28;getVariable&#x28;&#x22;MAX_CUST_KEY&#x22;,&#x22;&#x22;&#x29;&#x29;&#x3b;&#xd;&#xa;var maxProdKey &#x3d; str2num&#x28;getVariable&#x28;&#x22;MAX_PROD_KEY&#x22;,&#x22;&#x22;&#x29;&#x29;&#x3b;&#xd;&#xa;var minCustKey &#x3d; str2num&#x28;getVariable&#x28;&#x22;MIN_CUST_KEY&#x22;,&#x22;&#x22;&#x29;&#x29;&#x3b;&#xd;&#xa;var minProdKey &#x3d; str2num&#x28;getVariable&#x28;&#x22;MIN_PROD_KEY&#x22;,&#x22;&#x22;&#x29;&#x29;&#x3b;&#xa;var customerId &#x3d; Math.round&#x28; Math.random&#x28;&#x29; &#x2a; maxCustKey&#x29; &#x2b; minCustKey&#x3b;  &#x2f;&#x2f; some may not match DIM_CUSTOMER_TBL&#xa;&#xa;&#x2f;&#x2f; &#xa;var productId &#x3d; Math.round&#x28; Math.random&#x28;&#x29; &#x2a; &#x28;maxProdKey-1&#x29;&#x29; &#x2b; minProdKey&#x3b; &#x2f;&#x2f; all must match DIM_PRODUCT_TBL&#xa;&#xa;&#x2f;&#x2f; Order date&#xa;var orderDate &#x3d; new Date&#x28;2000&#x2b;Math.round&#x28; Math.random&#x28;&#x29; &#x2a; 6&#x29;, Math.round&#x28; Math.random&#x28;&#x29; &#x2a; 12 &#x29;, Math.round&#x28; Math.random&#x28;&#x29; &#x2a; 31 &#x29;&#x29;&#x3b;&#xa;&#xa;&#x2f;&#x2f; Discount &#x25; &#x3a; between 0 and 20&#x25; in 5&#x25; blocks&#xa;var discountPct &#x3d; Math.round&#x28; Math.random&#x28;&#x29; &#x2a; 4 &#x29; &#x2a; 5&#x3b;&#xa;&#xa;&#x2f;&#x2f; Number of products &#x3a; between 1 and 5&#xa;var nrProducts &#x3d; 1 &#x2b; Math.round&#x28; Math.random&#x28;&#x29; &#x2a; 4 &#x29;&#x3b;&#xa;&#xa;&#xa;var orderSeq&#x3d;Math.round&#x28; Math.random&#x28;&#x29; &#x2a; 5 &#x29;&#x3b;</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>      <field>        <name>customerId</name>
+        <rename>customerId</rename>
+        <type>Integer</type>
+        <length>7</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>      <field>        <name>productId</name>
+        <rename>productId</rename>
+        <type>Integer</type>
+        <length>7</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>      <field>        <name>orderDate</name>
+        <rename>orderDate</rename>
+        <type>Date</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>      <field>        <name>discountPct</name>
+        <rename>discountPct</rename>
+        <type>Integer</type>
+        <length>3</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>      <field>        <name>nrProducts</name>
+        <rename>nrProducts</rename>
+        <type>Integer</type>
+        <length>3</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>      <field>        <name>orderSeq</name>
+        <rename>orderSeq</rename>
+        <type>Integer</type>
+        <length>2</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>      <field>        <name>minCustKey</name>
+        <rename>minCustKey</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>      <field>        <name>minProdKey</name>
+        <rename>minProdKey</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>      <field>        <name>maxCustKey</name>
+        <rename>maxCustKey</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>      <field>        <name>maxProdKey</name>
+        <rename>maxProdKey</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>316</xloc>
+      <yloc>91</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Group by</name>
+    <type>GroupBy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <all_rows>Y</all_rows>
+      <ignore_aggregate>N</ignore_aggregate>
+      <field_ignore/>
+      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
+      <prefix>grp</prefix>
+      <add_linenr>Y</add_linenr>
+      <linenr_fieldname>orderLineNr</linenr_fieldname>
+      <give_back_row>N</give_back_row>
+      <group>
+        <field>
+          <name>customerId</name>
+        </field>
+        <field>
+          <name>orderSeq</name>
+        </field>
+      </group>
+      <fields>
+        <field>
+          <aggregate>minOrderDate</aggregate>
+          <subject>orderDate</subject>
+          <type>MIN</type>
+          <valuefield/>
+        </field>
+      </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>433</xloc>
+      <yloc>340</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Remove orderSeq</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>        <select_unspecified>N</select_unspecified>
+      <remove>        <name>orderSeq</name>
+      </remove>      <remove>        <name>orderDate</name>
+      </remove>      <meta>        <name>minOrderDate</name>
+        <rename>orderDate</rename>
+        <type>None</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>716</xloc>
+      <yloc>340</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Sort rows</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
+      <prefix>out</prefix>
+      <sort_size>50000</sort_size>
+      <free_memory/>
+      <compress>Y</compress>
+      <compress_variable/>
+      <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>customerId</name>
+        <ascending>Y</ascending>
+        <case_sensitive>Y</case_sensitive>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>orderSeq</name>
+        <ascending>Y</ascending>
+        <case_sensitive>Y</case_sensitive>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>546</xloc>
+      <yloc>213</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Sorted Merge</name>
+    <type>SortedMerge</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <name>customerId</name>
+        <ascending>Y</ascending>
+        </field>
+      <field>
+        <name>orderSeq</name>
+        <ascending>Y</ascending>
+        </field>
+      </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>701</xloc>
+      <yloc>213</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Table output - order_random</name>
     <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -218,9 +513,9 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <connection>Target DB</connection>
+    <connection>Source DB</connection>
     <schema/>
-    <table>stg_customer</table>
+    <table>order_random</table>
     <commit>1000</commit>
     <truncate>Y</truncate>
     <ignore_errors>N</ignore_errors>
@@ -237,174 +532,54 @@
     <return_field/>
     <fields>
         <field>
-          <column_name>customer_id</column_name>
-          <stream_name>customer_id</stream_name>
+          <column_name>customer_key</column_name>
+          <stream_name>customerId</stream_name>
         </field>
         <field>
-          <column_name>first_name</column_name>
-          <stream_name>first_name</stream_name>
+          <column_name>product_key</column_name>
+          <stream_name>productId</stream_name>
         </field>
         <field>
-          <column_name>last_name</column_name>
-          <stream_name>last_name</stream_name>
+          <column_name>discountPct</column_name>
+          <stream_name>discountPct</stream_name>
         </field>
         <field>
-          <column_name>date_of_birth</column_name>
-          <stream_name>date_of_birth</stream_name>
+          <column_name>nrProducts</column_name>
+          <stream_name>nrProducts</stream_name>
         </field>
         <field>
-          <column_name>city</column_name>
-          <stream_name>city</stream_name>
+          <column_name>minCustKey</column_name>
+          <stream_name>minCustKey</stream_name>
         </field>
         <field>
-          <column_name>state</column_name>
-          <stream_name>state</stream_name>
+          <column_name>minProdKey</column_name>
+          <stream_name>minProdKey</stream_name>
+        </field>
+        <field>
+          <column_name>maxCustKey</column_name>
+          <stream_name>maxCustKey</stream_name>
+        </field>
+        <field>
+          <column_name>maxProdKey</column_name>
+          <stream_name>maxProdKey</stream_name>
+        </field>
+        <field>
+          <column_name>orderDate</column_name>
+          <stream_name>orderDate</stream_name>
+        </field>
+        <field>
+          <column_name>orderLineNr</column_name>
+          <stream_name>orderLineNr</stream_name>
+        </field>
+        <field>
+          <column_name>orderNr</column_name>
+          <stream_name>orderNr</stream_name>
         </field>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>520</xloc>
-      <yloc>202</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>customer_raw.xls</name>
-    <type>ExcelInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <header>Y</header>
-    <noempty>Y</noempty>
-    <stoponempty>N</stoponempty>
-    <filefield/>
-    <sheetfield/>
-    <sheetrownumfield/>
-    <rownumfield/>
-    <sheetfield/>
-    <filefield/>
-    <limit>0</limit>
-    <encoding/>
-    <add_to_result_filenames>Y</add_to_result_filenames>
-    <accept_filenames>N</accept_filenames>
-    <accept_field/>
-    <accept_stepname/>
-    <file>
-      <name>&#x24;&#x7b;DIR_SOURCE_FILES&#x7d;&#x5c;customer_raw.xls</name>
-      <filemask/>
-      <exclude_filemask/>
-      <file_required>N</file_required>
-      <include_subfolders>N</include_subfolders>
-    </file>
-    <fields>
-      <field>
-        <name>customer_id</name>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>first_name</name>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>last_name</name>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>date_of_birth</name>
-        <type>Date</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>city</name>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>state</name>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-    </fields>
-    <sheets>
-      <sheet>
-        <name>Customer</name>
-        <startrow>0</startrow>
-        <startcol>0</startcol>
-        </sheet>
-    </sheets>
-    <strict_types>N</strict_types>
-    <error_ignored>N</error_ignored>
-    <error_line_skipped>N</error_line_skipped>
-    <bad_line_files_destination_directory/>
-    <bad_line_files_extension>warning</bad_line_files_extension>
-    <error_line_files_destination_directory/>
-    <error_line_files_extension>error</error_line_files_extension>
-    <line_number_files_destination_directory/>
-    <line_number_files_extension>line</line_number_files_extension>
-    <shortFileFieldName/>
-    <pathFieldName/>
-    <hiddenFieldName/>
-    <lastModificationTimeFieldName/>
-    <uriNameFieldName/>
-    <rootUriNameFieldName/>
-    <extensionFieldName/>
-    <sizeFieldName/>
-    <spreadsheet_type>JXL</spreadsheet_type>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>255</xloc>
-      <yloc>202</yloc>
+      <xloc>982</xloc>
+      <yloc>340</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
