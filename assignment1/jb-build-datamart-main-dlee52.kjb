@@ -211,16 +211,16 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>970</xloc>
-      <yloc>180</yloc>
+      <xloc>761</xloc>
+      <yloc>177</yloc>
       </entry>
     <entry>
-      <name>tr-fact-build-dlee52.ktr</name>
+      <name>tr-fact-build-csv-dlee52.ktr</name>
       <description/>
       <type>TRANS</type>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x5c;fact-builds&#x5c;tr-fact-build-dlee52.ktr</filename>
+      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x5c;fact-builds&#x5c;tr-fact-build-csv-dlee52.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -244,7 +244,7 @@
       </parameters>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>734</xloc>
+      <xloc>588</xloc>
       <yloc>179</yloc>
       </entry>
   </entries>
@@ -260,7 +260,7 @@
     </hop>
     <hop>
       <from>jb-all-dim-builds-dlee52.kjb</from>
-      <to>tr-fact-build-dlee52.ktr</to>
+      <to>tr-fact-build-csv-dlee52.ktr</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -268,7 +268,7 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>tr-fact-build-dlee52.ktr</from>
+      <from>tr-fact-build-csv-dlee52.ktr</from>
       <to>Success</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
@@ -301,8 +301,8 @@
     </notepad>
     <notepad>
       <note>Build Fact</note>
-      <xloc>712</xloc>
-      <yloc>246</yloc>
+      <xloc>569</xloc>
+      <yloc>247</yloc>
       <width>63</width>
       <heigth>26</heigth>
       <fontname/>
