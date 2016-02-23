@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <job>
-  <name>jb-kbb-all-dim-builds-dlee52</name>
+  <name>jb-all-dim-builds-dlee52</name>
     <description/>
     <extended_description/>
     <job_version/>
@@ -159,11 +159,11 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>144</xloc>
-      <yloc>182</yloc>
+      <xloc>66</xloc>
+      <yloc>184</yloc>
       </entry>
     <entry>
-      <name>jb-dim-date-dlee52</name>
+      <name>jb-dim-date-dlee52.kjb</name>
       <description/>
       <type>JOB</type>
       <specification_method>filename</specification_method>
@@ -192,15 +192,15 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>354</xloc>
-      <yloc>83</yloc>
+      <yloc>75</yloc>
       </entry>
     <entry>
-      <name>jb-kimball-dim-product-scd</name>
+      <name>jb-kimball-dim-product-scd.kjb</name>
       <description/>
       <type>JOB</type>
       <specification_method>filename</specification_method>
       <job_object_id/>
-      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x5c;dim-builds&#x5c;dim-product&#x5c;jb-kimball-dim-product-scd.kjb</filename>
+      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x5c;dim-product&#x5c;jb-kimball-dim-product-scd.kjb</filename>
       <jobname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -227,12 +227,12 @@
       <yloc>184</yloc>
       </entry>
     <entry>
-      <name>jb-kimball-dim-customer-scd-dlee52</name>
+      <name>jb-kimball-dim-customer-scd-dlee52.kjb</name>
       <description/>
       <type>JOB</type>
       <specification_method>filename</specification_method>
       <job_object_id/>
-      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x5c;dim-builds&#x5c;dim-customer&#x5c;jb-kimball-dim-customer-scd-dlee52.kjb</filename>
+      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x5c;dim-customer&#x5c;jb-kimball-dim-customer-scd-dlee52.kjb</filename>
       <jobname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -265,14 +265,14 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>617</xloc>
-      <yloc>189</yloc>
+      <xloc>675</xloc>
+      <yloc>185</yloc>
       </entry>
   </entries>
   <hops>
     <hop>
       <from>START</from>
-      <to>jb-dim-date-dlee52</to>
+      <to>jb-dim-date-dlee52.kjb</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -281,7 +281,7 @@
     </hop>
     <hop>
       <from>START</from>
-      <to>jb-kimball-dim-product-scd</to>
+      <to>jb-kimball-dim-product-scd.kjb</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -290,7 +290,7 @@
     </hop>
     <hop>
       <from>START</from>
-      <to>jb-kimball-dim-customer-scd-dlee52</to>
+      <to>jb-kimball-dim-customer-scd-dlee52.kjb</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -298,7 +298,7 @@
       <unconditional>Y</unconditional>
     </hop>
     <hop>
-      <from>jb-dim-date-dlee52</from>
+      <from>jb-dim-date-dlee52.kjb</from>
       <to>Success</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
@@ -307,7 +307,7 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>jb-kimball-dim-product-scd</from>
+      <from>jb-kimball-dim-product-scd.kjb</from>
       <to>Success</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
@@ -316,7 +316,7 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>jb-kimball-dim-customer-scd-dlee52</from>
+      <from>jb-kimball-dim-customer-scd-dlee52.kjb</from>
       <to>Success</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>

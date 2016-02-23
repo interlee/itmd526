@@ -162,7 +162,7 @@
       <yloc>182</yloc>
       </entry>
     <entry>
-      <name>tr_dim_date</name>
+      <name>tr_dim_date.ktr</name>
       <description/>
       <type>TRANS</type>
       <specification_method>filename</specification_method>
@@ -195,7 +195,7 @@
       <yloc>183</yloc>
       </entry>
     <entry>
-      <name>tr-dummyrow-dim-date-dlee52</name>
+      <name>tr-dummyrow-dim-date-dlee52.ktr</name>
       <description/>
       <type>TRANS</type>
       <specification_method>filename</specification_method>
@@ -231,7 +231,7 @@
   <hops>
     <hop>
       <from>START</from>
-      <to>tr_dim_date</to>
+      <to>tr_dim_date.ktr</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -239,8 +239,8 @@
       <unconditional>Y</unconditional>
     </hop>
     <hop>
-      <from>tr_dim_date</from>
-      <to>tr-dummyrow-dim-date-dlee52</to>
+      <from>tr_dim_date.ktr</from>
+      <to>tr-dummyrow-dim-date-dlee52.ktr</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>

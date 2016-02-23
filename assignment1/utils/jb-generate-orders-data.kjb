@@ -319,6 +319,27 @@
     </hop>
   </hops>
   <notepads>
+    <notepad>
+      <note>Generate Random Sales Order Data</note>
+      <xloc>163</xloc>
+      <yloc>254</yloc>
+      <width>195</width>
+      <heigth>26</heigth>
+      <fontname/>
+      <fontsize>-1</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
 
 </job>

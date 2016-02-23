@@ -163,7 +163,7 @@
       <yloc>122</yloc>
       </entry>
     <entry>
-      <name>tr-kimball-staging-customer-dlee52</name>
+      <name>tr-kimball-staging-customer-dlee52.ktr</name>
       <description/>
       <type>TRANS</type>
       <specification_method>filename</specification_method>
@@ -196,7 +196,7 @@
       <yloc>122</yloc>
       </entry>
     <entry>
-      <name>tr-kimball-load-dim-customer-scd-dlee52</name>
+      <name>tr-kimball-load-dim-customer-scd-dlee52.ktr</name>
       <description/>
       <type>TRANS</type>
       <specification_method>filename</specification_method>
@@ -229,7 +229,7 @@
       <yloc>123</yloc>
       </entry>
     <entry>
-      <name>tr-dummyrow-dim-customer-dlee52</name>
+      <name>tr-dummyrow-dim-customer-dlee52.ktr</name>
       <description/>
       <type>TRANS</type>
       <specification_method>filename</specification_method>
@@ -265,7 +265,7 @@
   <hops>
     <hop>
       <from>START</from>
-      <to>tr-kimball-staging-customer-dlee52</to>
+      <to>tr-kimball-staging-customer-dlee52.ktr</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -273,8 +273,8 @@
       <unconditional>Y</unconditional>
     </hop>
     <hop>
-      <from>tr-kimball-staging-customer-dlee52</from>
-      <to>tr-kimball-load-dim-customer-scd-dlee52</to>
+      <from>tr-kimball-staging-customer-dlee52.ktr</from>
+      <to>tr-kimball-load-dim-customer-scd-dlee52.ktr</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -282,8 +282,8 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>tr-kimball-load-dim-customer-scd-dlee52</from>
-      <to>tr-dummyrow-dim-customer-dlee52</to>
+      <from>tr-kimball-load-dim-customer-scd-dlee52.ktr</from>
+      <to>tr-dummyrow-dim-customer-dlee52.ktr</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>

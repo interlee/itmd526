@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <job>
-  <name>jb-kbb-datamart-main-dlee52</name>
+  <name>jb-build-datamart-dlee52</name>
     <description/>
     <extended_description/>
     <job_version/>
@@ -19,11 +19,6 @@
         <parameter>
             <name>DIM_PRODUCT_TBL</name>
             <default_value>dim_product_scd1</default_value>
-            <description/>
-        </parameter>
-        <parameter>
-            <name>NUM_ORDERS</name>
-            <default_value>1000</default_value>
             <description/>
         </parameter>
     </parameters>
@@ -178,12 +173,12 @@
       <yloc>182</yloc>
       </entry>
     <entry>
-      <name>jb-kbb-all-dim-builds-dlee52</name>
+      <name>jb-all-dim-builds-dlee52.kjb</name>
       <description/>
       <type>JOB</type>
       <specification_method>filename</specification_method>
       <job_object_id/>
-      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;jb-kbb-all-dim-builds-dlee52.kjb</filename>
+      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x5c;dim-builds&#x5c;jb-all-dim-builds-dlee52.kjb</filename>
       <jobname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -207,7 +202,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>355</xloc>
-      <yloc>180</yloc>
+      <yloc>181</yloc>
       </entry>
     <entry>
       <name>Success</name>
@@ -216,55 +211,47 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>806</xloc>
-      <yloc>183</yloc>
+      <xloc>970</xloc>
+      <yloc>180</yloc>
       </entry>
     <entry>
-      <name>jb-generate-orders-data.kjb</name>
+      <name>tr-fact-build-dlee52.ktr</name>
       <description/>
-      <type>JOB</type>
+      <type>TRANS</type>
       <specification_method>filename</specification_method>
-      <job_object_id/>
-      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x5c;utils&#x5c;jb-generate-orders-data.kjb</filename>
-      <jobname/>
+      <trans_object_id/>
+      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x5c;fact-builds&#x5c;tr-fact-build-dlee52.ktr</filename>
+      <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
       <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
       <set_logfile>N</set_logfile>
       <logfile/>
       <logext/>
       <add_date>N</add_date>
       <add_time>N</add_time>
-      <loglevel>Nothing</loglevel>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
       <slave_server_name/>
+      <set_append_logfile>N</set_append_logfile>
       <wait_until_finished>Y</wait_until_finished>
       <follow_abort_remote>N</follow_abort_remote>
-      <expand_remote_job>N</expand_remote_job>
       <create_parent_folder>N</create_parent_folder>
-      <pass_export>N</pass_export>
-      <force_separate_logging>N</force_separate_logging>
+      <logging_remote_work>N</logging_remote_work>
       <parameters>        <pass_all_parameters>Y</pass_all_parameters>
-            <parameter>            <name>DIM_CUSTOMER_TBL</name>
-            <stream_name/>
-            <value/>
-            </parameter>            <parameter>            <name>DIM_PRODUCT_TBL</name>
-            <stream_name/>
-            <value/>
-            </parameter>            <parameter>            <name>NUM_ORDERS</name>
-            <stream_name/>
-            <value/>
-            </parameter>      </parameters>      <set_append_logfile>N</set_append_logfile>
-      <parallel>N</parallel>
+      </parameters>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>573</xloc>
-      <yloc>182</yloc>
+      <xloc>734</xloc>
+      <yloc>179</yloc>
       </entry>
   </entries>
   <hops>
     <hop>
       <from>START</from>
-      <to>jb-kbb-all-dim-builds-dlee52</to>
+      <to>jb-all-dim-builds-dlee52.kjb</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -272,8 +259,8 @@
       <unconditional>Y</unconditional>
     </hop>
     <hop>
-      <from>jb-kbb-all-dim-builds-dlee52</from>
-      <to>jb-generate-orders-data.kjb</to>
+      <from>jb-all-dim-builds-dlee52.kjb</from>
+      <to>tr-fact-build-dlee52.ktr</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -281,7 +268,7 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>jb-generate-orders-data.kjb</from>
+      <from>tr-fact-build-dlee52.ktr</from>
       <to>Success</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
@@ -313,13 +300,13 @@
       <drawshadow>Y</drawshadow>
     </notepad>
     <notepad>
-      <note>Generate Random Sales Order Data</note>
-      <xloc>498</xloc>
+      <note>Build Fact</note>
+      <xloc>712</xloc>
       <yloc>246</yloc>
-      <width>195</width>
+      <width>63</width>
       <heigth>26</heigth>
-      <fontname>Segoe UI</fontname>
-      <fontsize>9</fontsize>
+      <fontname/>
+      <fontsize>-1</fontsize>
       <fontbold>N</fontbold>
       <fontitalic>N</fontitalic>
       <fontcolorred>0</fontcolorred>
