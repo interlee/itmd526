@@ -321,10 +321,10 @@
       <drawshadow>Y</drawshadow>
     </notepad>
     <notepad>
-      <note>IMPORTANT NOTE&#x3a; Generate orders data via jb-generate-orders-data before building fact.</note>
+      <note>IMPORTANT NOTE&#x3a; Generate sales data via jb-generate-sales-data before building fact.</note>
       <xloc>335</xloc>
       <yloc>52</yloc>
-      <width>485</width>
+      <width>469</width>
       <heigth>26</heigth>
       <fontname>Segoe UI</fontname>
       <fontsize>9</fontsize>

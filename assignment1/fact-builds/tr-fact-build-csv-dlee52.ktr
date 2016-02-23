@@ -95,6 +95,27 @@
       <bordercolorblue>100</bordercolorblue>
       <drawshadow>Y</drawshadow>
     </notepad>
+    <notepad>
+      <note>CREATE TABLE &#x60;fact_sales&#x60; &#x28;&#xd;&#xa;  &#x60;date_key&#x60; BIGINT&#x28;20&#x29; DEFAULT NULL,&#xd;&#xa;  &#x60;customer_key&#x60; BIGINT&#x28;20&#x29; DEFAULT NULL,&#xd;&#xa;  &#x60;product_key&#x60; BIGINT&#x28;20&#x29; DEFAULT NULL,&#xd;&#xa;  &#x60;sales_raw_id&#x60; BIGINT&#x28;20&#x29; DEFAULT NULL,&#xd;&#xa;  &#x60;transaction_number&#x60; INT&#x28;11&#x29; DEFAULT NULL,&#xd;&#xa;  &#x60;transaction_line_number&#x60; INT&#x28;11&#x29; DEFAULT NULL,&#xd;&#xa;  &#x60;unit_price&#x60; DOUBLE DEFAULT NULL,&#xd;&#xa;  &#x60;discount_pct&#x60; INT&#x28;11&#x29; DEFAULT NULL,&#xd;&#xa;  &#x60;sales_qty&#x60; INT&#x28;11&#x29; DEFAULT NULL,&#xd;&#xa;  &#x60;extended_sales_total&#x60; DOUBLE DEFAULT NULL&#xd;&#xa;&#x29; ENGINE&#x3d;MYISAM DEFAULT CHARSET&#x3d;utf8</note>
+      <xloc>864</xloc>
+      <yloc>227</yloc>
+      <width>354</width>
+      <heigth>178</heigth>
+      <fontname>Courier New</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
   <connection>
     <name>Data mart KBB</name>
@@ -209,9 +230,9 @@
   <hop> <from>User Defined Java Expression - Convert order_date to date_key</from><to>Database lookup - dim_date</to><enabled>Y</enabled> </hop>
   <hop> <from>Database lookup - dim_date</from><to>Database lookup - dim_product</to><enabled>Y</enabled> </hop>
   <hop> <from>Database lookup - dim_product</from><to>Database lookup - dim_customer</to><enabled>Y</enabled> </hop>
-  <hop> <from>Select values</from><to>Table output</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select values</from><to>Table output - fact_sales</to><enabled>Y</enabled> </hop>
   <hop> <from>Database lookup - dim_customer</from><to>Select values</to><enabled>Y</enabled> </hop>
-  <hop> <from>Text file input - order_raw</from><to>User Defined Java Expression - Convert order_date to date_key</to><enabled>Y</enabled> </hop>
+  <hop> <from>Text file input - sales_raw</from><to>User Defined Java Expression - Convert order_date to date_key</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>Database lookup - dim_customer</name>
@@ -354,7 +375,7 @@
       <remove>        <name>customer_id</name>
       </remove>      <remove>        <name>prod_code</name>
       </remove>      <remove>        <name>date_int</name>
-      </remove>      <remove>        <name>order_date</name>
+      </remove>      <remove>        <name>sales_date</name>
       </remove>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>585</xloc>
@@ -390,7 +411,7 @@
     </step>
 
   <step>
-    <name>Table output</name>
+    <name>Table output - fact_sales</name>
     <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -402,7 +423,7 @@
            </partitioning>
     <connection>Data mart KBB</connection>
     <schema/>
-    <table>fact_order</table>
+    <table>fact_sales</table>
     <commit>1000</commit>
     <truncate>Y</truncate>
     <ignore_errors>N</ignore_errors>
@@ -419,16 +440,16 @@
     <return_field/>
     <fields>
         <field>
-          <column_name>order_raw_id</column_name>
-          <stream_name>order_raw_id</stream_name>
+          <column_name>sales_raw_id</column_name>
+          <stream_name>sales_raw_id</stream_name>
         </field>
         <field>
-          <column_name>order_number</column_name>
-          <stream_name>order_number</stream_name>
+          <column_name>transaction_number</column_name>
+          <stream_name>transaction_number</stream_name>
         </field>
         <field>
-          <column_name>order_line_number</column_name>
-          <stream_name>order_line_number</stream_name>
+          <column_name>transaction_line_number</column_name>
+          <stream_name>transaction_line_number</stream_name>
         </field>
         <field>
           <column_name>unit_price</column_name>
@@ -439,8 +460,12 @@
           <stream_name>discount_pct</stream_name>
         </field>
         <field>
-          <column_name>order_qty</column_name>
-          <stream_name>order_qty</stream_name>
+          <column_name>sales_qty</column_name>
+          <stream_name>sales_qty</stream_name>
+        </field>
+        <field>
+          <column_name>extended_sales_total</column_name>
+          <stream_name>extended_sales_total</stream_name>
         </field>
         <field>
           <column_name>date_key</column_name>
@@ -454,10 +479,6 @@
           <column_name>customer_key</column_name>
           <stream_name>customer_key</stream_name>
         </field>
-        <field>
-          <column_name>extended_order_total</column_name>
-          <stream_name>extended_order_total</stream_name>
-        </field>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
@@ -468,33 +489,7 @@
     </step>
 
   <step>
-    <name>User Defined Java Expression - Convert order_date to date_key</name>
-    <type>Janino</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-       <formula><field_name>date_int</field_name>
-<formula_string>Integer.parseInt&#x28;new java.text.SimpleDateFormat&#x28;&#x22;yyyyMMdd&#x22;&#x29;.format&#x28;order_date&#x29;&#x29;</formula_string>
-<value_type>Integer</value_type>
-<value_length>-1</value_length>
-<value_precision>-1</value_precision>
-<replace_field/>
-</formula>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>421</xloc>
-      <yloc>99</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Text file input - order_raw</name>
+    <name>Text file input - sales_raw</name>
     <type>TextFileInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -531,7 +526,7 @@
     <encoding/>
     <add_to_result_filenames>Y</add_to_result_filenames>
     <file>
-      <name>&#x24;&#x7b;DIR_SOURCE_FILES&#x7d;&#x5c;order_raw.csv.txt</name>
+      <name>&#x24;&#x7b;DIR_SOURCE_FILES&#x7d;&#x5c;sales_raw.csv.txt</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
@@ -543,7 +538,7 @@
     </filters>
     <fields>
       <field>
-        <name>order_raw_id</name>
+        <name>sales_raw_id</name>
         <type>Integer</type>
         <format/>
         <currency/>
@@ -588,7 +583,7 @@
         <repeat>N</repeat>
       </field>
       <field>
-        <name>order_date</name>
+        <name>sales_date</name>
         <type>Date</type>
         <format>yyyy-MM-dd</format>
         <currency/>
@@ -603,7 +598,7 @@
         <repeat>N</repeat>
       </field>
       <field>
-        <name>order_number</name>
+        <name>transaction_number</name>
         <type>Integer</type>
         <format/>
         <currency/>
@@ -618,7 +613,7 @@
         <repeat>N</repeat>
       </field>
       <field>
-        <name>order_line_number</name>
+        <name>transaction_line_number</name>
         <type>Integer</type>
         <format/>
         <currency/>
@@ -663,7 +658,7 @@
         <repeat>N</repeat>
       </field>
       <field>
-        <name>order_qty</name>
+        <name>sales_qty</name>
         <type>Integer</type>
         <format/>
         <currency/>
@@ -678,7 +673,7 @@
         <repeat>N</repeat>
       </field>
       <field>
-        <name>extended_order_total</name>
+        <name>extended_sales_total</name>
         <type>Number</type>
         <format/>
         <currency/>
@@ -722,6 +717,32 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>105</xloc>
       <yloc>194</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>User Defined Java Expression - Convert order_date to date_key</name>
+    <type>Janino</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+       <formula><field_name>date_int</field_name>
+<formula_string>Integer.parseInt&#x28;new java.text.SimpleDateFormat&#x28;&#x22;yyyyMMdd&#x22;&#x29;.format&#x28;sales_date&#x29;&#x29;</formula_string>
+<value_type>Integer</value_type>
+<value_length>-1</value_length>
+<value_precision>-1</value_precision>
+<replace_field/>
+</formula>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>421</xloc>
+      <yloc>99</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

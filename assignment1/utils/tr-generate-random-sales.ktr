@@ -211,7 +211,7 @@
   <hop> <from>Sorted Merge</from><to>Group by</to><enabled>Y</enabled> </hop>
   <hop> <from>Generate random stuff</from><to>Sort rows</to><enabled>Y</enabled> </hop>
   <hop> <from>Determine orderNr</from><to>Remove orderSeq</to><enabled>Y</enabled> </hop>
-  <hop> <from>Remove orderSeq</from><to>Table output - order_random</to><enabled>Y</enabled> </hop>
+  <hop> <from>Remove orderSeq</from><to>Table output - sales_random</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>Determine orderNr</name>
@@ -503,7 +503,7 @@
     </step>
 
   <step>
-    <name>Table output - order_random</name>
+    <name>Table output - sales_random</name>
     <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -515,7 +515,7 @@
            </partitioning>
     <connection>Source DB</connection>
     <schema/>
-    <table>order_random</table>
+    <table>sales_random</table>
     <commit>1000</commit>
     <truncate>Y</truncate>
     <ignore_errors>N</ignore_errors>

@@ -215,9 +215,9 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Table input - orders</from><to>Table output - order_raw</to><enabled>N</enabled> </hop>
-  <hop> <from>Table input - orders</from><to>Add sequence</to><enabled>Y</enabled> </hop>
-  <hop> <from>Add sequence</from><to>Text file output - order_raw</to><enabled>Y</enabled> </hop>
+  <hop> <from>Table input - sales_random</from><to>Table output - order_raw</to><enabled>N</enabled> </hop>
+  <hop> <from>Table input - sales_random</from><to>Add sequence</to><enabled>Y</enabled> </hop>
+  <hop> <from>Add sequence</from><to>Text file output - sales_raw</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>Add sequence</name>
@@ -230,7 +230,7 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-      <valuename>order_raw_id</valuename>
+      <valuename>sales_raw_id</valuename>
       <use_database>N</use_database>
       <connection/>
       <schema/>
@@ -249,7 +249,7 @@
     </step>
 
   <step>
-    <name>Table input - orders</name>
+    <name>Table input - sales_random</name>
     <type>TableInput</type>
     <description/>
     <distribute>N</distribute>
@@ -260,7 +260,7 @@
            <schema_name/>
            </partitioning>
     <connection>Source DB</connection>
-    <sql>SELECT c.customer_id, p.prod_code, src.orderDate AS order_date&#xd;&#xa;       , src.orderNr AS order_number, src.orderLineNr AS order_line_number&#xd;&#xa;       , p.unit_price, src.discountPct AS discount_pct, src.nrProducts AS order_qty &#xd;&#xa;       , &#x28;1-src.discountPct&#x2f;100&#x29;&#x2a;p.unit_price&#x2a;src.nrProducts AS extended_order_total&#xd;&#xa;  FROM source_db.order_random src&#xd;&#xa;  LEFT OUTER JOIN datamart_kbb.&#x24;&#x7b;DIM_PRODUCT_TBL&#x7d; p&#xd;&#xa;    ON src.product_key &#x3d; p.product_key&#xd;&#xa;  LEFT OUTER JOIN datamart_kbb.&#x24;&#x7b;DIM_CUSTOMER_TBL&#x7d; c&#xd;&#xa;    ON src.customer_key &#x3d; c.customer_key&#xd;&#xa;-- WHERE &#x28;prod_code IS NULL OR customer_id IS NULL&#x29; &#xd;&#xa; ORDER BY order_date, customer_id, order_number, order_line_number&#xd;&#xa;&#x3b;</sql>
+    <sql>SELECT c.customer_id, p.prod_code, src.orderDate AS sales_date&#xd;&#xa;       , src.orderNr AS transaction_number, src.orderLineNr AS transaction_line_number&#xd;&#xa;       , p.unit_price, src.discountPct AS discount_pct, src.nrProducts AS sales_qty &#xd;&#xa;       , &#x28;1-src.discountPct&#x2f;100&#x29;&#x2a;p.unit_price&#x2a;src.nrProducts AS extended_sales_total&#xd;&#xa;  FROM source_db.sales_random src&#xd;&#xa;  LEFT OUTER JOIN datamart_kbb.&#x24;&#x7b;DIM_PRODUCT_TBL&#x7d; p&#xd;&#xa;    ON src.product_key &#x3d; p.product_key&#xd;&#xa;  LEFT OUTER JOIN datamart_kbb.&#x24;&#x7b;DIM_CUSTOMER_TBL&#x7d; c&#xd;&#xa;    ON src.customer_key &#x3d; c.customer_key&#xd;&#xa;-- WHERE &#x28;prod_code IS NULL OR customer_id IS NULL&#x29; &#xd;&#xa; ORDER BY src.orderDate, c.customer_id, src.orderNr, src.orderLineNr&#xd;&#xa;&#x3b;</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
@@ -345,7 +345,7 @@
     </step>
 
   <step>
-    <name>Text file output - order_raw</name>
+    <name>Text file output - sales_raw</name>
     <type>TextFileOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -369,7 +369,7 @@
     <fileNameField/>
     <create_parent_folder>Y</create_parent_folder>
     <file>
-      <name>&#x24;&#x7b;DIR_SOURCE_FILES&#x7d;&#x5c;order_raw.csv</name>
+      <name>&#x24;&#x7b;DIR_SOURCE_FILES&#x7d;&#x5c;sales_raw.csv</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
@@ -388,7 +388,7 @@
     </file>
     <fields>
       <field>
-        <name>order_raw_id</name>
+        <name>sales_raw_id</name>
         <type>Integer</type>
         <format/>
         <currency/>
@@ -424,7 +424,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>order_date</name>
+        <name>sales_date</name>
         <type>Date</type>
         <format>yyyy-MM-dd</format>
         <currency/>
@@ -436,7 +436,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>order_number</name>
+        <name>transaction_number</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -448,7 +448,7 @@
         <precision>0</precision>
       </field>
       <field>
-        <name>order_line_number</name>
+        <name>transaction_line_number</name>
         <type>Integer</type>
         <format/>
         <currency/>
@@ -484,7 +484,7 @@
         <precision>0</precision>
       </field>
       <field>
-        <name>order_qty</name>
+        <name>sales_qty</name>
         <type>Integer</type>
         <format/>
         <currency/>
@@ -496,7 +496,7 @@
         <precision>0</precision>
       </field>
       <field>
-        <name>extended_order_total</name>
+        <name>extended_sales_total</name>
         <type>Number</type>
         <format>&#x23;.&#x23;&#x23;</format>
         <currency/>
