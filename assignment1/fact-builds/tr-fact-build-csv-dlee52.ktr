@@ -526,7 +526,7 @@
     <encoding/>
     <add_to_result_filenames>Y</add_to_result_filenames>
     <file>
-      <name>&#x24;&#x7b;DIR_SOURCE_FILES&#x7d;&#x5c;sales_raw.csv.txt</name>
+      <name>&#x24;&#x7b;DIR_SOURCE_FILES&#x7d;&#x5c;sales_raw.csv</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
