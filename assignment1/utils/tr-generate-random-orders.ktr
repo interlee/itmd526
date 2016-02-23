@@ -76,8 +76,8 @@
   <notepads>
     <notepad>
       <note>CREATE TABLE &#x60;order_random&#x60; &#x28;&#xd;&#xa;  &#x60;customer_key&#x60; int&#x28;11&#x29; DEFAULT NULL,&#xd;&#xa;  &#x60;product_key&#x60; int&#x28;11&#x29; DEFAULT NULL,&#xd;&#xa;  &#x60;discountPct&#x60; int&#x28;11&#x29; DEFAULT NULL,&#xd;&#xa;  &#x60;nrProducts&#x60; int&#x28;11&#x29; DEFAULT NULL,&#xd;&#xa;  &#x60;minCustKey&#x60; int&#x28;11&#x29; DEFAULT NULL,&#xd;&#xa;  &#x60;minProdKey&#x60; int&#x28;11&#x29; DEFAULT NULL,&#xd;&#xa;  &#x60;maxCustKey&#x60; int&#x28;11&#x29; DEFAULT NULL,&#xd;&#xa;  &#x60;maxProdKey&#x60; int&#x28;11&#x29; DEFAULT NULL,&#xd;&#xa;  &#x60;orderDate&#x60; datetime DEFAULT NULL,&#xd;&#xa;  &#x60;orderLineNr&#x60; bigint&#x28;20&#x29; DEFAULT NULL,&#xd;&#xa;  &#x60;orderNr&#x60; int&#x28;11&#x29; DEFAULT NULL&#xd;&#xa;&#x29; ENGINE&#x3d;MyISAM DEFAULT CHARSET&#x3d;utf8&#xd;&#xa;</note>
-      <xloc>850</xloc>
-      <yloc>106</yloc>
+      <xloc>635</xloc>
+      <yloc>414</yloc>
       <width>291</width>
       <heigth>207</heigth>
       <fontname>Courier New</fontname>
@@ -237,8 +237,8 @@
         <replace>N</replace>
       </field>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>574</xloc>
-      <yloc>340</yloc>
+      <xloc>357</xloc>
+      <yloc>319</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -390,8 +390,8 @@
       </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>433</xloc>
-      <yloc>340</yloc>
+      <xloc>106</xloc>
+      <yloc>319</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -427,8 +427,8 @@
         <storage_type/>
       </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>716</xloc>
-      <yloc>340</yloc>
+      <xloc>549</xloc>
+      <yloc>319</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -467,8 +467,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>546</xloc>
-      <yloc>213</yloc>
+      <xloc>582</xloc>
+      <yloc>91</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -496,8 +496,8 @@
       </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>701</xloc>
-      <yloc>213</yloc>
+      <xloc>775</xloc>
+      <yloc>91</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -578,8 +578,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>982</xloc>
-      <yloc>340</yloc>
+      <xloc>774</xloc>
+      <yloc>319</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
