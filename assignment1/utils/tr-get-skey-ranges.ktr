@@ -9,16 +9,6 @@
     <trans_status>0</trans_status>
     <directory>&#x2f;</directory>
     <parameters>
-        <parameter>
-            <name>DIM_CUSTOMER_TBL</name>
-            <default_value/>
-            <description/>
-        </parameter>
-        <parameter>
-            <name>DIM_PRODUCT_TBL</name>
-            <default_value/>
-            <description/>
-        </parameter>
     </parameters>
     <log>
 <trans-log-table><connection/>
@@ -84,6 +74,27 @@
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
+    <notepad>
+      <note>Get the MIN&#x2f;MAX surrogate keys of DIM_CUSTOMER_TBL and DIM_PRODUCT_TBL</note>
+      <xloc>139</xloc>
+      <yloc>36</yloc>
+      <width>447</width>
+      <heigth>26</heigth>
+      <fontname>Segoe UI</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
   <connection>
     <name>Data mart KBB</name>

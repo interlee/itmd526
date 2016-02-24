@@ -105,27 +105,6 @@
       <bordercolorblue>100</bordercolorblue>
       <drawshadow>Y</drawshadow>
     </notepad>
-    <notepad>
-      <note>Make sure to set the transformation setting variables&#x3a;&#xd;&#xa;&#xd;&#xa;1. Right click on canvas &#xd;&#xa;2. Transformation Settings&#xd;&#xa;3. Parameters&#xd;&#xa;    VAR_START_DATE&#x3a; 2000-01-01&#xd;&#xa;    VAR_END_DATE  &#x3a; 2009-12-31</note>
-      <xloc>68</xloc>
-      <yloc>2</yloc>
-      <width>389</width>
-      <heigth>109</heigth>
-      <fontname>Courier New</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>255</backgroundcolorgreen>
-      <backgroundcolorblue>128</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
   </notepads>
   <connection>
     <name>Data mart KBB</name>
@@ -548,7 +527,7 @@
     <fields>
       <field>
         <name>start_date</name>
-        <variable>&#x24;&#x7b;VAR_START_DATE&#x7d;</variable>
+        <variable>&#x24;&#x7b;DIM_DATE_START&#x7d;</variable>
         <type>Date</type>
         <format>yyyy-MM-dd</format>
         <currency/>
@@ -560,7 +539,7 @@
       </field>
       <field>
         <name>end_date</name>
-        <variable>&#x24;&#x7b;VAR_END_DATE&#x7d;</variable>
+        <variable>&#x24;&#x7b;DIM_DATE_END&#x7d;</variable>
         <type>Date</type>
         <format>yyyy-MM-dd</format>
         <currency/>
@@ -590,7 +569,7 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <fields>      <field>        <name>date_tk</name>
+    <fields>      <field>        <name>date_sid</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
@@ -666,7 +645,7 @@
     <fields>
         <field>
           <column_name>date_key</column_name>
-          <stream_name>date_tk</stream_name>
+          <stream_name>date_sid</stream_name>
         </field>
         <field>
           <column_name>the_date</column_name>
@@ -720,7 +699,7 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-       <formula><field_name>date_tk</field_name>
+       <formula><field_name>date_sid</field_name>
 <formula_string>Integer.parseInt&#x28;new java.text.SimpleDateFormat&#x28;&#x22;yyyyMMdd&#x22;&#x29;.format&#x28;the_date&#x29;&#x29;</formula_string>
 <value_type>Integer</value_type>
 <value_length>-1</value_length>
