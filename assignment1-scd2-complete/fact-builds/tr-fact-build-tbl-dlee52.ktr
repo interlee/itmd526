@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>tr-fact-build-csv-dlee52</name>
+    <name>tr-fact-build</name>
     <description/>
     <extended_description/>
     <trans_version/>
     <trans_type>Normal</trans_type>
-    <trans_status>0</trans_status>
     <directory>&#x2f;</directory>
     <parameters>
     </parameters>
@@ -90,27 +89,6 @@
       <backgroundcolorred>0</backgroundcolorred>
       <backgroundcolorgreen>128</backgroundcolorgreen>
       <backgroundcolorblue>0</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>CREATE TABLE &#x60;fact_sales&#x60; &#x28;&#xd;&#xa;  &#x60;date_key&#x60; BIGINT&#x28;20&#x29; DEFAULT NULL,&#xd;&#xa;  &#x60;customer_key&#x60; BIGINT&#x28;20&#x29; DEFAULT NULL,&#xd;&#xa;  &#x60;product_key&#x60; BIGINT&#x28;20&#x29; DEFAULT NULL,&#xd;&#xa;  &#x60;sales_raw_id&#x60; BIGINT&#x28;20&#x29; DEFAULT NULL,&#xd;&#xa;  &#x60;transaction_number&#x60; INT&#x28;11&#x29; DEFAULT NULL,&#xd;&#xa;  &#x60;transaction_line_number&#x60; INT&#x28;11&#x29; DEFAULT NULL,&#xd;&#xa;  &#x60;unit_price&#x60; DOUBLE DEFAULT NULL,&#xd;&#xa;  &#x60;discount_pct&#x60; INT&#x28;11&#x29; DEFAULT NULL,&#xd;&#xa;  &#x60;sales_qty&#x60; INT&#x28;11&#x29; DEFAULT NULL,&#xd;&#xa;  &#x60;extended_sales_total&#x60; DOUBLE DEFAULT NULL&#xd;&#xa;&#x29; ENGINE&#x3d;MYISAM DEFAULT CHARSET&#x3d;utf8</note>
-      <xloc>864</xloc>
-      <yloc>227</yloc>
-      <width>354</width>
-      <heigth>178</heigth>
-      <fontname>Courier New</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
       <bordercolorred>100</bordercolorred>
       <bordercolorgreen>100</bordercolorgreen>
       <bordercolorblue>100</bordercolorblue>
@@ -226,13 +204,12 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Table input - order_raw</from><to>User Defined Java Expression - Convert order_date to date_key</to><enabled>N</enabled> </hop>
+  <hop> <from>Table input - order_raw</from><to>User Defined Java Expression - Convert order_date to date_key</to><enabled>Y</enabled> </hop>
   <hop> <from>User Defined Java Expression - Convert order_date to date_key</from><to>Database lookup - dim_date</to><enabled>Y</enabled> </hop>
   <hop> <from>Database lookup - dim_date</from><to>Database lookup - dim_product</to><enabled>Y</enabled> </hop>
   <hop> <from>Database lookup - dim_product</from><to>Database lookup - dim_customer</to><enabled>Y</enabled> </hop>
-  <hop> <from>Select values</from><to>Table output - fact_sales</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select values</from><to>Table output</to><enabled>Y</enabled> </hop>
   <hop> <from>Database lookup - dim_customer</from><to>Select values</to><enabled>Y</enabled> </hop>
-  <hop> <from>Text file input - sales_raw</from><to>User Defined Java Expression - Convert order_date to date_key</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>Database lookup - dim_customer</name>
@@ -375,7 +352,7 @@
       <remove>        <name>customer_id</name>
       </remove>      <remove>        <name>prod_code</name>
       </remove>      <remove>        <name>date_int</name>
-      </remove>      <remove>        <name>sales_date</name>
+      </remove>      <remove>        <name>order_date</name>
       </remove>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>585</xloc>
@@ -411,7 +388,7 @@
     </step>
 
   <step>
-    <name>Table output - fact_sales</name>
+    <name>Table output</name>
     <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -423,11 +400,11 @@
            </partitioning>
     <connection>Data mart KBB</connection>
     <schema/>
-    <table>fact_sales</table>
+    <table>fact_order</table>
     <commit>1000</commit>
     <truncate>Y</truncate>
     <ignore_errors>N</ignore_errors>
-    <use_batch>N</use_batch>
+    <use_batch>Y</use_batch>
     <specify_fields>Y</specify_fields>
     <partitioning_enabled>N</partitioning_enabled>
     <partitioning_field/>
@@ -440,16 +417,16 @@
     <return_field/>
     <fields>
         <field>
-          <column_name>sales_raw_id</column_name>
-          <stream_name>sales_raw_id</stream_name>
+          <column_name>order_raw_id</column_name>
+          <stream_name>order_raw_id</stream_name>
         </field>
         <field>
-          <column_name>transaction_number</column_name>
-          <stream_name>transaction_number</stream_name>
+          <column_name>order_number</column_name>
+          <stream_name>order_number</stream_name>
         </field>
         <field>
-          <column_name>transaction_line_number</column_name>
-          <stream_name>transaction_line_number</stream_name>
+          <column_name>order_line_number</column_name>
+          <stream_name>order_line_number</stream_name>
         </field>
         <field>
           <column_name>unit_price</column_name>
@@ -460,12 +437,8 @@
           <stream_name>discount_pct</stream_name>
         </field>
         <field>
-          <column_name>sales_qty</column_name>
-          <stream_name>sales_qty</stream_name>
-        </field>
-        <field>
-          <column_name>extended_sales_total</column_name>
-          <stream_name>extended_sales_total</stream_name>
+          <column_name>order_qty</column_name>
+          <stream_name>order_qty</stream_name>
         </field>
         <field>
           <column_name>date_key</column_name>
@@ -479,244 +452,15 @@
           <column_name>customer_key</column_name>
           <stream_name>customer_key</stream_name>
         </field>
+        <field>
+          <column_name>extended_order_total</column_name>
+          <stream_name>extended_order_total</stream_name>
+        </field>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>775</xloc>
       <yloc>300</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Text file input - sales_raw</name>
-    <type>TextFileInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <accept_filenames>N</accept_filenames>
-    <passing_through_fields>N</passing_through_fields>
-    <accept_field/>
-    <accept_stepname/>
-    <separator>,</separator>
-    <enclosure>&#x22;</enclosure>
-    <enclosure_breaks>N</enclosure_breaks>
-    <escapechar/>
-    <header>Y</header>
-    <nr_headerlines>1</nr_headerlines>
-    <footer>N</footer>
-    <nr_footerlines>1</nr_footerlines>
-    <line_wrapped>N</line_wrapped>
-    <nr_wraps>1</nr_wraps>
-    <layout_paged>N</layout_paged>
-    <nr_lines_per_page>80</nr_lines_per_page>
-    <nr_lines_doc_header>0</nr_lines_doc_header>
-    <noempty>Y</noempty>
-    <include>N</include>
-    <include_field/>
-    <rownum>N</rownum>
-    <rownumByFile>N</rownumByFile>
-    <rownum_field/>
-    <format>DOS</format>
-    <encoding/>
-    <add_to_result_filenames>Y</add_to_result_filenames>
-    <file>
-      <name>&#x24;&#x7b;DIR_SOURCE_FILES&#x7d;&#x5c;sales_raw.csv</name>
-      <filemask/>
-      <exclude_filemask/>
-      <file_required>N</file_required>
-      <include_subfolders>N</include_subfolders>
-      <type>CSV</type>
-      <compression>None</compression>
-    </file>
-    <filters>
-    </filters>
-    <fields>
-      <field>
-        <name>sales_raw_id</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <ifnull/>
-        <position>-1</position>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>customer_id</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif>-</nullif>
-        <ifnull/>
-        <position>-1</position>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>prod_code</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif>-</nullif>
-        <ifnull/>
-        <position>-1</position>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>sales_date</name>
-        <type>Date</type>
-        <format>yyyy-MM-dd</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif>-</nullif>
-        <ifnull/>
-        <position>-1</position>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>transaction_number</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif>-</nullif>
-        <ifnull/>
-        <position>-1</position>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>transaction_line_number</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif>-</nullif>
-        <ifnull/>
-        <position>-1</position>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>unit_price</name>
-        <type>Number</type>
-        <format/>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif>-</nullif>
-        <ifnull/>
-        <position>-1</position>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>discount_pct</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif>-</nullif>
-        <ifnull/>
-        <position>-1</position>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>sales_qty</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif>-</nullif>
-        <ifnull/>
-        <position>-1</position>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>extended_sales_total</name>
-        <type>Number</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <ifnull/>
-        <position>-1</position>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-        <repeat>N</repeat>
-      </field>
-    </fields>
-    <limit>0</limit>
-    <error_ignored>N</error_ignored>
-    <skip_bad_files>N</skip_bad_files>
-    <file_error_field/>
-    <file_error_message_field/>
-    <error_line_skipped>N</error_line_skipped>
-    <error_count_field/>
-    <error_fields_field/>
-    <error_text_field/>
-    <bad_line_files_destination_directory/>
-    <bad_line_files_extension>warning</bad_line_files_extension>
-    <error_line_files_destination_directory/>
-    <error_line_files_extension>error</error_line_files_extension>
-    <line_number_files_destination_directory/>
-    <line_number_files_extension>line</line_number_files_extension>
-    <date_format_lenient>Y</date_format_lenient>
-    <date_format_locale>en_US</date_format_locale>
-    <shortFileFieldName/>
-    <pathFieldName/>
-    <hiddenFieldName/>
-    <lastModificationTimeFieldName/>
-    <uriNameFieldName/>
-    <rootUriNameFieldName/>
-    <extensionFieldName/>
-    <sizeFieldName/>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>105</xloc>
-      <yloc>194</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -733,7 +477,7 @@
            <schema_name/>
            </partitioning>
        <formula><field_name>date_int</field_name>
-<formula_string>Integer.parseInt&#x28;new java.text.SimpleDateFormat&#x28;&#x22;yyyyMMdd&#x22;&#x29;.format&#x28;sales_date&#x29;&#x29;</formula_string>
+<formula_string>Integer.parseInt&#x28;new java.text.SimpleDateFormat&#x28;&#x22;yyyyMMdd&#x22;&#x29;.format&#x28;order_date&#x29;&#x29;</formula_string>
 <value_type>Integer</value_type>
 <value_length>-1</value_length>
 <value_precision>-1</value_precision>

@@ -1,0 +1,2 @@
+sales_raw_id;customer_id;prod_code;sales_date;transaction_number;transaction_line_number;unit_price;discount_pct;sales_qty;extended_sales_total;date_int;date_key;prod_code_outer_join;product_key;customer_id_outer_join
+ 10001;;1008;2003-01-04; 5000056; 1; 62.88; 15; 3; 160.34;20030104;20030104;1008       ;9;Unknown                         

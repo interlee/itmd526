@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>tr-dummyrow-dim-product</name>
+    <name>tr-save-orders-data-tbl</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -9,6 +9,16 @@
     <trans_status>0</trans_status>
     <directory>&#x2f;</directory>
     <parameters>
+        <parameter>
+            <name>DIM_CUSTOMER_TBL</name>
+            <default_value/>
+            <description/>
+        </parameter>
+        <parameter>
+            <name>DIM_PRODUCT_TBL</name>
+            <default_value/>
+            <description/>
+        </parameter>
     </parameters>
     <log>
 <trans-log-table><connection/>
@@ -67,13 +77,34 @@
     <clusterschemas>
     </clusterschemas>
   <created_user>-</created_user>
-  <created_date>2016&#x2f;02&#x2f;21 04&#x3a;39&#x3a;14.534</created_date>
+  <created_date>2016&#x2f;02&#x2f;21 03&#x3a;08&#x3a;09.344</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2016&#x2f;02&#x2f;21 04&#x3a;39&#x3a;14.534</modified_date>
+  <modified_date>2016&#x2f;02&#x2f;21 03&#x3a;08&#x3a;09.344</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA&#x3d;</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
+    <notepad>
+      <note>CREATE TABLE &#x60;order_raw&#x60; &#x28;&#xd;&#xa;  &#x60;order_raw_id&#x60; bigint&#x28;20&#x29; NOT NULL AUTO_INCREMENT,&#xd;&#xa;  &#x60;customer_id&#x60; varchar&#x28;32&#x29; DEFAULT NULL,&#xd;&#xa;  &#x60;prod_code&#x60; varchar&#x28;11&#x29; DEFAULT NULL,&#xd;&#xa;  &#x60;order_date&#x60; datetime DEFAULT NULL,&#xd;&#xa;  &#x60;order_number&#x60; int&#x28;11&#x29; DEFAULT NULL,&#xd;&#xa;  &#x60;order_line_number&#x60; int&#x28;11&#x29; DEFAULT NULL,&#xd;&#xa;  &#x60;unit_price&#x60; double DEFAULT NULL,&#xd;&#xa;  &#x60;discount_pct&#x60; int&#x28;11&#x29; DEFAULT NULL,&#xd;&#xa;  &#x60;order_qty&#x60; int&#x28;11&#x29; DEFAULT NULL,&#xd;&#xa;  PRIMARY KEY &#x28;&#x60;order_raw_id&#x60;&#x29;&#xd;&#xa;&#x29; ENGINE&#x3d;MyISAM DEFAULT CHARSET&#x3d;utf8&#xd;&#xa;</note>
+      <xloc>266</xloc>
+      <yloc>212</yloc>
+      <width>375</width>
+      <heigth>193</heigth>
+      <fontname>Courier New</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
   <connection>
     <name>Data mart KBB</name>
@@ -184,77 +215,10 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Table input - dummy row for dim_product_scd1</from><to>Insert &#x2f; Update - dim_product_scd1</to><enabled>Y</enabled> </hop>
+  <hop> <from>Table input - orders</from><to>Table output - order_raw</to><enabled>Y</enabled> </hop>
   </order>
   <step>
-    <name>Insert &#x2f; Update - dim_product_scd1</name>
-    <type>InsertUpdate</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>Data mart KBB</connection>
-    <commit>100</commit>
-    <update_bypassed>N</update_bypassed>
-    <lookup>
-      <schema/>
-      <table>dim_product_scd1</table>
-      <key>
-        <name>product_key</name>
-        <field>PRODUCT_KEY</field>
-        <condition>&#x3d;</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>PROD_CODE</name>
-        <rename>product_code</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>PRODUCT_DESC</name>
-        <rename>product_description</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>UNIT_PRICE</name>
-        <rename>unit_price</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>CATEGORY</name>
-        <rename>category</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>VERSION</name>
-        <rename>version</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>DATE_FROM</name>
-        <rename>date_from</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>DATE_TO</name>
-        <rename>date_to</rename>
-        <update>Y</update>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>400</xloc>
-      <yloc>96</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Table input - dummy row for dim_product_scd1</name>
+    <name>Table input - orders</name>
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -264,17 +228,87 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <connection>Data mart KBB</connection>
-    <sql>SELECT 0 AS product_key, &#x27;Unknown&#x27; AS product_code, &#x27;Unknown&#x27; AS product_description,&#xd;&#xa;       0 AS unit_price, &#x27;Unknown&#x27; AS category, &#xd;&#xa;       1 AS version, &#x27;1900-01-01 00&#x3a;00&#x3a;00&#x27; AS date_from, &#x27;2200-01-01 00&#x3a;00&#x3a;00&#x27; AS date_to&#xd;&#xa;  FROM dual</sql>
+    <connection>Source DB</connection>
+    <sql>SELECT c.customer_id, p.prod_code, src.orderDate AS order_date&#xd;&#xa;       , src.orderNr AS order_number, src.orderLineNr AS order_line_number&#xd;&#xa;       , p.unit_price, src.discountPct AS discount_pct, src.nrProducts AS order_qty &#xd;&#xa;  FROM source_db.order_random src&#xd;&#xa;  LEFT OUTER JOIN datamart_kbb.&#x24;&#x7b;DIM_PRODUCT_TBL&#x7d; p&#xd;&#xa;    ON src.product_key &#x3d; p.product_key&#xd;&#xa;  LEFT OUTER JOIN datamart_kbb.&#x24;&#x7b;DIM_CUSTOMER_TBL&#x7d; c&#xd;&#xa;    ON src.customer_key &#x3d; c.customer_key&#xd;&#xa;-- WHERE &#x28;prod_code IS NULL OR customer_id IS NULL&#x29; &#xd;&#xa; ORDER BY order_date, customer_id, order_number, order_line_number&#xd;&#xa;&#x3b;</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
+    <variables_active>Y</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>148</xloc>
-      <yloc>96</yloc>
+      <xloc>158</xloc>
+      <yloc>145</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Table output - order_raw</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>Source DB</connection>
+    <schema/>
+    <table>order_raw</table>
+    <commit>1000</commit>
+    <truncate>Y</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+        <field>
+          <column_name>customer_id</column_name>
+          <stream_name>customer_id</stream_name>
+        </field>
+        <field>
+          <column_name>prod_code</column_name>
+          <stream_name>prod_code</stream_name>
+        </field>
+        <field>
+          <column_name>order_date</column_name>
+          <stream_name>order_date</stream_name>
+        </field>
+        <field>
+          <column_name>order_number</column_name>
+          <stream_name>order_number</stream_name>
+        </field>
+        <field>
+          <column_name>order_line_number</column_name>
+          <stream_name>order_line_number</stream_name>
+        </field>
+        <field>
+          <column_name>unit_price</column_name>
+          <stream_name>unit_price</stream_name>
+        </field>
+        <field>
+          <column_name>discount_pct</column_name>
+          <stream_name>discount_pct</stream_name>
+        </field>
+        <field>
+          <column_name>order_qty</column_name>
+          <stream_name>order_qty</stream_name>
+        </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>387</xloc>
+      <yloc>145</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
