@@ -1,0 +1,62 @@
+<Schema name="Kitchen and Bath Beyond">
+  <Dimension type="TimeDimension" visible="true" highCardinality="false" name="Date">
+    <Hierarchy name="Months" visible="true" hasAll="true" primaryKey="date_key">
+      <Table name="dim_date">
+      </Table>
+      <Level name="Year" visible="true" column="the_year" type="String" uniqueMembers="true" levelType="TimeYears" hideMemberIf="Never" captionColumn="the_year">
+      </Level>
+      <Level name="Quarter" visible="true" column="the_quarter" type="String" uniqueMembers="false" levelType="TimeQuarters" hideMemberIf="Never" captionColumn="the_quarter">
+      </Level>
+      <Level name="Month" visible="true" column="the_month" type="String" uniqueMembers="false" levelType="TimeMonths" hideMemberIf="Never" captionColumn="the_month">
+      </Level>
+      <Level name="Day" visible="true" column="day_of_month" type="String" uniqueMembers="false" levelType="TimeDays" hideMemberIf="Never" captionColumn="day_of_month">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Weeks" visible="true" hasAll="true" primaryKey="date_key">
+      <Table name="dim_date">
+      </Table>
+      <Level name="Year" visible="true" column="the_year" type="String" uniqueMembers="true" levelType="TimeYears" hideMemberIf="Never" captionColumn="the_year">
+      </Level>
+      <Level name="Week" visible="true" column="the_week" type="String" uniqueMembers="false" levelType="TimeWeeks" hideMemberIf="Never" captionColumn="the_week">
+      </Level>
+      <Level name="Day" visible="true" column="day_of_week" type="String" uniqueMembers="false" levelType="TimeDays" hideMemberIf="Never" captionColumn="day_of_week">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Product">
+    <Hierarchy name="Product" visible="true" hasAll="true" primaryKey="PRODUCT_KEY">
+      <Table name="dim_product_scd1">
+      </Table>
+      <Level name="Category" visible="true" column="CATEGORY" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never" captionColumn="CATEGORY">
+      </Level>
+      <Level name="Product Description" visible="true" column="PROD_CODE" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="PRODUCT_DESC">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Customer">
+    <Hierarchy name="Geo" visible="true" hasAll="true" primaryKey="customer_key">
+      <Table name="dim_customer_scd1">
+      </Table>
+      <Level name="State" visible="true" column="state" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never" captionColumn="state">
+      </Level>
+      <Level name="City" visible="true" column="city" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="city">
+      </Level>
+      <Level name="Name" visible="true" column="customer_id" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="last_name">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Cube name="kbb_sales" caption="Kitchen Bath and Beyond Sales" visible="true" cache="true" enabled="true">
+    <Table name="fact_sales">
+    </Table>
+    <DimensionUsage source="Date" name="Local Sales Date" visible="true" foreignKey="date_key" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Product" name="Product" visible="true" foreignKey="product_key" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Customer" name="Customer" visible="true" foreignKey="customer_key" highCardinality="false">
+    </DimensionUsage>
+    <Measure name="Sales Quantity" column="sales_qty" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Extended Sales Amount" column="extended_sales_total" formatString="Currency" aggregator="sum" description="Extended Sales Amount Total" visible="true">
+    </Measure>
+  </Cube>
+</Schema>
